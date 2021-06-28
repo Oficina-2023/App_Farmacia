@@ -1,4 +1,4 @@
-package br.com.apoo2021;
+package br.com.apoo2021.farm;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
