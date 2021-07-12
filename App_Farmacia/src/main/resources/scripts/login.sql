@@ -1,1 +1,1 @@
-select farmaceutico.nome, farmaceutico.crf from farmaceutico where hash = ?
+SELECT crf , nome FROM farmaceutico WHERE hash = ?;
