@@ -1,0 +1,1 @@
+select farmaceutico.nome, farmaceutico.crf from farmaceutico where hash = ?
