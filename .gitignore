@@ -109,3 +109,4 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
+/App_Farmacia/src/main/resources/DBConnection.properties
