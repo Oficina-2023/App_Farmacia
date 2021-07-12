@@ -1,54 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Accordion?>
-<?import javafx.scene.effect.Blend?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.LoginScreenController">
+<AnchorPane prefHeight="402.0" prefWidth="367.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.LoginScreenController">
    <children>
-      <Accordion layoutY="8.0" />
-      <StackPane prefHeight="401.0" prefWidth="200.0">
-         <effect>
-            <Blend />
-         </effect>
+      <StackPane prefHeight="402.0" prefWidth="388.0">
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="402.0" prefWidth="349.0">
                <children>
-                  <Text layoutX="4.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drogaria Bolsonaro" textAlignment="CENTER" wrappingWidth="191.298828125">
+                  <Text layoutX="121.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="33.13671875" />
+                  <Text layoutX="121.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha" />
+                  <Text layoutX="127.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FarmApp" textAlignment="CENTER" wrappingWidth="134.5078103542328">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="31.0" />
                      </font>
                   </Text>
-                  <Text layoutX="70.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuário">
+                  <JFXTextField fx:id="usernameTextField" layoutX="123.0" layoutY="198.0" />
+                  <JFXPasswordField fx:id="passwordTextField" layoutX="123.0" layoutY="257.0" />
+                  <JFXButton fx:id="loginButton" layoutX="123.0" layoutY="316.0" onAction="#loginPressed" prefHeight="25.0" prefWidth="63.0" text="Entrar" />
+                  <JFXButton fx:id="signUpButton" layoutX="194.0" layoutY="316.0" onAction="#signUpPressed" text="Registrar" />
+                  <JFXButton layoutX="362.0" layoutY="2.0" opacity="0.6" prefHeight="25.0" prefWidth="14.0" ripplerFill="BLACK" text="X">
                      <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <Text layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" textAlignment="CENTER" wrappingWidth="199.99999701976776" />
-                  <JFXButton layoutY="114.0" prefHeight="46.0" prefWidth="200.0" text="Farmacêutico">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton layoutY="178.0" prefHeight="46.0" prefWidth="200.0" text="Cliente">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton layoutX="1.0" layoutY="241.0" prefHeight="46.0" prefWidth="200.0" text="Produtos">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton layoutY="312.0" prefHeight="46.0" prefWidth="200.0" text="Vendas">
-                     <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </JFXButton>
                </children>
