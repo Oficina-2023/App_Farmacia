@@ -42,7 +42,7 @@ public class SQLRunner {
                             }else if(obj instanceof Float){
                                 statement.setFloat(dataPos, (Float) obj);
                             }else{
-                                //Akila.logger.error("Tipo de dado não declarado na execução do script sql!");
+                                FarmApp.logger.error("Tipo de dado não declarado na execução do script sql!");
                             }
                         }
                     }
@@ -77,7 +77,7 @@ public class SQLRunner {
                             }else if(obj instanceof Float){
                                 statement.setFloat(dataPos, (Float) obj);
                             }else{
-                                //Akila.logger.error("Tipo de dado não declarado na execução do script sql!");
+                                FarmApp.logger.error("Tipo de dado não declarado na execução do script sql!");
                             }
                         }
                     }
