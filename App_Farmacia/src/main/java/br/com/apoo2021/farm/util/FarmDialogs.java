@@ -8,7 +8,7 @@ import javafx.scene.text.Text;
 
 public class FarmDialogs {
 
-    public static void showSoftwareCloseDialog(StackPane pane, JFXButton closeButton){
+    public static void showSoftwareCloseDialog(StackPane pane, JFXButton... buttons){
         JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(new Text("Confirma\u00e7\u00e3o de Sa\u00edda"));
         content.setBody(new Text("Deseja realmente sair?"));
@@ -20,7 +20,9 @@ public class FarmDialogs {
         content.setActions(yesButton, noButton);
         dialog.show();
 
-        closeButton.disableProperty().bind(dialog.visibleProperty());
+        for(JFXButton button : buttons){
+            button.disableProperty().bind(dialog.visibleProperty());
+        }
     }
 
     public static void showDialog(StackPane pane,String title, String message){
