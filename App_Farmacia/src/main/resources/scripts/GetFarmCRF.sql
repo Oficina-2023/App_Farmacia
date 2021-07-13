@@ -1,0 +1,1 @@
+SELECT crf FROM farmaceutico WHERE hash = ?;

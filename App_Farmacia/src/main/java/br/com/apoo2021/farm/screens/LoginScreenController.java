@@ -38,14 +38,16 @@ public class LoginScreenController implements Initializable {
     void loginPressed(ActionEvent event) {
         String hash = MD5Cripto.MD5Converter(usernameTextField.getText()+passwordTextField.getText());
         if (hash != null) {
-            List<Object> userData = SQLRunner.executeSQLScript.SQLSelect("login", hash);
-            if(userData != null) {
-                if (!userData.isEmpty()) {
-                    FarmApp.userManager.setFarmData((int)userData.get(0),(String)userData.get(1));
-                    System.out.println(FarmApp.userManager.getFarmaceutico().getCrf());
-                    System.out.println(FarmApp.userManager.getFarmaceutico().getNome());
-                } else {
-                    System.out.println("?");
+            List<Object> crf = SQLRunner.executeSQLScript.SQLSelect("GetFarmCRF", hash);
+            if(crf != null) {
+                List<Object> name = SQLRunner.executeSQLScript.SQLSelect("GetFarmName", hash);
+                if (name != null) {
+                    if (!crf.isEmpty() && !name.isEmpty()) {
+                        FarmApp.userManager.setFarmData((int) crf.get(0), (String) name.get(0));
+                    } else {
+                        // login/senha não encontrados
+                        System.out.println("?");
+                    }
                 }
             }
         }
