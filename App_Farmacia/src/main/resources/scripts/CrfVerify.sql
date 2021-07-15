@@ -1,0 +1,1 @@
+SELECT farmaceutico.crf FROM farmaceutico WHERE crf = ?

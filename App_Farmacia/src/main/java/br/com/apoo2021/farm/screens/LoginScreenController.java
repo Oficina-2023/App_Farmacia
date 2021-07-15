@@ -8,11 +8,19 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 import javax.print.attribute.standard.JobOriginatingUserName;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LoginScreenController implements Initializable {
@@ -27,6 +35,9 @@ public class LoginScreenController implements Initializable {
     private JFXButton loginButton;
 
     @FXML
+    private JFXButton closeButton;
+
+    @FXML
     private JFXButton signUpButton;
 
     @Override
@@ -36,7 +47,7 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     void loginPressed(ActionEvent event) {
-        String hash = MD5Cripto.MD5Converter(usernameTextField.getText()+passwordTextField.getText());
+        String hash = MD5Cripto.MD5Converter(usernameTextField.getText().toLowerCase()+passwordTextField.getText());
         if (hash != null) {
             List<Object> crf = SQLRunner.executeSQLScript.SQLSelect("GetFarmCRF", hash);
             if(crf != null && !crf.isEmpty()) {
@@ -53,7 +64,15 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     void signUpPressed(ActionEvent event) {
-
+        try{
+            Stage stage = (Stage) closeButton.getScene().getWindow();
+            stage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/RegisterScreen.fxml")))));
+            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+            stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
+            stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
+        }catch(IOException e){
+            FarmApp.logger.error("Erro ao clicar em registrar usuário, tela LoginScreen",e);
+        }
     }
 
 }
