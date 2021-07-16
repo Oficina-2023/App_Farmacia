@@ -1,1 +1,1 @@
-SELECT nome FROM farmaceutico WHERE hash = ?;
+SELECT nome FROM farmaceutico WHERE crf = ?;

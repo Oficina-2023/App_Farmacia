@@ -1,0 +1,1 @@
+SELECT cpf from farmaceutico where crf = ?;

@@ -1,0 +1,1 @@
+SELECT telefone from farmaceutico where crf = ?;

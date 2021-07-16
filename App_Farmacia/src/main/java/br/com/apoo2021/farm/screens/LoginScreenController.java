@@ -2,10 +2,13 @@ package br.com.apoo2021.farm.screens;
 
 import br.com.apoo2021.farm.FarmApp;
 import br.com.apoo2021.farm.database.SQLRunner;
+import br.com.apoo2021.farm.objects.UserManager;
+import br.com.apoo2021.farm.util.FarmDialogs;
 import br.com.apoo2021.farm.util.MD5Cripto;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -28,6 +32,9 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     private JFXTextField usernameTextField;
+
+    @FXML
+    private StackPane loginPane;
 
     @FXML
     private JFXPasswordField passwordTextField;
@@ -51,19 +58,24 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     void loginPressed(ActionEvent event) {
-        String hash = MD5Cripto.MD5Converter(usernameTextField.getText().toLowerCase()+passwordTextField.getText());
-        if (hash != null) {
-            List<Object> crf = SQLRunner.executeSQLScript.SQLSelect("GetFarmCRF", hash);
-            if(crf != null && !crf.isEmpty()) {
-                List<Object> name = SQLRunner.executeSQLScript.SQLSelect("GetFarmName", hash);
-                if (name != null && !name.isEmpty()) {
-                    FarmApp.userManager.setFarmData((int) crf.get(0), (String) name.get(0));
-                }
-            } else {
-                // login/senha não encontrados
-                System.out.println("?");
+        progressBar.setDisable(false);
+        new Thread(() -> {
+            boolean logged = false;
+            List<Object> crfList = SQLRunner.executeSQLScript.SQLSelect("GetFarmCRF",MD5Cripto.MD5Converter(usernameTextField.getText()),MD5Cripto.MD5Converter(passwordTextField.getText()));
+            if(crfList != null && !crfList.isEmpty()){
+                FarmApp.userManager.updateFarmData();
+                logged = true;
             }
-        }
+            boolean finalLogged = logged;
+            Platform.runLater(() -> {
+                progressBar.setDisable(true);
+                if (finalLogged){
+                    //Próxima tela
+                }else {
+                    FarmDialogs.showDialog(loginPane,"Erro","Falha no Login!\nVerifique se Usu\u00e1rio e Senha est\u00e3o corretos!");
+                }
+            });
+        });
     }
 
     @FXML

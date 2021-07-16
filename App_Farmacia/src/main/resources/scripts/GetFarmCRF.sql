@@ -1,1 +1,1 @@
-SELECT crf FROM farmaceutico WHERE hash = ?;
+SELECT crf FROM farmaceutico WHERE username = ? and password = ?
