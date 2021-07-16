@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.ProgressIndicator;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -40,9 +41,12 @@ public class LoginScreenController implements Initializable {
     @FXML
     private JFXButton signUpButton;
 
+    @FXML
+    private ProgressIndicator progressBar;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        loginButton.disableProperty().bind(usernameTextField.textProperty().isEmpty().or(passwordTextField.textProperty().isEmpty()));
     }
 
     @FXML
