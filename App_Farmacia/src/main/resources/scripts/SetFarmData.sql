@@ -1,1 +1,1 @@
-INSERT INTO farmaceutico (crf, nome, cpf, telefone, hash) VALUES (?,?,?,?,?)
+INSERT INTO farmaceutico (crf, nome, cpf, telefone, username, password) VALUES (?,?,?,?,?,?)

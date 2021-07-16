@@ -79,7 +79,7 @@ public class RegisterScreenController implements Initializable {
                 if(senhaTextfield.getText().equals(cosenhaTextfield.getText())){
                     SQLRunner.executeSQLScript.SQLSet("SetFarmData",Integer.parseInt(crfTextfield.getText()),nameTextfield.getText(),
                             Long.parseLong(cpfTextfield.getText()),Long.parseLong(telTextfield.getText()),
-                            MD5Cripto.MD5Converter(usuarioTextfield.getText().toLowerCase() + senhaTextfield.getText()));
+                            MD5Cripto.MD5Converter(usuarioTextfield.getText().toLowerCase()), MD5Cripto.MD5Converter(senhaTextfield.getText()));
                     FarmDialogs.showDialog(registerfaPane,"Registrado","Registrado com sucesso!");
                 }else{
                     FarmDialogs.showDialog(registerfaPane,"Erro","As senhas s\u00e3o diferentes!");
