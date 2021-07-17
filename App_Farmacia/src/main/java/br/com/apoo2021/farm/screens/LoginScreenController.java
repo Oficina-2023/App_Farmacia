@@ -57,6 +57,11 @@ public class LoginScreenController implements Initializable {
     }
 
     @FXML
+    void closePressed(ActionEvent event) {
+        FarmDialogs.showSoftwareCloseDialog(loginPane,closeButton);
+    }
+
+    @FXML
     void loginPressed(ActionEvent event) {
         progressBar.setVisible(true);
         setLockedData(true);

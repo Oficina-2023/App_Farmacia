@@ -19,7 +19,7 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <JFXButton fx:id="closeButton" layoutX="662.0" layoutY="1.0" opacity="0.6" prefHeight="45.0" prefWidth="41.0" ripplerFill="BLACK" text="X">
+                  <JFXButton fx:id="closeButton" layoutX="662.0" layoutY="1.0" onAction="#closePressed" opacity="0.6" prefHeight="45.0" prefWidth="41.0" ripplerFill="BLACK" text="X">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

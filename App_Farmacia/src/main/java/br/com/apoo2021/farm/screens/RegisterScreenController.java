@@ -132,6 +132,11 @@ public class RegisterScreenController implements Initializable {
 
     }
 
+    @FXML
+    void closePressed(ActionEvent event) {
+        FarmDialogs.showSoftwareCloseDialog(registerfaPane,closeButton);
+    }
+
     private void setLockedData(boolean isProcessing){
         nameTextfield.setDisable(isProcessing);
         cpfTextfield.setDisable(isProcessing);
