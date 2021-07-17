@@ -59,19 +59,23 @@ public class LoginScreenController implements Initializable {
     @FXML
     void loginPressed(ActionEvent event) {
         progressBar.setVisible(true);
+        setLockedData(true);
         new Thread(() -> {
             boolean logged = false;
             List<Object> crfList = SQLRunner.executeSQLScript.SQLSelect("GetFarmCRF",MD5Cripto.MD5Converter(usernameTextField.getText()),MD5Cripto.MD5Converter(passwordTextField.getText()));
             if(crfList != null && !crfList.isEmpty()){
+                FarmApp.userManager.getFarmaceutico().setCrf((int)crfList.get(0));
                 FarmApp.userManager.updateFarmData();
                 logged = true;
             }
             boolean finalLogged = logged;
             Platform.runLater(() -> {
                 progressBar.setVisible(false);
+                setLockedData(false);
                 if (finalLogged){
                     //Próxima tela
                 }else {
+                    passwordTextField.clear();
                     FarmDialogs.showDialog(loginPane,"Erro","Falha no Login!\nVerifique se Usu\u00e1rio e Senha est\u00e3o corretos!");
                 }
             });
@@ -88,6 +92,20 @@ public class LoginScreenController implements Initializable {
             stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
         }catch(IOException e){
             FarmApp.logger.error("Erro ao clicar em registrar usuário, tela LoginScreen",e);
+        }
+    }
+
+    private void setLockedData(boolean isProcessing){
+        usernameTextField.setDisable(isProcessing);
+        passwordTextField.setDisable(isProcessing);
+        signUpButton.setDisable(isProcessing);
+
+        if(isProcessing){
+            loginButton.disableProperty().unbind();
+            loginButton.setDisable(true);
+        }else{
+            loginButton.setDisable(true);
+            loginButton.disableProperty().bind(usernameTextField.textProperty().isEmpty().or(passwordTextField.textProperty().isEmpty()));
         }
     }
 
