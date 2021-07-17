@@ -58,7 +58,7 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     void loginPressed(ActionEvent event) {
-        progressBar.setDisable(false);
+        progressBar.setVisible(true);
         new Thread(() -> {
             boolean logged = false;
             List<Object> crfList = SQLRunner.executeSQLScript.SQLSelect("GetFarmCRF",MD5Cripto.MD5Converter(usernameTextField.getText()),MD5Cripto.MD5Converter(passwordTextField.getText()));
@@ -68,14 +68,14 @@ public class LoginScreenController implements Initializable {
             }
             boolean finalLogged = logged;
             Platform.runLater(() -> {
-                progressBar.setDisable(true);
+                progressBar.setVisible(false);
                 if (finalLogged){
                     //Próxima tela
                 }else {
                     FarmDialogs.showDialog(loginPane,"Erro","Falha no Login!\nVerifique se Usu\u00e1rio e Senha est\u00e3o corretos!");
                 }
             });
-        });
+        }).start();
     }
 
     @FXML
