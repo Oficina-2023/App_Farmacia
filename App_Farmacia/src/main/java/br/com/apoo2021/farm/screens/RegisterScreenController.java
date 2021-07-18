@@ -24,7 +24,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -82,11 +81,11 @@ public class RegisterScreenController implements Initializable {
             List<Object> crf = null;
             List<Object> username = null;
             try{
-                crf = SQLRunner.executeSQLScript.SQLSelect("CrfVerify",Integer.parseInt(crfTextfield.getText()));
-                username = SQLRunner.executeSQLScript.SQLSelect("UsernameVerify",MD5Cripto.MD5Converter(usuarioTextfield.getText()));
+                crf = SQLRunner.ExecuteSQLScript.SQLSelect("CrfVerify",Integer.parseInt(crfTextfield.getText()));
+                username = SQLRunner.ExecuteSQLScript.SQLSelect("UsernameVerify",MD5Cripto.MD5Converter(usuarioTextfield.getText()));
                 if(crf == null && username == null){
                     if(senhaTextfield.getText().equals(cosenhaTextfield.getText())) {
-                        SQLRunner.executeSQLScript.SQLSet("SetFarmData", Integer.parseInt(crfTextfield.getText()), nameTextfield.getText(),
+                        SQLRunner.ExecuteSQLScript.SQLSet("SetFarmData", Integer.parseInt(crfTextfield.getText()), nameTextfield.getText(),
                                 Long.parseLong(cpfTextfield.getText()), Long.parseLong(telTextfield.getText()),
                                 MD5Cripto.MD5Converter(usuarioTextfield.getText().toLowerCase()), MD5Cripto.MD5Converter(senhaTextfield.getText()));
                     }

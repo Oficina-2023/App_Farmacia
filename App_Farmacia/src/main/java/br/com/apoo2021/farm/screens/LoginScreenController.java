@@ -2,7 +2,6 @@ package br.com.apoo2021.farm.screens;
 
 import br.com.apoo2021.farm.FarmApp;
 import br.com.apoo2021.farm.database.SQLRunner;
-import br.com.apoo2021.farm.objects.UserManager;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import br.com.apoo2021.farm.util.MD5Cripto;
 import com.jfoenix.controls.JFXButton;
@@ -20,11 +19,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import javax.print.attribute.standard.JobOriginatingUserName;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -67,7 +64,7 @@ public class LoginScreenController implements Initializable {
         setLockedData(true);
         new Thread(() -> {
             boolean logged = false;
-            List<Object> crfList = SQLRunner.executeSQLScript.SQLSelect("GetFarmCRF",MD5Cripto.MD5Converter(usernameTextField.getText()),MD5Cripto.MD5Converter(passwordTextField.getText()));
+            List<Object> crfList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmCRF",MD5Cripto.MD5Converter(usernameTextField.getText()),MD5Cripto.MD5Converter(passwordTextField.getText()));
             if(crfList != null && !crfList.isEmpty()){
                 FarmApp.userManager.getFarmaceutico().setCrf((int)crfList.get(0));
                 FarmApp.userManager.updateFarmData();

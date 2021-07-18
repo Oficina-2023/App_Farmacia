@@ -4,7 +4,6 @@ import br.com.apoo2021.farm.FarmApp;
 import br.com.apoo2021.farm.util.IDBConnection;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -18,12 +17,12 @@ import java.util.List;
 
 public class SQLRunner {
 
-    public static class executeSQLScript{
+    public static class ExecuteSQLScript {
 
         //Executa Scripts SQL que não nescessitam de retorno
         public static void SQLSet(@NotNull String scriptName,Object... args){
             try{
-                Connection connection = SQLConnection.SQlConnect();
+                Connection connection = SQLConnection.SQLConnect();
                 String sqlScript = readScriptContent(scriptName);
                 PreparedStatement statement = connection.prepareStatement(sqlScript);
                 if(args != null){
@@ -57,7 +56,7 @@ public class SQLRunner {
         //Executa Scripts SQL que nescessitam de um retorno entregando eles em um array de object
         public static List<Object> SQLSelect(@NotNull String scriptName,Object... args){
             try{
-                Connection connection = SQLConnection.SQlConnect();
+                Connection connection = SQLConnection.SQLConnect();
                 String sqlScript = readScriptContent(scriptName);
                 PreparedStatement statement = connection.prepareStatement(sqlScript);
                 List<Object> resultList = new ArrayList<>();
@@ -111,7 +110,7 @@ public class SQLRunner {
             }
         }
 
-        public static Connection SQlConnect() throws SQLException {
+        public static Connection SQLConnect() throws SQLException {
             return dataSource.getConnection();
         }
     }
