@@ -103,8 +103,7 @@ public class SQLRunner {
                 dataSource.setUsername(username);
                 dataSource.setPassword(password);
                 dataSource.setMinIdle(5);
-                dataSource.setMaxIdle(10);
-                dataSource.setMaxOpenPreparedStatements(100);
+                dataSource.setMaxIdle(100);
             }catch (Exception e){
                 FarmApp.logger.error("Erro ao se conectar no banco de dados!", e);
             }

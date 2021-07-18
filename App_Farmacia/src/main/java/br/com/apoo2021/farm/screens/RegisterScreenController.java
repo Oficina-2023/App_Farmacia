@@ -83,7 +83,7 @@ public class RegisterScreenController implements Initializable {
             try{
                 crf = SQLRunner.ExecuteSQLScript.SQLSelect("CrfVerify",Integer.parseInt(crfTextfield.getText()));
                 username = SQLRunner.ExecuteSQLScript.SQLSelect("UsernameVerify",MD5Cripto.MD5Converter(usuarioTextfield.getText()));
-                if(crf == null && username == null){
+                if((crf == null || crf.isEmpty()) && (username == null || username.isEmpty())){
                     if(senhaTextfield.getText().equals(cosenhaTextfield.getText())) {
                         SQLRunner.ExecuteSQLScript.SQLSet("SetFarmData", Integer.parseInt(crfTextfield.getText()), nameTextfield.getText(),
                                 Long.parseLong(cpfTextfield.getText()), Long.parseLong(telTextfield.getText()),
