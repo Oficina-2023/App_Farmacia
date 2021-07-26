@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="327.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edição de Produto" textAlignment="CENTER" wrappingWidth="366.13671875">
+         <font>
+            <Font size="41.0" />
+         </font>
+      </Text>
+      <JFXDatePicker editable="false" layoutX="264.0" layoutY="460.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="492.0" promptText="Validade" />
+      <JFXTextField alignment="CENTER" layoutX="264.0" layoutY="295.0" prefHeight="42.0" prefWidth="492.0" promptText="Laboratório" />
+      <JFXTextField alignment="CENTER" layoutX="264.0" layoutY="373.0" prefHeight="42.0" prefWidth="492.0" promptText="Preço" />
+      <JFXTextField alignment="CENTER" layoutX="264.0" layoutY="209.0" prefHeight="42.0" prefWidth="492.0" promptText="Nome" />
+      <JFXButton layoutX="348.0" layoutY="550.0" prefHeight="102.0" prefWidth="325.0" text="Adicionar Produto">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

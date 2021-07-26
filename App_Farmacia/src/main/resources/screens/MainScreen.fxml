@@ -17,14 +17,14 @@
                   <JFXButton fx:id="ProductButton" layoutX="14.0" layoutY="155.0" prefHeight="78.0" prefWidth="252.0" text="Produtos" />
                   <JFXButton fx:id="VendaButton" layoutX="14.0" layoutY="432.0" prefHeight="78.0" prefWidth="252.0" text="Venda" />
                   <JFXButton fx:id="ClienteButton" layoutX="14.0" layoutY="282.0" prefHeight="78.0" prefWidth="252.0" text="Clientes" />
-                  <Text fx:id="UsernameField" layoutX="14.0" layoutY="672.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME" wrappingWidth="174.13671875" />
+                  <Text fx:id="UsernameField" layoutX="14.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME" textAlignment="CENTER" wrappingWidth="174.13671875" />
                   <Text layoutX="122.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MENU" wrappingWidth="36.13671875" />
-                  <ImageView fx:id="SettingsButton" fitHeight="24.0" fitWidth="22.0" layoutX="190.0" layoutY="656.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="SettingsButton" fitHeight="24.0" fitWidth="22.0" layoutX="197.0" layoutY="687.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/config.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="LogoutButton" fitHeight="22.0" fitWidth="22.0" layoutX="230.0" layoutY="656.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="LogoutButton" fitHeight="22.0" fitWidth="22.0" layoutX="231.0" layoutY="687.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/logout.png" />
                      </image>
