@@ -75,7 +75,15 @@ public class LoginScreenController implements Initializable {
                 progressBar.setVisible(false);
                 setLockedData(false);
                 if (finalLogged){
-                    //Próxima tela
+                    try{
+                        Stage stage = (Stage) closeButton.getScene().getWindow();
+                        stage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/MainScreen.fxml")))));
+                        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+                        stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
+                        stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
+                    }catch(IOException e){
+                        FarmApp.logger.error("Error ao tentar abrir a tela principal!",e);
+                    }
                 }else {
                     passwordTextField.clear();
                     FarmDialogs.showDialog(loginPane,"Erro","Falha no Login!\nVerifique se Usu\u00e1rio e Senha est\u00e3o corretos!");
