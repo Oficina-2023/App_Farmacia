@@ -25,4 +25,11 @@ public class UserManager {
             FarmApp.logger.error("Erro ao carregar os dados do usuario!");
         }
     }
+
+    public void clearFarmData(){
+        farmaceutico.setCrf(-1);
+        farmaceutico.setNome(null);
+        farmaceutico.setPhone(-1);
+        farmaceutico.setCpf(-1);
+    }
 }

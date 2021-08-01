@@ -15,17 +15,17 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <JFXButton fx:id="productButton" layoutX="14.0" layoutY="155.0" prefHeight="78.0" prefWidth="252.0" text="Produtos" />
-                  <JFXButton fx:id="vendaButton" layoutX="14.0" layoutY="432.0" prefHeight="78.0" prefWidth="252.0" text="Venda" />
-                  <JFXButton fx:id="clienteButton" layoutX="14.0" layoutY="282.0" prefHeight="78.0" prefWidth="252.0" text="Clientes" />
+                  <JFXButton fx:id="productButton" layoutX="14.0" layoutY="155.0" onAction="#produtosPressed" prefHeight="78.0" prefWidth="252.0" text="Produtos" />
+                  <JFXButton fx:id="vendaButton" layoutX="14.0" layoutY="432.0" onAction="#vendaPressed" prefHeight="78.0" prefWidth="252.0" text="Venda" />
+                  <JFXButton fx:id="clienteButton" layoutX="14.0" layoutY="282.0" onAction="#clientesPressed" prefHeight="78.0" prefWidth="252.0" text="Clientes" />
                   <Text fx:id="usernameField" layoutX="14.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME" textAlignment="CENTER" wrappingWidth="174.13671875" />
                   <Text layoutX="122.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MENU" wrappingWidth="36.13671875" />
-                  <ImageView fx:id="settingsButton" fitHeight="24.0" fitWidth="22.0" layoutX="197.0" layoutY="687.0" onMouseClicked="#configClicked" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="settingsButton" fitHeight="24.0" fitWidth="22.0" layoutX="197.0" layoutY="687.0" onMousePressed="#settingsPressed" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/config.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="logoutButton" fitHeight="22.0" fitWidth="22.0" layoutX="231.0" layoutY="687.0" onMouseClicked="#logoutClicked" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="logoutButton" fitHeight="22.0" fitWidth="22.0" layoutX="231.0" layoutY="687.0" onMousePressed="#logoutPressed" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/logout.png" />
                      </image>

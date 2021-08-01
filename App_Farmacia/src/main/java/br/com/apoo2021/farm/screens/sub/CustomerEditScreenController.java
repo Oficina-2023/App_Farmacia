@@ -1,4 +1,14 @@
 package br.com.apoo2021.farm.screens.sub;
 
-public class CustomerEditScreenController {
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class CustomerEditScreenController implements Initializable {
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }

@@ -4,6 +4,7 @@ import br.com.apoo2021.farm.FarmApp;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import br.com.apoo2021.farm.util.MD5Cripto;
+import br.com.apoo2021.farm.util.ScreenAdjusts;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.ImageView;
@@ -120,11 +122,10 @@ public class RegisterScreenController implements Initializable {
     @FXML
     void returnPressed(MouseEvent event) {
         try{
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/LoginScreen.fxml")));
             Stage stage = (Stage) closeButton.getScene().getWindow();
-            stage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/LoginScreen.fxml")))));
-            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-            stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
-            stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
+            stage.setScene(new Scene(root));
+            ScreenAdjusts.setDraggable(root, stage);
         }catch(IOException e){
             FarmApp.logger.error("Erro ao clicar em voltar, tela RegisterScreen",e);
         }
