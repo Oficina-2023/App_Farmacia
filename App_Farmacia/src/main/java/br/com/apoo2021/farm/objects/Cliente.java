@@ -2,14 +2,14 @@ package br.com.apoo2021.farm.objects;
 
 public class Cliente {
 
-    private long cpf;
+    private String cpf;
     private String nome;
 
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

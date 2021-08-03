@@ -3,9 +3,9 @@ package br.com.apoo2021.farm.objects;
 public class Farmaceutico {
 
     private String nome;
-    private int crf;
-    private long cpf;
-    private long phone;
+    private String crf;
+    private String cpf;
+    private String phone;
 
     public String getNome() {
         return nome;
@@ -15,27 +15,27 @@ public class Farmaceutico {
         this.nome = nome;
     }
 
-    public int getCrf() {
+    public String getCrf() {
         return crf;
     }
 
-    public void setCrf(int crf) {
+    public void setCrf(String crf) {
         this.crf = crf;
     }
 
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }

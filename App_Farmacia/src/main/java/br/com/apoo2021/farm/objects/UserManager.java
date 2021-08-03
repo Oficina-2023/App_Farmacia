@@ -19,17 +19,17 @@ public class UserManager {
         List<Object> cpfList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmCpf",farmaceutico.getCrf());
         if(nomeList!=null && !nomeList.isEmpty() && telefoneList!=null && !telefoneList.isEmpty() && cpfList!=null && !cpfList.isEmpty()){
             farmaceutico.setNome((String)nomeList.get(0));
-            farmaceutico.setPhone((long)telefoneList.get(0));
-            farmaceutico.setCpf((long)cpfList.get(0));
+            farmaceutico.setPhone((String)telefoneList.get(0));
+            farmaceutico.setCpf((String)cpfList.get(0));
         }else{
             FarmApp.logger.error("Erro ao carregar os dados do usuario!");
         }
     }
 
     public void clearFarmData(){
-        farmaceutico.setCrf(-1);
+        farmaceutico.setCrf(null);
         farmaceutico.setNome(null);
-        farmaceutico.setPhone(-1);
-        farmaceutico.setCpf(-1);
+        farmaceutico.setPhone(null);
+        farmaceutico.setCpf(null);
     }
 }

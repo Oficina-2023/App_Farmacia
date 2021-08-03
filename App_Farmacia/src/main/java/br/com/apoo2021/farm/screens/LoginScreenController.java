@@ -68,7 +68,7 @@ public class LoginScreenController implements Initializable {
             boolean logged = false;
             List<Object> crfList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmCRF",MD5Cripto.MD5Converter(usernameTextField.getText()),MD5Cripto.MD5Converter(passwordTextField.getText()));
             if(crfList != null && !crfList.isEmpty()){
-                FarmApp.userManager.getFarmaceutico().setCrf((int)crfList.get(0));
+                FarmApp.userManager.getFarmaceutico().setCrf((String)crfList.get(0));
                 FarmApp.userManager.updateFarmData();
                 logged = true;
             }

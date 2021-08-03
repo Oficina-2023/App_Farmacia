@@ -52,8 +52,8 @@ public class UserEditScreenController implements Initializable {
         crfText.setText(String.valueOf(FarmApp.userManager.getFarmaceutico().getCrf()).replaceFirst("(\\d{5})(\\d{1})(\\d+)", "$1-$2$3"));
         cpfText.setText(String.valueOf(FarmApp.userManager.getFarmaceutico().getCpf()).replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d+)", "$1.$2.$3-$4"));
 
-        long phone = FarmApp.userManager.getFarmaceutico().getPhone();
-        if(phone > 9999999999L){ //Alterar para String os dados no banco
+        String phone = FarmApp.userManager.getFarmaceutico().getPhone();
+        if(phone.length() == 11){ //Alterar para String os dados no banco
             phoneText.setText(String.valueOf(FarmApp.userManager.getFarmaceutico().getPhone()).replaceFirst("(\\d{2})(\\d{1})(\\d{4})(\\d+)", "($1) $2 $3-$4"));
         }else{
             phoneText.setText(String.valueOf(FarmApp.userManager.getFarmaceutico().getPhone()).replaceFirst("(\\d{2})(\\d{4})(\\d+)", "($1) $2-$3"));
