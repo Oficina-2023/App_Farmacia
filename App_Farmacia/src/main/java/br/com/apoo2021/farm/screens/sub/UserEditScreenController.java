@@ -49,14 +49,14 @@ public class UserEditScreenController implements Initializable {
 
     private void updateScreenInfo(){
         usernameText.setText(FarmApp.userManager.getFarmaceutico().getNome());
-        crfText.setText(String.valueOf(FarmApp.userManager.getFarmaceutico().getCrf()).replaceFirst("(\\d{5})(\\d{1})(\\d+)", "$1-$2$3"));
-        cpfText.setText(String.valueOf(FarmApp.userManager.getFarmaceutico().getCpf()).replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d+)", "$1.$2.$3-$4"));
+        crfText.setText(FarmApp.userManager.getFarmaceutico().getCrf().replaceFirst("(\\d{5})(\\d{1})(\\d+)", "$1-$2$3"));
+        cpfText.setText(FarmApp.userManager.getFarmaceutico().getCpf().replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d+)", "$1.$2.$3-$4"));
 
         String phone = FarmApp.userManager.getFarmaceutico().getPhone();
         if(phone.length() == 11){ //Alterar para String os dados no banco
-            phoneText.setText(String.valueOf(FarmApp.userManager.getFarmaceutico().getPhone()).replaceFirst("(\\d{2})(\\d{1})(\\d{4})(\\d+)", "($1) $2 $3-$4"));
+            phoneText.setText(FarmApp.userManager.getFarmaceutico().getPhone().replaceFirst("(\\d{2})(\\d{1})(\\d{4})(\\d+)", "($1) $2 $3-$4"));
         }else{
-            phoneText.setText(String.valueOf(FarmApp.userManager.getFarmaceutico().getPhone()).replaceFirst("(\\d{2})(\\d{4})(\\d+)", "($1) $2-$3"));
+            phoneText.setText(FarmApp.userManager.getFarmaceutico().getPhone().replaceFirst("(\\d{2})(\\d{4})(\\d+)", "($1) $2-$3"));
         }
     }
 }
