@@ -2,15 +2,16 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.sub.CustomerAddScreenController">
+<AnchorPane fx:id="add_cliPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.sub.CustomerAddScreenController">
    <children>
-      <JFXTextField alignment="CENTER" layoutX="241.0" layoutY="273.0" prefHeight="42.0" prefWidth="492.0" promptText="Nome" />
-      <JFXTextField alignment="CENTER" layoutX="242.0" layoutY="423.0" prefHeight="42.0" prefWidth="492.0" promptText="CPF" />
-      <JFXButton layoutX="325.0" layoutY="538.0" prefHeight="102.0" prefWidth="325.0" text="Adicionar Cliente">
+      <JFXTextField fx:id="nomeTextfield" alignment="CENTER" layoutX="241.0" layoutY="273.0" prefHeight="42.0" prefWidth="492.0" promptText="Nome" />
+      <JFXTextField fx:id="cpfTextfield" alignment="CENTER" layoutX="242.0" layoutY="423.0" prefHeight="42.0" prefWidth="492.0" promptText="CPF" />
+      <JFXButton fx:id="addButton" layoutX="325.0" layoutY="538.0" onAction="#addPressed" prefHeight="102.0" prefWidth="325.0" text="Adicionar Cliente">
          <font>
             <Font size="18.0" />
          </font>
@@ -20,5 +21,6 @@
             <Font size="41.0" />
          </font>
       </Text>
+      <ProgressIndicator fx:id="progressIndicator" layoutX="461.0" layoutY="640.0" visible="false" />
    </children>
 </AnchorPane>
