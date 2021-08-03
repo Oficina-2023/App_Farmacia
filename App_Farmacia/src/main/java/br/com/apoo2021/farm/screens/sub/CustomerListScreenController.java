@@ -27,10 +27,7 @@ import java.util.ResourceBundle;
 public class CustomerListScreenController implements Initializable {
 
     @FXML
-    private JFXButton novo_clienteButton;
-
-    @FXML
-    private AnchorPane customerPane;
+    private JFXButton novoClienteButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -38,16 +35,12 @@ public class CustomerListScreenController implements Initializable {
     }
 
     @FXML
-    void novo_clientePressed(ActionEvent event) {
-        openSubScreen("CustomerAddScreen");
-    }
-
-    private void openSubScreen(@NotNull String screenName){
+    void novoClientePressed(ActionEvent event) {
         try{
-            customerPane.getChildren().clear();
-            customerPane.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/" + screenName + ".fxml"))));
+            FarmApp.dataManager.getMainPane().getChildren().clear();
+            FarmApp.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/CustomerAddScreen.fxml"))));
         }catch (IOException e){
-            FarmApp.logger.error("Erro ao abrir a janela " + screenName +"!", e);
+            FarmApp.logger.error("Erro ao abrir a janela CustomerAddScreen!", e);
         }
     }
 }
