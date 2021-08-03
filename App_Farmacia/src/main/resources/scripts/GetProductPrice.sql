@@ -1,0 +1,1 @@
+select preco from produto where id = ?

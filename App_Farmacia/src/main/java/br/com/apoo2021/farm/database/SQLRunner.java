@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SQLRunner {
@@ -40,6 +41,8 @@ public class SQLRunner {
                                 statement.setLong(dataPos, (Long) obj);
                             }else if(obj instanceof Float){
                                 statement.setFloat(dataPos, (Float) obj);
+                            }else if(obj instanceof Date){
+                                statement.setDate(dataPos, (java.sql.Date) obj);
                             }else{
                                 FarmApp.logger.error("Tipo de dado não declarado na execução do script sql!");
                             }
@@ -75,6 +78,8 @@ public class SQLRunner {
                                 statement.setLong(dataPos, (Long) obj);
                             }else if(obj instanceof Float){
                                 statement.setFloat(dataPos, (Float) obj);
+                            }else if(obj instanceof Date){
+                                statement.setDate(dataPos, (java.sql.Date) obj);
                             }else{
                                 FarmApp.logger.error("Tipo de dado não declarado na execução do script sql!");
                             }
@@ -104,6 +109,7 @@ public class SQLRunner {
                 dataSource.setPassword(password);
                 dataSource.setMinIdle(5);
                 dataSource.setMaxIdle(100);
+                dataSource.setMaxTotal(1000);
             }catch (Exception e){
                 FarmApp.logger.error("Erro ao se conectar no banco de dados!", e);
             }

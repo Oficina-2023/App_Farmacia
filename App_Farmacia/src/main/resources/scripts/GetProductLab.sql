@@ -1,0 +1,1 @@
+select laboratorio from produto where id = ?

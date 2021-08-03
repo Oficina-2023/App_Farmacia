@@ -60,7 +60,7 @@ public class FarmDialogs {
                 stage.setScene(new Scene(root));
                 ScreenAdjusts.centerScreen(stage);
                 ScreenAdjusts.setDraggable(root,stage);
-                FarmApp.userManager.clearFarmData();
+                FarmApp.dataManager.getFarmManager().clearFarmData();
             }catch(IOException e){
                 FarmApp.logger.error("Error ao tentar retornar a tela de login!",e);
             }

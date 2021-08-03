@@ -13,12 +13,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -68,8 +66,9 @@ public class LoginScreenController implements Initializable {
             boolean logged = false;
             List<Object> crfList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmCRF",MD5Cripto.MD5Converter(usernameTextField.getText()),MD5Cripto.MD5Converter(passwordTextField.getText()));
             if(crfList != null && !crfList.isEmpty()){
-                FarmApp.userManager.getFarmaceutico().setCrf((String)crfList.get(0));
-                FarmApp.userManager.updateFarmData();
+                FarmApp.dataManager.getFarmManager().getFarmaceutico().setCrf((String)crfList.get(0));
+                FarmApp.dataManager.getFarmManager().updateFarmData();
+                FarmApp.dataManager.getProductManager().updateProductList();
                 logged = true;
             }
             boolean finalLogged = logged;

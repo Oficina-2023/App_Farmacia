@@ -1,11 +1,12 @@
-package br.com.apoo2021.farm.objects;
+package br.com.apoo2021.farm.managers;
 
 import br.com.apoo2021.farm.FarmApp;
 import br.com.apoo2021.farm.database.SQLRunner;
+import br.com.apoo2021.farm.objects.Farmaceutico;
 
 import java.util.List;
 
-public class UserManager {
+public class FarmManager {
 
     private final Farmaceutico farmaceutico = new Farmaceutico();
 

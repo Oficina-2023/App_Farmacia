@@ -1,0 +1,1 @@
+select validade from produto where id = ?
