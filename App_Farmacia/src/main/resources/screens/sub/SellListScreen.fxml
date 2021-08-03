@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.sub.SellListScreenController" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.sub.SellListScreenController">
+   <children>
+      <Text layoutX="436.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vendas">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <JFXListView layoutX="7.0" layoutY="174.0" prefHeight="538.0" prefWidth="986.0" />
+      <JFXTextField alignment="CENTER" layoutX="718.0" layoutY="106.0" prefHeight="40.0" prefWidth="278.0" promptText="Código de barras" />
+   </children>
+</AnchorPane>
