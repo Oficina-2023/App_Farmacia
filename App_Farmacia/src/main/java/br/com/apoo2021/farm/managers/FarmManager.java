@@ -15,15 +15,43 @@ public class FarmManager {
     }
 
     public void updateFarmData(){
-        List<Object> nomeList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmName",farmaceutico.getCrf());
-        List<Object> telefoneList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmTelefone",farmaceutico.getCrf());
-        List<Object> cpfList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmCpf",farmaceutico.getCrf());
-        if(nomeList!=null && !nomeList.isEmpty() && telefoneList!=null && !telefoneList.isEmpty() && cpfList!=null && !cpfList.isEmpty()){
-            farmaceutico.setNome((String)nomeList.get(0));
-            farmaceutico.setPhone((String)telefoneList.get(0));
-            farmaceutico.setCpf((String)cpfList.get(0));
-        }else{
-            FarmApp.logger.error("Erro ao carregar os dados do usuario!");
+        Thread farmName = new Thread(() -> {
+            List<Object> nomeList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmName",farmaceutico.getCrf());
+            if(nomeList != null && !nomeList.isEmpty()){
+                farmaceutico.setNome((String)nomeList.get(0));
+            }else{
+                FarmApp.logger.error("Erro ao carregar o nome do farmaceutico!");
+            }
+        });
+
+        Thread farmPhone = new Thread(() -> {
+            List<Object> telefoneList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmTelefone",farmaceutico.getCrf());
+            if(telefoneList != null && !telefoneList.isEmpty()){
+                farmaceutico.setPhone((String)telefoneList.get(0));
+            }else{
+                FarmApp.logger.error("Erro ao carregar o telefone do farmaceutico!");
+            }
+        });
+
+        Thread farmCpf = new Thread(() -> {
+            List<Object> cpfList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmCpf",farmaceutico.getCrf());
+            if(cpfList != null && !cpfList.isEmpty()){
+                farmaceutico.setCpf((String)cpfList.get(0));
+            }else{
+                FarmApp.logger.error("Erro ao carregar o cpf do farmaceutico!");
+            }
+        });
+
+        farmName.start();
+        farmPhone.start();
+        farmCpf.start();
+
+        try {
+            farmName.join();
+            farmPhone.join();
+            farmCpf.join();
+        } catch (InterruptedException e) {
+            FarmApp.logger.error("Error ao aguardar a finalização dos threads de carregamento do farmaceutico!", e);
         }
     }
 
