@@ -69,6 +69,7 @@ public class LoginScreenController implements Initializable {
                 FarmApp.dataManager.getFarmManager().getFarmaceutico().setCrf((String)crfList.get(0));
                 FarmApp.dataManager.getFarmManager().updateFarmData();
                 FarmApp.dataManager.getProductManager().updateProductList();
+                FarmApp.dataManager.getCostumerManager().updateCostumerList();
                 logged = true;
             }
             boolean finalLogged = logged;

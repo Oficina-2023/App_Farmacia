@@ -1,5 +1,6 @@
 package br.com.apoo2021.farm.managers;
 
+import br.com.apoo2021.farm.FarmApp;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Cliente;
 import br.com.apoo2021.farm.objects.Produto;
@@ -22,7 +23,7 @@ public class CustomerManager {
     }
 
 
-    public void generateCustomerList(){
+    private void generateCustomerList(){
         List<Object>cpfList = SQLRunner.ExecuteSQLScript.SQLSelect("GetClienteCpf");
         if(cpfList != null && !cpfList.isEmpty()){
             for(Object cpf : cpfList){
@@ -34,16 +35,25 @@ public class CustomerManager {
         }
     }
 
-    public void updateCostumerData(){
+    private void updateCostumerData(){
         if(!clienteList.isEmpty()){
             for(Cliente cliente : clienteList){
-                List<Object> nome = SQLRunner.ExecuteSQLScript.SQLSelect("GetClienteNome",cliente.getCpf());
+                Thread customerName = new Thread(() -> {
+                    List<Object> nome = SQLRunner.ExecuteSQLScript.SQLSelect("GetClienteNome",cliente.getCpf());
 
-                if (nome != null && !nome.isEmpty()){
-                    cliente.setNome((String) nome.get(0));
+                    if (nome != null && !nome.isEmpty()){
+                        cliente.setNome((String) nome.get(0));
+                    }
+                });
+                customerName.start();
+
+                try {
+                    customerName.join();
+
+                }catch (InterruptedException e){
+                    FarmApp.logger.error("Error ao aguardar a finalização dos threads de carregamento de clientes!", e);
                 }
             }
         }
-
     }
 }
