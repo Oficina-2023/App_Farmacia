@@ -6,6 +6,8 @@ public class DataManager {
 
     private final FarmManager farmManager = new FarmManager();
     private final ProductManager productManager = new ProductManager();
+    private final CustomerManager customerManager = new CustomerManager();
+
     private StackPane mainPane;
 
     public FarmManager getFarmManager() {
@@ -23,4 +25,9 @@ public class DataManager {
     public void setMainPane(StackPane mainPane) {
         this.mainPane = mainPane;
     }
+
+    public CustomerManager getCostumerManager() {
+        return customerManager;
+    }
+    
 }

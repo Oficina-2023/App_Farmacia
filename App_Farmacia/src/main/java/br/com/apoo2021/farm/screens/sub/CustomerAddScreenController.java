@@ -2,6 +2,7 @@ package br.com.apoo2021.farm.screens.sub;
 
 import br.com.apoo2021.farm.FarmApp;
 import br.com.apoo2021.farm.database.SQLRunner;
+import br.com.apoo2021.farm.objects.Cliente;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import br.com.apoo2021.farm.util.MD5Cripto;
 import br.com.apoo2021.farm.util.ScreenAdjusts;
@@ -68,7 +69,11 @@ public class CustomerAddScreenController implements Initializable {
                 if(cpfTextfield.getText().length() == 11) {
                     cpf = SQLRunner.ExecuteSQLScript.SQLSelect("ClienteCpfVerify", Long.parseLong(cpfTextfield.getText()));
                     if(cpf == null || cpf.isEmpty()) {
+                        Cliente cliente = new Cliente();
+                        cliente.setNome(nomeTextfield.getText());
+                        cliente.setCpf(cpfTextfield.getText());
                         SQLRunner.ExecuteSQLScript.SQLSet("SetFarmCliente", nomeTextfield.getText(), Long.parseLong(cpfTextfield.getText()));
+                        FarmApp.dataManager.getCostumerManager().getClienteList().add(cliente);
                     }
                 }else{
                     lengthError = true;
