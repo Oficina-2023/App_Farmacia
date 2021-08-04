@@ -16,6 +16,6 @@
          </font>
       </Text>
       <JFXTextField fx:id="searchCliTextField" alignment="CENTER" layoutX="708.0" layoutY="96.0" prefHeight="40.0" prefWidth="278.0" promptText="Buscar CPF" />
-      <JFXButton fx:id="newClientButton" layoutX="14.0" layoutY="87.0" prefHeight="59.0" prefWidth="144.0" text=" Novo cliente" />
+      <JFXButton fx:id="newClientButton" layoutX="14.0" layoutY="87.0" onAction="#novoClientePressed" prefHeight="59.0" prefWidth="144.0" text=" Novo cliente" />
    </children>
 </AnchorPane>

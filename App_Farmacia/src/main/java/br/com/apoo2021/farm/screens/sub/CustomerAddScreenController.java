@@ -43,9 +43,6 @@ public class CustomerAddScreenController implements Initializable {
     private JFXButton addButton;
 
     @FXML
-    private AnchorPane add_cliPane;
-
-    @FXML
     private ProgressIndicator progressIndicator;
 
     @Override

@@ -23,9 +23,6 @@ import javafx.scene.layout.Priority;
 
 public class CustomerListScreenController implements Initializable {
 
-
-
-
     static class ClientCell extends ListCell<Cliente> {
         HBox box = new HBox();
         Label nome = new Label();
@@ -36,7 +33,7 @@ public class CustomerListScreenController implements Initializable {
 
         public ClientCell() {
             super();
-            box.getChildren().addAll(nome, cpf, pane, delButton, editButton, editButton);
+            box.getChildren().addAll(nome, cpf, pane, delButton, editButton);
             HBox.setHgrow(pane, Priority.ALWAYS);
             delButton.setOnAction(event -> {
 
@@ -58,12 +55,12 @@ public class CustomerListScreenController implements Initializable {
                 } else {
                     nome.setText(item.getNome());
                 }
+                cpf.setText(item.getCpf());
                 setGraphic(box);
                 setPrefHeight(80);
             }
         }
     }
-
 
     @FXML
     private JFXListView<Cliente> cliList;
@@ -91,7 +88,6 @@ public class CustomerListScreenController implements Initializable {
             FarmApp.logger.error("Erro ao abrir a janela CustomerAddScreen!", e);
         }
     }
-
 
     public void updateList(){
         if(searchCliTextField.getText().isEmpty()){
