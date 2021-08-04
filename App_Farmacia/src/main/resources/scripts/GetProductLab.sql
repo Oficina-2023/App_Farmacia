@@ -1,1 +1,1 @@
-select laboratorio from produto where id = ?
+select laboratorio from produto where lote = ?

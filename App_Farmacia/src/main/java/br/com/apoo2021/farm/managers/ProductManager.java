@@ -23,11 +23,11 @@ public class ProductManager {
     }
 
     private void generateProducts(){
-        List<Object> idList = SQLRunner.ExecuteSQLScript.SQLSelect("GetProductId");
-        if(idList != null && !idList.isEmpty()){
-            for(Object id : idList){
+        List<Object> loteList = SQLRunner.ExecuteSQLScript.SQLSelect("GetProductId");
+        if(loteList != null && !loteList.isEmpty()){
+            for(Object lote : loteList){
                 Produto produto = new Produto();
-                produto.setId((long) id);
+                produto.setLote((String) lote);
                 produtosList.add(produto);
             }
             updateProductsData();
@@ -38,7 +38,7 @@ public class ProductManager {
         if(!produtosList.isEmpty()){
             for(Produto produto : produtosList){
                 Thread productName = new Thread(() -> {
-                    List<Object> nome = SQLRunner.ExecuteSQLScript.SQLSelect("GetProductNome", produto.getId());
+                    List<Object> nome = SQLRunner.ExecuteSQLScript.SQLSelect("GetProductNome", produto.getLote());
                     if(nome != null && !nome.isEmpty()){
                         produto.setNome((String) nome.get(0));
                     }else{
@@ -47,7 +47,7 @@ public class ProductManager {
                 });
 
                 Thread productLab = new Thread(() -> {
-                    List<Object> lab = SQLRunner.ExecuteSQLScript.SQLSelect("GetProductLab", produto.getId());
+                    List<Object> lab = SQLRunner.ExecuteSQLScript.SQLSelect("GetProductLab", produto.getLote());
                     if(lab != null && !lab.isEmpty()){
                         produto.setLaboratorio((String) lab.get(0));
                     }else{
@@ -56,7 +56,7 @@ public class ProductManager {
                 });
 
                 Thread productPrice = new Thread(() -> {
-                    List<Object> price = SQLRunner.ExecuteSQLScript.SQLSelect("GetProductPrice", produto.getId());
+                    List<Object> price = SQLRunner.ExecuteSQLScript.SQLSelect("GetProductPrice", produto.getLote());
                     if(price != null && !price.isEmpty()){
                         produto.setPreco((float) price.get(0));
                     }else{
@@ -65,7 +65,7 @@ public class ProductManager {
                 });
 
                 Thread productValidade = new Thread(() -> {
-                    List<Object> validade = SQLRunner.ExecuteSQLScript.SQLSelect("GetProductValidade", produto.getId());
+                    List<Object> validade = SQLRunner.ExecuteSQLScript.SQLSelect("GetProductValidade", produto.getLote());
                     if(validade != null && !validade.isEmpty()){
                         produto.setValidade((Date) validade.get(0));
                     }else{

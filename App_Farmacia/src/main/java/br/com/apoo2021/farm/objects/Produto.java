@@ -4,18 +4,18 @@ import java.sql.Date;
 
 public class Produto {
 
-    private Long id;
+    private String lote;
     private String nome;
     private float preco;
     private String laboratorio;
     private Date validade;
 
-    public Long getId() {
-        return id;
+    public String getLote() {
+        return lote;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setLote(String lote) {
+        this.lote = lote;
     }
 
     public String getNome() {

@@ -31,6 +31,7 @@ import java.util.ResourceBundle;
 
 public class RegisterScreenController implements Initializable {
 
+
     @FXML
     private StackPane registerfaPane;
 
@@ -80,6 +81,7 @@ public class RegisterScreenController implements Initializable {
         setLockedData(true);
         new Thread(() -> {
             boolean parseError = false;
+            boolean lengthError = false;
             List<Object> crf = null;
             List<Object> username = null;
             try{
@@ -87,9 +89,13 @@ public class RegisterScreenController implements Initializable {
                 username = SQLRunner.ExecuteSQLScript.SQLSelect("UsernameVerify",MD5Cripto.MD5Converter(usuarioTextfield.getText()));
                 if((crf == null || crf.isEmpty()) && (username == null || username.isEmpty())){
                     if(senhaTextfield.getText().equals(cosenhaTextfield.getText())) {
-                        SQLRunner.ExecuteSQLScript.SQLSet("SetFarmData", Integer.parseInt(crfTextfield.getText()), nameTextfield.getText(),
-                                Long.parseLong(cpfTextfield.getText()), Long.parseLong(telTextfield.getText()),
-                                MD5Cripto.MD5Converter(usuarioTextfield.getText().toLowerCase()), MD5Cripto.MD5Converter(senhaTextfield.getText()));
+                        if(crfTextfield.getText().length() == 5 && cpfTextfield.getText().length() == 11 && (telTextfield.getText().length() == 10 || telTextfield.getText().length() == 11)) {
+                            SQLRunner.ExecuteSQLScript.SQLSet("SetFarmData", Integer.parseInt(crfTextfield.getText()), nameTextfield.getText(),
+                                    Long.parseLong(cpfTextfield.getText()), Long.parseLong(telTextfield.getText()),
+                                    MD5Cripto.MD5Converter(usuarioTextfield.getText().toLowerCase()), MD5Cripto.MD5Converter(senhaTextfield.getText()));
+                        }else{
+                            lengthError = true;
+                        }
                     }
                 }
             }catch(NumberFormatException e){
@@ -99,9 +105,12 @@ public class RegisterScreenController implements Initializable {
             List<Object> finalUsername = username;
             List<Object> finalCrf = crf;
             boolean finalParseError = parseError;
+            boolean finalLengthError = lengthError;
             Platform.runLater(() -> {
                 if(finalParseError){
                     FarmDialogs.showDialog(registerfaPane,"Erro","Os campos CPF,CRF e Telefone s\u00f3 aceitam n\u00fameros!");
+                }else if(finalLengthError){
+                    FarmDialogs.showDialog(registerfaPane,"Erro","Quantidade de n\u00fameros inv\u00e1lida");
                 }else if(finalCrf != null && !finalCrf.isEmpty()){
                     FarmDialogs.showDialog(registerfaPane,"Erro","CRF j\u00e1 registrado!");
                 }else if(finalUsername != null && !finalUsername.isEmpty()){

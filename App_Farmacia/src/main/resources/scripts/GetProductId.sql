@@ -1,1 +1,1 @@
-select id from produto
+select lote from produto

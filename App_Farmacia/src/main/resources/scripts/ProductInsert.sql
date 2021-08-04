@@ -1,0 +1,1 @@
+INSERT INTO produto (lote, fk_crf, nome, preco, laboratorio, validade) VALUES (?,?,?,?,?,?)

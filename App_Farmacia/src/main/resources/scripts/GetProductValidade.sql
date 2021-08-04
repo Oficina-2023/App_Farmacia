@@ -1,1 +1,1 @@
-select validade from produto where id = ?
+select validade from produto where lote = ?

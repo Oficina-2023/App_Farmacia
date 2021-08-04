@@ -1,1 +1,1 @@
-select preco from produto where id = ?
+select preco from produto where lote = ?

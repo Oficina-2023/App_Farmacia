@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -15,9 +16,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ProductListScreenController implements Initializable {
@@ -76,6 +79,7 @@ public class ProductListScreenController implements Initializable {
     @FXML
     private JFXTextField searchTextField;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateList();
@@ -83,8 +87,14 @@ public class ProductListScreenController implements Initializable {
 
     @FXML
     void addPressed(ActionEvent event) {
-
+        try{
+            FarmApp.dataManager.getMainPane().getChildren().clear();
+            FarmApp.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/ProductAddScreen.fxml"))));
+        }catch (IOException e){
+            FarmApp.logger.error("Erro ao abrir a janela ProductAddScreen!", e);
+        }
     }
+
 
     private void updateList(){
         if(searchTextField.getText().isEmpty()){

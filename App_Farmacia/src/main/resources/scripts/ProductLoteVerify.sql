@@ -1,0 +1,1 @@
+SELECT lote FROM produto WHERE lote = ?

@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -14,14 +15,16 @@
             <Font size="41.0" />
          </font>
       </Text>
-      <JFXDatePicker editable="false" layoutX="254.0" layoutY="450.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="492.0" promptText="Validade" />
-      <JFXTextField alignment="CENTER" layoutX="254.0" layoutY="285.0" prefHeight="42.0" prefWidth="492.0" promptText="Laboratório" />
-      <JFXTextField alignment="CENTER" layoutX="254.0" layoutY="363.0" prefHeight="42.0" prefWidth="492.0" promptText="Preço" />
-      <JFXTextField alignment="CENTER" layoutX="254.0" layoutY="199.0" prefHeight="42.0" prefWidth="492.0" promptText="Nome" />
-      <JFXButton layoutX="338.0" layoutY="540.0" prefHeight="102.0" prefWidth="325.0" text="Adicionar Produto">
+      <JFXDatePicker fx:id="datePicker" editable="false" layoutX="254.0" layoutY="450.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="492.0" promptText="Validade" />
+      <JFXTextField fx:id="labTextField" alignment="CENTER" layoutX="254.0" layoutY="285.0" prefHeight="42.0" prefWidth="492.0" promptText="Laboratório" />
+      <JFXTextField fx:id="priceTextField" alignment="CENTER" layoutX="254.0" layoutY="363.0" prefHeight="42.0" prefWidth="492.0" promptText="Preço" />
+      <JFXTextField fx:id="nameTextField" alignment="CENTER" layoutX="254.0" layoutY="199.0" prefHeight="42.0" prefWidth="492.0" promptText="Nome" />
+      <JFXButton fx:id="addProductButton" layoutX="338.0" layoutY="573.0" onAction="#addProductPressed" prefHeight="102.0" prefWidth="325.0" text="Adicionar Produto">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
+      <ProgressIndicator fx:id="progressIndicator" layoutX="474.0" layoutY="520.0" visible="false" />
+      <JFXTextField fx:id="loteTextField" alignment="CENTER" layoutX="254.0" layoutY="120.0" prefHeight="42.0" prefWidth="492.0" promptText="Lote" />
    </children>
 </AnchorPane>

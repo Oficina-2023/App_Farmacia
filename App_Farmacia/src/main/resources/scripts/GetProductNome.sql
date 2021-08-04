@@ -1,1 +1,1 @@
-select nome from produto where id = ?
+select nome from produto where lote = ?
