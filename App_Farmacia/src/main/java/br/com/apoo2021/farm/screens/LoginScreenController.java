@@ -67,26 +67,7 @@ public class LoginScreenController implements Initializable {
             List<Object> crfList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmCRF",MD5Cripto.MD5Converter(usernameTextField.getText()),MD5Cripto.MD5Converter(passwordTextField.getText()));
             if(crfList != null && !crfList.isEmpty()){
                 FarmApp.dataManager.getFarmManager().getFarmaceutico().setCrf((String)crfList.get(0));
-                Thread updateFarm = new Thread(() -> {
-                    FarmApp.dataManager.getFarmManager().updateFarmData();
-                });
-                Thread updateProduct = new Thread(() -> {
-                    FarmApp.dataManager.getProductManager().updateProductList();
-                });
-                Thread updateCostumer = new Thread(() -> {
-                    FarmApp.dataManager.getCostumerManager().updateCostumerList();
-                });
-                updateFarm.start();
-                updateProduct.start();
-                updateCostumer.start();
-                try{
-                    updateFarm.join();
-                    updateProduct.join();
-                    updateCostumer.join();
-                    logged = true;
-                }catch(InterruptedException e){
-                    FarmApp.logger.error("Erro nos Threads no carregamento de dados no login",e);
-                }
+                logged = true;
             }
             boolean finalLogged = logged;
             Platform.runLater(() -> {
@@ -94,13 +75,12 @@ public class LoginScreenController implements Initializable {
                 setLockedData(false);
                 if (finalLogged){
                     try{
-                        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/MainScreen.fxml")));
+                        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/LoadScreen.fxml")));
                         Stage stage = (Stage) closeButton.getScene().getWindow();
                         stage.setScene(new Scene(root));
                         ScreenAdjusts.centerScreen(stage);
-                        ScreenAdjusts.setDraggable(root,stage);
                     }catch(IOException e){
-                        FarmApp.logger.error("Error ao tentar abrir a tela principal!",e);
+                        FarmApp.logger.error("Error ao tentar abrir a de carregamento!",e);
                     }
                 }else {
                     passwordTextField.clear();
