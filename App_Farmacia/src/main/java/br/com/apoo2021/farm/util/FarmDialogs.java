@@ -73,4 +73,27 @@ public class FarmDialogs {
         }
     }
 
+    public static void showLoginError(StackPane pane, Node node){
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Error"));
+        content.setBody(new Text("Error ao carregar os dados.\nTente novamente mais tarde!"));
+        JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM );
+        JFXButton closeButton = new JFXButton("Fechar");
+        closeButton.setOnAction(event -> {
+            try{
+                dialog.close();
+                FarmApp.dataManager.getFarmManager().clearFarmData();
+                Parent root = FXMLLoader.load(Objects.requireNonNull(FarmDialogs.class.getClassLoader().getResource("screens/LoginScreen.fxml")));
+                Stage stage = (Stage) node.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                ScreenAdjusts.centerScreen(stage);
+                ScreenAdjusts.setDraggable(root,stage);
+            }catch(IOException e){
+                FarmApp.logger.error("Error ao tentar abrir a tela de login após um error de carregamento!",e);
+            }
+        });
+        content.setActions(closeButton);
+        dialog.show();
+    }
+
 }

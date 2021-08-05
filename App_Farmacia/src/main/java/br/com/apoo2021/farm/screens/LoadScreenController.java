@@ -68,17 +68,7 @@ public class LoadScreenController implements Initializable {
                         FarmApp.logger.error("Error ao tentar abrir a tela principal!",e);
                     }
                 }else{
-                    try{
-                        FarmDialogs.showDialog(stackPane, "Error", "Error ao carregar os dados.\nTente novamente mais tarde!");
-                        FarmApp.dataManager.getFarmManager().clearFarmData();
-                        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/LoginScreen.fxml")));
-                        Stage stage = (Stage) loadMessageTextField.getScene().getWindow();
-                        stage.setScene(new Scene(root));
-                        ScreenAdjusts.centerScreen(stage);
-                        ScreenAdjusts.setDraggable(root,stage);
-                    }catch(IOException e){
-                        FarmApp.logger.error("Error ao tentar abrir a tela de login!",e);
-                    }
+                    FarmDialogs.showLoginError(stackPane, loadMessageTextField);
                 }
             });
         }).start();

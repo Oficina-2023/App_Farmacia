@@ -19,7 +19,10 @@
                   <JFXButton fx:id="vendaButton" layoutX="14.0" layoutY="432.0" onAction="#vendaPressed" prefHeight="78.0" prefWidth="252.0" text="Venda" />
                   <JFXButton fx:id="clienteButton" layoutX="14.0" layoutY="282.0" onAction="#clientesPressed" prefHeight="78.0" prefWidth="252.0" text="Clientes" />
                   <Text fx:id="usernameField" layoutX="14.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME" textAlignment="CENTER" wrappingWidth="174.13671875" />
-                  <Text layoutX="122.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MENU" wrappingWidth="36.13671875" />
+                  <Text layoutX="84.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FarmApp" textAlignment="CENTER" wrappingWidth="112.13671875">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font></Text>
                   <ImageView fx:id="settingsButton" fitHeight="24.0" fitWidth="22.0" layoutX="197.0" layoutY="687.0" onMousePressed="#settingsPressed" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/config.png" />
