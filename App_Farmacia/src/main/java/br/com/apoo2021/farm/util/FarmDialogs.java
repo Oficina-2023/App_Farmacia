@@ -2,6 +2,7 @@ package br.com.apoo2021.farm.util;
 
 import br.com.apoo2021.farm.FarmApple;
 import br.com.apoo2021.farm.database.SQLRunner;
+import br.com.apoo2021.farm.objects.Cliente;
 import br.com.apoo2021.farm.objects.Produto;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
@@ -126,5 +127,34 @@ public class FarmDialogs {
         content.setActions(yesButton, noButton);
         dialog.show();
     }
+
+    public static void showDeleteCustomerConfirmDialog(StackPane pane, ListView<Cliente> listView, Cliente cliente){
+        JFXDialogLayout content = new JFXDialogLayout();
+        String clienteCpf = cliente.getCpf();
+        if(clienteCpf.length() > 20){
+            clienteCpf = clienteCpf.substring(0,20) + "...";
+        }
+        Text head = new Text("Confirma\u00e7\u00e3o de exclus\u00e3o");
+        Text body = new Text("Deseja realmente deletar o Cliente de CPF : "+ clienteCpf +"?");
+        content.setHeading(head);
+        content.setBody(body);
+        JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM);
+        JFXButton noButton = new JFXButton("N\u00e3o");
+        JFXButton yesButton = new JFXButton("Sim");
+        noButton.setOnAction(event -> dialog.close());
+        yesButton.setOnAction(event -> {
+            try{
+                SQLRunner.ExecuteSQLScript.SQLSet("ClienteRemove", cliente.getCpf());
+                listView.getItems().remove(cliente);
+                FarmApple.dataManager.getCostumerManager().removeCliente(cliente.getCpf());
+            }catch (Exception e){
+                FarmApple.logger.error("Error ao remover o cliente!", e);
+            }
+            dialog.close();
+        });
+        content.setActions(yesButton, noButton);
+        dialog.show();
+    }
+
 
 }

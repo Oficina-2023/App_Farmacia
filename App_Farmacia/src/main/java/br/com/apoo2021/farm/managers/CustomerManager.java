@@ -20,6 +20,10 @@ public class CustomerManager {
             generateCustomerList();
         }
     }
+    public void removeCliente(String cpf){
+        clienteList.removeIf(cliente -> cliente.getCpf().equals(cpf));
+    }
+
 
 
     private void generateCustomerList(){

@@ -1,6 +1,7 @@
 package br.com.apoo2021.farm.screens.sub;
 
 import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.util.FarmDialogs;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -36,7 +37,7 @@ public class CustomerListScreenController implements Initializable {
             box.getChildren().addAll(nome, cpf, pane, delButton, editButton);
             HBox.setHgrow(pane, Priority.ALWAYS);
             delButton.setOnAction(event -> {
-
+                FarmDialogs.showDeleteCustomerConfirmDialog(FarmApple.dataManager.getMainPane(), getListView(), getItem());
             });
             editButton.setOnAction(event -> {
 

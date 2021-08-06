@@ -1,0 +1,1 @@
+Delete from cliente where cpf = ?
