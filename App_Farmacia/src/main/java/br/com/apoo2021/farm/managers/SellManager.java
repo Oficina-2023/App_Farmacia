@@ -31,6 +31,15 @@ public class SellManager {
         }
     }
 
+    public void removeProductOfCart(Produto produto){
+        for(ProductCart productCart : sellList){
+            if(productCart.getProduto().getLote().equals(produto.getLote())){
+                sellList.remove(productCart);
+                updateProductPrice();
+            }
+        }
+    }
+
     private void updateProductPrice(){
         totalPrice = 0;
         for(ProductCart product : sellList){
