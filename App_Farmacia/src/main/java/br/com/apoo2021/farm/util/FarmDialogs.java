@@ -1,6 +1,8 @@
 package br.com.apoo2021.farm.util;
 
-import br.com.apoo2021.farm.FarmApp;
+import br.com.apoo2021.farm.Farmaple;
+import br.com.apoo2021.farm.database.SQLRunner;
+import br.com.apoo2021.farm.objects.Produto;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -8,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -60,9 +63,9 @@ public class FarmDialogs {
                 stage.setScene(new Scene(root));
                 ScreenAdjusts.centerScreen(stage);
                 ScreenAdjusts.setDraggable(root,stage);
-                FarmApp.dataManager.getFarmManager().clearFarmData();
+                Farmaple.dataManager.getFarmManager().clearFarmData();
             }catch(IOException e){
-                FarmApp.logger.error("Error ao tentar retornar a tela de login!",e);
+                Farmaple.logger.error("Error ao tentar retornar a tela de login!",e);
             }
         });
         content.setActions(yesButton, noButton);
@@ -82,17 +85,45 @@ public class FarmDialogs {
         closeButton.setOnAction(event -> {
             try{
                 dialog.close();
-                FarmApp.dataManager.getFarmManager().clearFarmData();
+                Farmaple.dataManager.getFarmManager().clearFarmData();
                 Parent root = FXMLLoader.load(Objects.requireNonNull(FarmDialogs.class.getClassLoader().getResource("screens/LoginScreen.fxml")));
                 Stage stage = (Stage) node.getScene().getWindow();
                 stage.setScene(new Scene(root));
                 ScreenAdjusts.centerScreen(stage);
                 ScreenAdjusts.setDraggable(root,stage);
             }catch(IOException e){
-                FarmApp.logger.error("Error ao tentar abrir a tela de login após um error de carregamento!",e);
+                Farmaple.logger.error("Error ao tentar abrir a tela de login após um error de carregamento!",e);
             }
         });
         content.setActions(closeButton);
+        dialog.show();
+    }
+
+    public static void showDeleteProductConfirmDialog(StackPane pane, ListView<Produto> listView, Produto produto){
+        JFXDialogLayout content = new JFXDialogLayout();
+        String produtoName = produto.getNome();
+        if(produtoName.length() > 20){
+            produtoName = produtoName.substring(0,20) + "...";
+        }
+        Text head = new Text("Confirma\u00e7\u00e3o de exclus\u00e3o");
+        Text body = new Text("Deseja realmente deletar o produto "+ produtoName +"?");
+        content.setHeading(head);
+        content.setBody(body);
+        JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM);
+        JFXButton noButton = new JFXButton("N\u00e3o");
+        JFXButton yesButton = new JFXButton("Sim");
+        noButton.setOnAction(event -> dialog.close());
+        yesButton.setOnAction(event -> {
+            try{
+                SQLRunner.ExecuteSQLScript.SQLSet("ProductRemove", produto.getLote());
+                listView.getItems().remove(produto);
+                Farmaple.dataManager.getProductManager().removeProduto(produto.getLote());
+            }catch (Exception e){
+                Farmaple.logger.error("Error ao remover o produto!", e);
+            }
+            dialog.close();
+        });
+        content.setActions(yesButton, noButton);
         dialog.show();
     }
 

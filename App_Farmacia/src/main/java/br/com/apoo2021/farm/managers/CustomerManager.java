@@ -1,9 +1,8 @@
 package br.com.apoo2021.farm.managers;
 
-import br.com.apoo2021.farm.FarmApp;
+import br.com.apoo2021.farm.Farmaple;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Cliente;
-import br.com.apoo2021.farm.objects.Produto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +50,7 @@ public class CustomerManager {
                     customerName.join();
 
                 }catch (InterruptedException e){
-                    FarmApp.logger.error("Error ao aguardar a finalização dos threads de carregamento de clientes!", e);
+                    Farmaple.logger.error("Error ao aguardar a finalização dos threads de carregamento de clientes!", e);
                 }
             }
         }

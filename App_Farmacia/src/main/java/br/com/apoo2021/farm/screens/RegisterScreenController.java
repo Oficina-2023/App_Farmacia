@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.screens;
 
-import br.com.apoo2021.farm.FarmApp;
+import br.com.apoo2021.farm.Farmaple;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import br.com.apoo2021.farm.util.MD5Cripto;
@@ -13,14 +13,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -136,7 +134,7 @@ public class RegisterScreenController implements Initializable {
             stage.setScene(new Scene(root));
             ScreenAdjusts.setDraggable(root, stage);
         }catch(IOException e){
-            FarmApp.logger.error("Erro ao clicar em voltar, tela RegisterScreen",e);
+            Farmaple.logger.error("Erro ao clicar em voltar, tela RegisterScreen",e);
         }
 
     }

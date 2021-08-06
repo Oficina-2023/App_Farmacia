@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.screens.sub;
 
-import br.com.apoo2021.farm.FarmApp;
+import br.com.apoo2021.farm.Farmaple;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Produto;
 import br.com.apoo2021.farm.util.FarmDialogs;
@@ -72,10 +72,10 @@ public class ProductAddScreenController implements Initializable {
                         novoProduto.setNome(nameTextField.getText());
                         novoProduto.setLaboratorio(labTextField.getText());
                         novoProduto.setValidade(Date.valueOf(data));
-                        SQLRunner.ExecuteSQLScript.SQLSet("ProductInsert", loteTextField.getText(), FarmApp.dataManager.getFarmManager().getFarmaceutico().getCrf(),
+                        SQLRunner.ExecuteSQLScript.SQLSet("ProductInsert", loteTextField.getText(), Farmaple.dataManager.getFarmManager().getFarmaceutico().getCrf(),
                                 nameTextField.getText(), Float.parseFloat(priceTextField.getText().replace(",", ".")),labTextField.getText(),
                                 Date.valueOf(data));
-                        FarmApp.dataManager.getProductManager().getProdutosList().add(novoProduto);
+                        Farmaple.dataManager.getProductManager().getProdutosList().add(novoProduto);
                     }
                 }
             }catch(NumberFormatException e){
@@ -85,14 +85,14 @@ public class ProductAddScreenController implements Initializable {
             List<Object> finalLoteLista = loteLista;
             Platform.runLater(() -> {
                 if(finalParseError){
-                    FarmDialogs.showDialog(FarmApp.dataManager.getMainPane(),"Erro","O campos Preço s\u00f3 aceita n\u00fameros!");
+                    FarmDialogs.showDialog(Farmaple.dataManager.getMainPane(),"Erro","O campos Preço s\u00f3 aceita n\u00fameros!");
                 }else if(loteTextField.getText().contains(" ")){
-                    FarmDialogs.showDialog(FarmApp.dataManager.getMainPane(),"Erro","Lote Inv\u00e1lido !");
+                    FarmDialogs.showDialog(Farmaple.dataManager.getMainPane(),"Erro","Lote Inv\u00e1lido !");
                 }else if(finalLoteLista != null && !finalLoteLista.isEmpty()){
-                    FarmDialogs.showDialog(FarmApp.dataManager.getMainPane(),"Erro","Lote j\u00e1 registrado !");
+                    FarmDialogs.showDialog(Farmaple.dataManager.getMainPane(),"Erro","Lote j\u00e1 registrado !");
                 }else
                 {
-                    FarmDialogs.showDialog(FarmApp.dataManager.getMainPane(),"Registrado","Registrado com sucesso!");
+                    FarmDialogs.showDialog(Farmaple.dataManager.getMainPane(),"Registrado","Registrado com sucesso!");
                 }
                 progressIndicator.setVisible(false);
                 setLockedData(false);

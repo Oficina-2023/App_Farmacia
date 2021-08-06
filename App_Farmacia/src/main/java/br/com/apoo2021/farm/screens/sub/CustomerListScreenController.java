@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.screens.sub;
 
-import br.com.apoo2021.farm.FarmApp;
+import br.com.apoo2021.farm.Farmaple;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -82,19 +82,19 @@ public class CustomerListScreenController implements Initializable {
     @FXML
     void novoClientePressed(ActionEvent event) {
         try{
-            FarmApp.dataManager.getMainPane().getChildren().clear();
-            FarmApp.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/CustomerAddScreen.fxml"))));
+            Farmaple.dataManager.getMainPane().getChildren().clear();
+            Farmaple.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/CustomerAddScreen.fxml"))));
         }catch (IOException e){
-            FarmApp.logger.error("Erro ao abrir a janela CustomerAddScreen!", e);
+            Farmaple.logger.error("Erro ao abrir a janela CustomerAddScreen!", e);
         }
     }
 
     public void updateList(){
         if(searchCliTextField.getText().isEmpty()){
-            cliList.setItems(FXCollections.observableList(FarmApp.dataManager.getCostumerManager().getClienteList()));
+            cliList.setItems(FXCollections.observableList(Farmaple.dataManager.getCostumerManager().getClienteList()));
         }else{
             List<Cliente> filtredList = new ArrayList<>();
-            for (Cliente cliente : FarmApp.dataManager.getCostumerManager().getClienteList()){
+            for (Cliente cliente : Farmaple.dataManager.getCostumerManager().getClienteList()){
                 if(cliente.getCpf().toLowerCase().contains(searchCliTextField.getText().toLowerCase())){
                     filtredList.add(cliente);
 

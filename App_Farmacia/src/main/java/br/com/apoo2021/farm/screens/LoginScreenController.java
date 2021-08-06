@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.screens;
 
-import br.com.apoo2021.farm.FarmApp;
+import br.com.apoo2021.farm.Farmaple;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import br.com.apoo2021.farm.util.MD5Cripto;
@@ -66,7 +66,7 @@ public class LoginScreenController implements Initializable {
             boolean logged = false;
             List<Object> crfList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmCRF",MD5Cripto.MD5Converter(usernameTextField.getText()),MD5Cripto.MD5Converter(passwordTextField.getText()));
             if(crfList != null && !crfList.isEmpty()){
-                FarmApp.dataManager.getFarmManager().getFarmaceutico().setCrf((String)crfList.get(0));
+                Farmaple.dataManager.getFarmManager().getFarmaceutico().setCrf((String)crfList.get(0));
                 logged = true;
             }
             boolean finalLogged = logged;
@@ -80,7 +80,7 @@ public class LoginScreenController implements Initializable {
                         stage.setScene(new Scene(root));
                         ScreenAdjusts.centerScreen(stage);
                     }catch(IOException e){
-                        FarmApp.logger.error("Error ao tentar abrir a de carregamento!",e);
+                        Farmaple.logger.error("Error ao tentar abrir a de carregamento!",e);
                     }
                 }else {
                     passwordTextField.clear();
@@ -98,7 +98,7 @@ public class LoginScreenController implements Initializable {
             stage.setScene(new Scene(root));
             ScreenAdjusts.setDraggable(root,stage);
         }catch(IOException e){
-            FarmApp.logger.error("Erro ao clicar em registrar usuário, tela LoginScreen",e);
+            Farmaple.logger.error("Erro ao clicar em registrar usuário, tela LoginScreen",e);
         }
     }
 

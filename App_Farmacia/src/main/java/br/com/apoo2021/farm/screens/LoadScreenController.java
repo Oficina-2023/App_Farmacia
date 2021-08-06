@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.screens;
 
-import br.com.apoo2021.farm.FarmApp;
+import br.com.apoo2021.farm.Farmaple;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import br.com.apoo2021.farm.util.ScreenAdjusts;
 import javafx.application.Platform;
@@ -32,13 +32,13 @@ public class LoadScreenController implements Initializable {
         new Thread(() -> {
             boolean loaded = false;
             Thread updateFarm = new Thread(() -> {
-                FarmApp.dataManager.getFarmManager().updateFarmData();
+                Farmaple.dataManager.getFarmManager().updateFarmData();
             });
             Thread updateProduct = new Thread(() -> {
-                FarmApp.dataManager.getProductManager().updateProductList();
+                Farmaple.dataManager.getProductManager().updateProductList();
             });
             Thread updateCostumer = new Thread(() -> {
-                FarmApp.dataManager.getCostumerManager().updateCostumerList();
+                Farmaple.dataManager.getCostumerManager().updateCostumerList();
             });
             updateFarm.start();
             updateProduct.start();
@@ -53,7 +53,7 @@ public class LoadScreenController implements Initializable {
                 loaded = true;
                 loadMessageTextField.setText("Finalizando carregamento...");
             }catch(InterruptedException e){
-                FarmApp.logger.error("Erro nos Threads no carregamento de dados no login",e);
+                Farmaple.logger.error("Erro nos Threads no carregamento de dados no login",e);
             }
             boolean finalLoaded = loaded;
             Platform.runLater(() -> {
@@ -65,7 +65,7 @@ public class LoadScreenController implements Initializable {
                         ScreenAdjusts.centerScreen(stage);
                         ScreenAdjusts.setDraggable(root,stage);
                     }catch(IOException e){
-                        FarmApp.logger.error("Error ao tentar abrir a tela principal!",e);
+                        Farmaple.logger.error("Error ao tentar abrir a tela principal!",e);
                     }
                 }else{
                     FarmDialogs.showLoginError(stackPane, loadMessageTextField);

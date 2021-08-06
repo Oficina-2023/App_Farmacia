@@ -1,7 +1,8 @@
 package br.com.apoo2021.farm.screens.sub;
 
-import br.com.apoo2021.farm.FarmApp;
+import br.com.apoo2021.farm.Farmaple;
 import br.com.apoo2021.farm.objects.Produto;
+import br.com.apoo2021.farm.util.FarmDialogs;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
@@ -33,13 +34,18 @@ public class ProductListScreenController implements Initializable {
         Label validade = new Label();
         Pane pane = new Pane();
         JFXButton delButton = new JFXButton("Excluir");
+        JFXButton editButton = new JFXButton("Editar");
         JFXButton addCartButton = new JFXButton("Adicionar ao Carrinho");
 
         public ProductCell(){
             super();
-            box.getChildren().addAll(nome, price, laboratorio, validade, pane, delButton, addCartButton);
+            box.getChildren().addAll(nome, price, laboratorio, validade, pane, delButton,editButton, addCartButton);
             HBox.setHgrow(pane, Priority.ALWAYS);
             delButton.setOnAction(event -> {
+                FarmDialogs.showDeleteProductConfirmDialog(Farmaple.dataManager.getMainPane(), getListView(), getItem());
+            });
+
+            editButton.setOnAction(event -> {
 
             });
 
@@ -88,21 +94,21 @@ public class ProductListScreenController implements Initializable {
     @FXML
     void addPressed(ActionEvent event) {
         try{
-            FarmApp.dataManager.getMainPane().getChildren().clear();
-            FarmApp.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/ProductAddScreen.fxml"))));
+            Farmaple.dataManager.getMainPane().getChildren().clear();
+            Farmaple.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/ProductAddScreen.fxml"))));
         }catch (IOException e){
-            FarmApp.logger.error("Erro ao abrir a janela ProductAddScreen!", e);
+            Farmaple.logger.error("Erro ao abrir a janela ProductAddScreen!", e);
         }
     }
 
 
     private void updateList(){
         if(searchTextField.getText().isEmpty()){
-            productList.setItems(FXCollections.observableList(FarmApp.dataManager.getProductManager().getProdutosList()));
+            productList.setItems(FXCollections.observableList(Farmaple.dataManager.getProductManager().getProdutosList()));
         }else{
             List<Produto> filtredList = new ArrayList<>();
 
-            for(Produto produto : FarmApp.dataManager.getProductManager().getProdutosList()){
+            for(Produto produto : Farmaple.dataManager.getProductManager().getProdutosList()){
                 if(produto.getNome().toLowerCase().contains(searchTextField.getText().toLowerCase())){
                     filtredList.add(produto);
                 }
