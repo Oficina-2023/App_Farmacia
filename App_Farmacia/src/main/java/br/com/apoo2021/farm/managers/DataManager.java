@@ -1,5 +1,7 @@
 package br.com.apoo2021.farm.managers;
 
+import br.com.apoo2021.farm.objects.Cliente;
+import br.com.apoo2021.farm.objects.Produto;
 import javafx.scene.layout.StackPane;
 
 public class DataManager {
@@ -9,6 +11,8 @@ public class DataManager {
     private final CustomerManager customerManager = new CustomerManager();
 
     private StackPane mainPane;
+    private Produto editableProduct;
+    private Cliente editableCustomer;
 
     public FarmManager getFarmManager() {
         return farmManager;
@@ -16,6 +20,10 @@ public class DataManager {
 
     public ProductManager getProductManager() {
         return productManager;
+    }
+
+    public CustomerManager getCostumerManager() {
+        return customerManager;
     }
 
     public StackPane getMainPane() {
@@ -26,8 +34,19 @@ public class DataManager {
         this.mainPane = mainPane;
     }
 
-    public CustomerManager getCostumerManager() {
-        return customerManager;
+    public Produto getEditableProduct() {
+        return editableProduct;
     }
-    
+
+    public void setEditableProduct(Produto editableProduct) {
+        this.editableProduct = editableProduct;
+    }
+
+    public Cliente getEditableCustomer() {
+        return editableCustomer;
+    }
+
+    public void setEditableCustomer(Cliente editableCustomer) {
+        this.editableCustomer = editableCustomer;
+    }
 }

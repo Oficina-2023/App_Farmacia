@@ -85,7 +85,7 @@ public class ProductAddScreenController implements Initializable {
             List<Object> finalLoteLista = loteLista;
             Platform.runLater(() -> {
                 if(finalParseError){
-                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(),"Erro","O campos Preço s\u00f3 aceita n\u00fameros!");
+                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(),"Erro","O campos pre\u00e7o s\u00f3 aceita n\u00fameros!");
                 }else if(loteTextField.getText().contains(" ")){
                     FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(),"Erro","Lote Inv\u00e1lido !");
                 }else if(finalLoteLista != null && !finalLoteLista.isEmpty()){
@@ -100,6 +100,7 @@ public class ProductAddScreenController implements Initializable {
         }).start();
         }
         private void setLockedData(boolean isProcessing){
+            loteTextField.setDisable(isProcessing);
             nameTextField.setDisable(isProcessing);
             priceTextField.setDisable(isProcessing);
             labTextField.setDisable(isProcessing);

@@ -1,0 +1,1 @@
+update produto set nome = ?, validade = ?, laboratorio = ?, preco = ? where lote = ?

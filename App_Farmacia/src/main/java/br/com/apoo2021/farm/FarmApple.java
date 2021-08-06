@@ -1,6 +1,5 @@
 package br.com.apoo2021.farm;
 
-import br.com.apoo2021.farm.objects.ScreenData;
 import br.com.apoo2021.farm.managers.DataManager;
 import br.com.apoo2021.farm.util.ScreenAdjusts;
 import javafx.application.Application;
@@ -20,7 +19,6 @@ public class FarmApple extends Application {
     public static final Logger logger = LogManager.getLogger(FarmApple.class.getName());
 
     public static final DataManager dataManager = new DataManager();
-    public static final ScreenData screenData = new ScreenData();
 
     public static void main(String[] args) {
         launch(args);

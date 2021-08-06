@@ -77,6 +77,8 @@ public class CustomerListScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        FarmApple.dataManager.setEditableProduct(null);
+        FarmApple.dataManager.setEditableCustomer(null);
         updateList();
     }
 

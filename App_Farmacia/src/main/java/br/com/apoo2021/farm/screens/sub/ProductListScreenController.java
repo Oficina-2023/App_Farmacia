@@ -46,7 +46,14 @@ public class ProductListScreenController implements Initializable {
             });
 
             editButton.setOnAction(event -> {
-
+                FarmApple.dataManager.setEditableProduct(getItem());
+                try{
+                    FarmApple.dataManager.getMainPane().getChildren().clear();
+                    FarmApple.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/ProductEditScreen.fxml"))));
+                }catch (IOException e){
+                    FarmApple.logger.error("Erro ao abrir a janela ProductAddScreen!", e);
+                    FarmApple.dataManager.setEditableProduct(null);
+                }
             });
 
             addCartButton.setOnAction(event -> {
@@ -88,6 +95,8 @@ public class ProductListScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        FarmApple.dataManager.setEditableProduct(null);
+        FarmApple.dataManager.setEditableCustomer(null);
         updateList();
     }
 
