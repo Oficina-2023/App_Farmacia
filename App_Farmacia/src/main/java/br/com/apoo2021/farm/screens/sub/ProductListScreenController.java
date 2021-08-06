@@ -51,7 +51,7 @@ public class ProductListScreenController implements Initializable {
                     FarmApple.dataManager.getMainPane().getChildren().clear();
                     FarmApple.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/ProductEditScreen.fxml"))));
                 }catch (IOException e){
-                    FarmApple.logger.error("Erro ao abrir a janela ProductAddScreen!", e);
+                    FarmApple.logger.error("Erro ao abrir a janela ProductEditScreen!", e);
                     FarmApple.dataManager.setEditableProduct(null);
                 }
             });

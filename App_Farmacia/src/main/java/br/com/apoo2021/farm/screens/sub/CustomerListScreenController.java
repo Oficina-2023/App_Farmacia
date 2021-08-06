@@ -40,7 +40,16 @@ public class CustomerListScreenController implements Initializable {
                 FarmDialogs.showDeleteCustomerConfirmDialog(FarmApple.dataManager.getMainPane(), getListView(), getItem());
             });
             editButton.setOnAction(event -> {
+                FarmApple.dataManager.setEditableCustomer(getItem());
+                try{
+                    FarmApple.dataManager.getMainPane().getChildren().clear();
+                    FarmApple.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/CustomerEditScreen.fxml"))));
 
+
+                }catch (Exception e){
+                    FarmApple.logger.error("Erro ao abrir a janela CustomerEditScreen! ", e);
+                    FarmApple.dataManager.setEditableProduct(null);
+                }
 
             });
         }
