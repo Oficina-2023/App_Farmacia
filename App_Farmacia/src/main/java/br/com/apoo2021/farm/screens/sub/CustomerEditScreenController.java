@@ -7,32 +7,31 @@ import br.com.apoo2021.farm.util.FarmDialogs;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ProgressIndicator;
-
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CustomerEditScreenController implements Initializable {
 
     @FXML
-    private JFXTextField ClienteNome;
+    private JFXTextField clienteNome;
 
     @FXML
     private JFXButton attButton;
 
     @FXML
-    private JFXTextField ClienteCpf;
+    private JFXTextField clienteCpf;
 
     @FXML
     private ProgressIndicator progressIndicator;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        attButton.disableProperty().bind(ClienteNome.textProperty().isEmpty().or(ClienteCpf.textProperty().isEmpty()));
-
+        attButton.disableProperty().bind(clienteNome.textProperty().isEmpty().or(clienteCpf.textProperty().isEmpty()));
+        updateClienteData();
     }
 
     @FXML
@@ -43,8 +42,8 @@ public class CustomerEditScreenController implements Initializable {
             boolean parseError = false;
             try {
                 Cliente editableCliente = FarmApple.dataManager.getEditableCustomer();
-                editableCliente.setNome(ClienteNome.getText());
-                SQLRunner.ExecuteSQLScript.SQLSet("ClienteUpdate", editableCliente.getNome());
+                editableCliente.setNome(clienteNome.getText());
+                SQLRunner.ExecuteSQLScript.SQLSet("ClienteUpdate", editableCliente.getNome(), editableCliente.getCpf());
             }catch (Exception e) {
                 FarmApple.logger.error("Erro ao editar o cliente!", e);
                 parseError = true;
@@ -66,18 +65,18 @@ public class CustomerEditScreenController implements Initializable {
 
     private void updateClienteData(){
         Cliente editableCLiente = FarmApple.dataManager.getEditableCustomer();
-
-        ClienteNome.setText(editableCLiente.getNome());
+        clienteNome.setText(editableCLiente.getNome());
+        clienteCpf.setText(editableCLiente.getCpf());
     }
 
     private void setLockedData(boolean isProcessing){
-        ClienteNome.setDisable(isProcessing);
+        clienteNome.setDisable(isProcessing);
         if(isProcessing){
             attButton.disableProperty().unbind();
             attButton.setDisable(true);
         }else{
             attButton.setDisable(false);
-            attButton.disableProperty().bind(ClienteNome.textProperty().isEmpty().or(ClienteCpf.textProperty().isEmpty()));
+            attButton.disableProperty().bind(clienteNome.textProperty().isEmpty().or(clienteCpf.textProperty().isEmpty()));
         }
     }
 

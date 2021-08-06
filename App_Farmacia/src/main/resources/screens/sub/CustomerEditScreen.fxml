@@ -14,13 +14,13 @@
             <Font size="41.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="ClienteNome" alignment="CENTER" layoutX="251.0" layoutY="283.0" prefHeight="42.0" prefWidth="492.0" promptText="Nome" />
+      <JFXTextField fx:id="clienteNome" alignment="CENTER" layoutX="251.0" layoutY="283.0" prefHeight="42.0" prefWidth="492.0" promptText="Nome" />
       <JFXButton fx:id="attButton" layoutX="338.0" layoutY="517.0" onAction="#AttPressed" prefHeight="102.0" prefWidth="325.0" text="Atualizar Cliente">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXTextField fx:id="ClienteCpf" alignment="CENTER" disable="true" editable="false" layoutX="252.0" layoutY="433.0" prefHeight="42.0" prefWidth="492.0" promptText="CPF" />
-      <ProgressIndicator fx:id="progressIndicator" layoutX="472.0" layoutY="638.0" />
+      <JFXTextField fx:id="clienteCpf" alignment="CENTER" disable="true" editable="false" layoutX="252.0" layoutY="433.0" prefHeight="42.0" prefWidth="492.0" promptText="CPF" />
+      <ProgressIndicator fx:id="progressIndicator" layoutX="472.0" layoutY="638.0" visible="false" />
    </children>
 </AnchorPane>
