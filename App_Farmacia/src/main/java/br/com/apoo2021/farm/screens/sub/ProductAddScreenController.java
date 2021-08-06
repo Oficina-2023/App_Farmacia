@@ -73,7 +73,7 @@ public class ProductAddScreenController implements Initializable {
                         novoProduto.setLaboratorio(labTextField.getText());
                         novoProduto.setValidade(Date.valueOf(data));
                         SQLRunner.ExecuteSQLScript.SQLSet("ProductInsert", loteTextField.getText(), FarmApp.dataManager.getFarmManager().getFarmaceutico().getCrf(),
-                                nameTextField.getText(), labTextField.getText(), Float.parseFloat(priceTextField.getText().replace(",", ".")),
+                                nameTextField.getText(), Float.parseFloat(priceTextField.getText().replace(",", ".")),labTextField.getText(),
                                 Date.valueOf(data));
                         FarmApp.dataManager.getProductManager().getProdutosList().add(novoProduto);
                     }
