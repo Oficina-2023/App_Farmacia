@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.screens.sub;
 
-import br.com.apoo2021.farm.Farmaple;
+import br.com.apoo2021.farm.FarmApple;
 import br.com.apoo2021.farm.objects.Produto;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import com.jfoenix.controls.JFXButton;
@@ -42,7 +42,7 @@ public class ProductListScreenController implements Initializable {
             box.getChildren().addAll(nome, price, laboratorio, validade, pane, delButton,editButton, addCartButton);
             HBox.setHgrow(pane, Priority.ALWAYS);
             delButton.setOnAction(event -> {
-                FarmDialogs.showDeleteProductConfirmDialog(Farmaple.dataManager.getMainPane(), getListView(), getItem());
+                FarmDialogs.showDeleteProductConfirmDialog(FarmApple.dataManager.getMainPane(), getListView(), getItem());
             });
 
             editButton.setOnAction(event -> {
@@ -94,21 +94,21 @@ public class ProductListScreenController implements Initializable {
     @FXML
     void addPressed(ActionEvent event) {
         try{
-            Farmaple.dataManager.getMainPane().getChildren().clear();
-            Farmaple.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/ProductAddScreen.fxml"))));
+            FarmApple.dataManager.getMainPane().getChildren().clear();
+            FarmApple.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/ProductAddScreen.fxml"))));
         }catch (IOException e){
-            Farmaple.logger.error("Erro ao abrir a janela ProductAddScreen!", e);
+            FarmApple.logger.error("Erro ao abrir a janela ProductAddScreen!", e);
         }
     }
 
 
     private void updateList(){
         if(searchTextField.getText().isEmpty()){
-            productList.setItems(FXCollections.observableList(Farmaple.dataManager.getProductManager().getProdutosList()));
+            productList.setItems(FXCollections.observableList(FarmApple.dataManager.getProductManager().getProdutosList()));
         }else{
             List<Produto> filtredList = new ArrayList<>();
 
-            for(Produto produto : Farmaple.dataManager.getProductManager().getProdutosList()){
+            for(Produto produto : FarmApple.dataManager.getProductManager().getProdutosList()){
                 if(produto.getNome().toLowerCase().contains(searchTextField.getText().toLowerCase())){
                     filtredList.add(produto);
                 }

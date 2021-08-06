@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.util;
 
-import br.com.apoo2021.farm.Farmaple;
+import br.com.apoo2021.farm.FarmApple;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Produto;
 import com.jfoenix.controls.JFXButton;
@@ -63,9 +63,9 @@ public class FarmDialogs {
                 stage.setScene(new Scene(root));
                 ScreenAdjusts.centerScreen(stage);
                 ScreenAdjusts.setDraggable(root,stage);
-                Farmaple.dataManager.getFarmManager().clearFarmData();
+                FarmApple.dataManager.getFarmManager().clearFarmData();
             }catch(IOException e){
-                Farmaple.logger.error("Error ao tentar retornar a tela de login!",e);
+                FarmApple.logger.error("Error ao tentar retornar a tela de login!",e);
             }
         });
         content.setActions(yesButton, noButton);
@@ -85,14 +85,14 @@ public class FarmDialogs {
         closeButton.setOnAction(event -> {
             try{
                 dialog.close();
-                Farmaple.dataManager.getFarmManager().clearFarmData();
+                FarmApple.dataManager.getFarmManager().clearFarmData();
                 Parent root = FXMLLoader.load(Objects.requireNonNull(FarmDialogs.class.getClassLoader().getResource("screens/LoginScreen.fxml")));
                 Stage stage = (Stage) node.getScene().getWindow();
                 stage.setScene(new Scene(root));
                 ScreenAdjusts.centerScreen(stage);
                 ScreenAdjusts.setDraggable(root,stage);
             }catch(IOException e){
-                Farmaple.logger.error("Error ao tentar abrir a tela de login após um error de carregamento!",e);
+                FarmApple.logger.error("Error ao tentar abrir a tela de login após um error de carregamento!",e);
             }
         });
         content.setActions(closeButton);
@@ -117,9 +117,9 @@ public class FarmDialogs {
             try{
                 SQLRunner.ExecuteSQLScript.SQLSet("ProductRemove", produto.getLote());
                 listView.getItems().remove(produto);
-                Farmaple.dataManager.getProductManager().removeProduto(produto.getLote());
+                FarmApple.dataManager.getProductManager().removeProduto(produto.getLote());
             }catch (Exception e){
-                Farmaple.logger.error("Error ao remover o produto!", e);
+                FarmApple.logger.error("Error ao remover o produto!", e);
             }
             dialog.close();
         });

@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.screens.sub;
 
-import br.com.apoo2021.farm.Farmaple;
+import br.com.apoo2021.farm.FarmApple;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import javafx.event.ActionEvent;
@@ -48,15 +48,15 @@ public class UserEditScreenController implements Initializable {
     }
 
     private void updateScreenInfo(){
-        usernameText.setText(Farmaple.dataManager.getFarmManager().getFarmaceutico().getNome());
-        crfText.setText(Farmaple.dataManager.getFarmManager().getFarmaceutico().getCrf().replaceFirst("(\\d{5})(\\d{1})(\\d+)", "$1-$2$3"));
-        cpfText.setText(Farmaple.dataManager.getFarmManager().getFarmaceutico().getCpf().replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d+)", "$1.$2.$3-$4"));
+        usernameText.setText(FarmApple.dataManager.getFarmManager().getFarmaceutico().getNome());
+        crfText.setText(FarmApple.dataManager.getFarmManager().getFarmaceutico().getCrf().replaceFirst("(\\d{5})(\\d{1})(\\d+)", "$1-$2$3"));
+        cpfText.setText(FarmApple.dataManager.getFarmManager().getFarmaceutico().getCpf().replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d+)", "$1.$2.$3-$4"));
 
-        String phone = Farmaple.dataManager.getFarmManager().getFarmaceutico().getPhone();
+        String phone = FarmApple.dataManager.getFarmManager().getFarmaceutico().getPhone();
         if(phone.length() == 11){ //Alterar para String os dados no banco
-            phoneText.setText(Farmaple.dataManager.getFarmManager().getFarmaceutico().getPhone().replaceFirst("(\\d{2})(\\d{1})(\\d{4})(\\d+)", "($1) $2 $3-$4"));
+            phoneText.setText(FarmApple.dataManager.getFarmManager().getFarmaceutico().getPhone().replaceFirst("(\\d{2})(\\d{1})(\\d{4})(\\d+)", "($1) $2 $3-$4"));
         }else{
-            phoneText.setText(Farmaple.dataManager.getFarmManager().getFarmaceutico().getPhone().replaceFirst("(\\d{2})(\\d{4})(\\d+)", "($1) $2-$3"));
+            phoneText.setText(FarmApple.dataManager.getFarmManager().getFarmaceutico().getPhone().replaceFirst("(\\d{2})(\\d{4})(\\d+)", "($1) $2-$3"));
         }
     }
 }

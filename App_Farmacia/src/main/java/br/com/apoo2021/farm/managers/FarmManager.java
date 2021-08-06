@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.managers;
 
-import br.com.apoo2021.farm.Farmaple;
+import br.com.apoo2021.farm.FarmApple;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Farmaceutico;
 
@@ -20,7 +20,7 @@ public class FarmManager {
             if(nomeList != null && !nomeList.isEmpty()){
                 farmaceutico.setNome((String)nomeList.get(0));
             }else{
-                Farmaple.logger.error("Erro ao carregar o nome do farmaceutico!");
+                FarmApple.logger.error("Erro ao carregar o nome do farmaceutico!");
             }
         });
 
@@ -29,7 +29,7 @@ public class FarmManager {
             if(telefoneList != null && !telefoneList.isEmpty()){
                 farmaceutico.setPhone((String)telefoneList.get(0));
             }else{
-                Farmaple.logger.error("Erro ao carregar o telefone do farmaceutico!");
+                FarmApple.logger.error("Erro ao carregar o telefone do farmaceutico!");
             }
         });
 
@@ -38,7 +38,7 @@ public class FarmManager {
             if(cpfList != null && !cpfList.isEmpty()){
                 farmaceutico.setCpf((String)cpfList.get(0));
             }else{
-                Farmaple.logger.error("Erro ao carregar o cpf do farmaceutico!");
+                FarmApple.logger.error("Erro ao carregar o cpf do farmaceutico!");
             }
         });
 
@@ -51,7 +51,7 @@ public class FarmManager {
             farmPhone.join();
             farmCpf.join();
         } catch (InterruptedException e) {
-            Farmaple.logger.error("Error ao aguardar a finalização dos threads de carregamento do farmaceutico!", e);
+            FarmApple.logger.error("Error ao aguardar a finalização dos threads de carregamento do farmaceutico!", e);
         }
     }
 

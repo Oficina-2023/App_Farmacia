@@ -15,9 +15,9 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.util.Objects;
 
-public class Farmaple extends Application {
+public class FarmApple extends Application {
 
-    public static final Logger logger = LogManager.getLogger(Farmaple.class.getName());
+    public static final Logger logger = LogManager.getLogger(FarmApple.class.getName());
 
     public static final DataManager dataManager = new DataManager();
     public static final ScreenData screenData = new ScreenData();

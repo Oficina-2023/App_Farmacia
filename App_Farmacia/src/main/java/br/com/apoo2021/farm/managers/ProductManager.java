@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.managers;
 
-import br.com.apoo2021.farm.Farmaple;
+import br.com.apoo2021.farm.FarmApple;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Produto;
 
@@ -46,7 +46,7 @@ public class ProductManager {
                     if(nome != null && !nome.isEmpty()){
                         produto.setNome((String) nome.get(0));
                     }else{
-                        Farmaple.logger.error("Erro ao carregar o nome do produto!");
+                        FarmApple.logger.error("Erro ao carregar o nome do produto!");
                     }
                 });
 
@@ -55,7 +55,7 @@ public class ProductManager {
                     if(lab != null && !lab.isEmpty()){
                         produto.setLaboratorio((String) lab.get(0));
                     }else{
-                        Farmaple.logger.error("Erro ao carregar o laboratorio do produto!");
+                        FarmApple.logger.error("Erro ao carregar o laboratorio do produto!");
                     }
                 });
 
@@ -64,7 +64,7 @@ public class ProductManager {
                     if(price != null && !price.isEmpty()){
                         produto.setPreco((float) price.get(0));
                     }else{
-                        Farmaple.logger.error("Erro ao carregar o preço do produto!");
+                        FarmApple.logger.error("Erro ao carregar o preço do produto!");
                     }
                 });
 
@@ -73,7 +73,7 @@ public class ProductManager {
                     if(validade != null && !validade.isEmpty()){
                         produto.setValidade((Date) validade.get(0));
                     }else{
-                        Farmaple.logger.error("Erro ao carregar a validade do produto!");
+                        FarmApple.logger.error("Erro ao carregar a validade do produto!");
                     }
                 });
 
@@ -88,7 +88,7 @@ public class ProductManager {
                     productPrice.join();
                     productValidade.join();
                 } catch (InterruptedException e) {
-                    Farmaple.logger.error("Error ao aguardar a finalização dos threads de carregamento de produtos!", e);
+                    FarmApple.logger.error("Error ao aguardar a finalização dos threads de carregamento de produtos!", e);
                 }
             }
         }

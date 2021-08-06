@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.util;
 
-import br.com.apoo2021.farm.Farmaple;
+import br.com.apoo2021.farm.FarmApple;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
@@ -15,7 +15,7 @@ public class MD5Cripto {
             byte[] digest = md.digest();
             return DatatypeConverter.printHexBinary(digest).toLowerCase();
         } catch (NoSuchAlgorithmException e) {
-            Farmaple.logger.error("Erro ao converter para MD5!", e);
+            FarmApple.logger.error("Erro ao converter para MD5!", e);
         }
         return null;
     }

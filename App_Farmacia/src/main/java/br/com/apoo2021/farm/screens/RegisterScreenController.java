@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.screens;
 
-import br.com.apoo2021.farm.Farmaple;
+import br.com.apoo2021.farm.FarmApple;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import br.com.apoo2021.farm.util.MD5Cripto;
@@ -134,7 +134,7 @@ public class RegisterScreenController implements Initializable {
             stage.setScene(new Scene(root));
             ScreenAdjusts.setDraggable(root, stage);
         }catch(IOException e){
-            Farmaple.logger.error("Erro ao clicar em voltar, tela RegisterScreen",e);
+            FarmApple.logger.error("Erro ao clicar em voltar, tela RegisterScreen",e);
         }
 
     }
