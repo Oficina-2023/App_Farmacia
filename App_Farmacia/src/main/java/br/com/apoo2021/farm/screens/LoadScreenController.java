@@ -40,9 +40,13 @@ public class LoadScreenController implements Initializable {
             Thread updateCostumer = new Thread(() -> {
                 FarmApple.dataManager.getCostumerManager().updateCostumerList();
             });
+            Thread updateSells = new Thread(() -> {
+                FarmApple.dataManager.getSellManager().updateSellList();
+            });
             updateFarm.start();
             updateProduct.start();
             updateCostumer.start();
+            updateSells.start();
             try{
                 loadMessageTextField.setText("Carregando dados de usu\u00e1rio...");
                 updateFarm.join();
@@ -50,6 +54,8 @@ public class LoadScreenController implements Initializable {
                 updateProduct.join();
                 loadMessageTextField.setText("Carregando clientes...");
                 updateCostumer.join();
+                loadMessageTextField.setText("Carregando vendas...");
+                updateSells.join();
                 loaded = true;
                 loadMessageTextField.setText("Finalizando carregamento...");
             }catch(InterruptedException e){

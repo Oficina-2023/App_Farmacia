@@ -1,0 +1,1 @@
+update farmaceutico set password = ? where crf = ?

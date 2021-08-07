@@ -5,6 +5,7 @@ import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Cliente;
 import br.com.apoo2021.farm.objects.ProductCart;
 import br.com.apoo2021.farm.objects.Produto;
+import br.com.apoo2021.farm.objects.Vendas;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -19,6 +20,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.List;
 import java.util.Objects;
 
 public class FarmDialogs {
@@ -170,19 +174,23 @@ public class FarmDialogs {
         cancelButton.setOnAction(event -> dialog.close());
         addButton.setOnAction(event -> {
             try{
-                int quantity = Integer.parseInt(quantityTextField.getText());
-                boolean founded = false;
-                for(ProductCart productCart : FarmApple.dataManager.getCartManager().getSellList()){
-                    if(productCart.getProduto().getLote().equals(produto.getLote())){
-                        FarmApple.dataManager.getCartManager().editProductQuantity(produto, quantity);
-                        showDialog(pane, "Quantidade Alterada!", "O produto j\u00e1 estava no carrinho!\nA quantidade foi alterada para o valor inserido.");
-                        founded = true;
-                        break;
+                if(!quantityTextField.getText().isEmpty()) {
+                    int quantity = Integer.parseInt(quantityTextField.getText());
+                    boolean founded = false;
+                    for (ProductCart productCart : FarmApple.dataManager.getCartManager().getSellList()) {
+                        if (productCart.getProduto().getLote().equals(produto.getLote())) {
+                            FarmApple.dataManager.getCartManager().editProductQuantity(produto, quantity);
+                            showDialog(pane, "Quantidade Alterada!", "O produto j\u00e1 estava no carrinho!\nA quantidade foi alterada para o valor inserido.");
+                            founded = true;
+                            break;
+                        }
                     }
-                }
-                if(!founded){
-                    FarmApple.dataManager.getCartManager().addProductToCart(produto, quantity);
-                    showDialog(pane, "Adicionado!", "Produto adicionado com sucesso!");
+                    if (!founded) {
+                        FarmApple.dataManager.getCartManager().addProductToCart(produto, quantity);
+                        showDialog(pane, "Adicionado ao carrinho!", "Produto adicionado com sucesso!");
+                    }
+                }else{
+                    showDialog(pane, "Campos vazios!", "Existem campos obrigatorios que est\u00e3o vazios");
                 }
             }catch (NumberFormatException e){
                 showDialog(pane, "Erro", "O campos de quantidade s\u00f3 aceita n\u00fameros!");
@@ -233,17 +241,82 @@ public class FarmDialogs {
         cancelButton.setOnAction(event -> dialog.close());
         updateButton.setOnAction(event -> {
             try{
-                int quantity = Integer.parseInt(quantityTextField.getText());
-                FarmApple.dataManager.getCartManager().editProductQuantity(productCart.getProduto(), quantity);
-                listView.refresh();
-                totalPrice.setText("R$ " + String.format("%.2f", FarmApple.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
-                showDialog(pane, "Quantidade alterada!", "A quantidade foi alterada com sucesso!");
+                if(!quantityTextField.getText().isEmpty()) {
+                    int quantity = Integer.parseInt(quantityTextField.getText());
+                    FarmApple.dataManager.getCartManager().editProductQuantity(productCart.getProduto(), quantity);
+                    listView.refresh();
+                    totalPrice.setText("R$ " + String.format("%.2f", FarmApple.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
+                    showDialog(pane, "Quantidade alterada!", "A quantidade foi alterada com sucesso!");
+                }else{
+                    showDialog(pane, "Campos vazios!", "Existem campos obrigatorios que est\u00e3o vazios");
+                }
             }catch (NumberFormatException e){
                 showDialog(pane, "Erro", "O campos de quantidade s\u00f3 aceita n\u00fameros!");
             }
             dialog.close();
         });
         content.setActions(quantityTextField, updateButton, cancelButton);
+        dialog.show();
+    }
+
+    public static void showFinishSellDialog(StackPane pane, ListView<ProductCart> listView, Text totalPrice){
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Edi\u00e7\u00e3o de Quantidade"));
+        content.setBody(new Text("Digite a quantidade desejada."));
+        JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM );
+        JFXTextField cpfTextField = new JFXTextField();
+        JFXTextField nfTextField = new JFXTextField();
+        JFXButton cancelButton = new JFXButton("Cancelar");
+        JFXButton updateButton = new JFXButton("Finalizar venda");
+        cpfTextField.setPromptText("Cpf do Cliente");
+        nfTextField.setPromptText("Nota Fiscal");
+        cancelButton.setOnAction(event -> dialog.close());
+        updateButton.setOnAction(event -> {
+            try{
+                if(!cpfTextField.getText().isEmpty() && !nfTextField.getText().isEmpty()){
+                    boolean founded = false;
+                    for(Cliente cliente : FarmApple.dataManager.getCostumerManager().getClienteList()){
+                        if(cliente.getCpf().equals(cpfTextField.getText())){
+                            int notaFiscal = Integer.parseInt(nfTextField.getText());
+                            List<Object> nfList = SQLRunner.ExecuteSQLScript.SQLSelect("VerifyNF", notaFiscal);
+                            if(nfList == null || nfList.isEmpty()) {
+                                Vendas venda = new Vendas();
+                                venda.setNf(notaFiscal);
+                                venda.setData(Timestamp.from(Instant.now()));
+                                venda.setCrf(FarmApple.dataManager.getFarmManager().getFarmaceutico().getCrf());
+                                venda.setCpf(cliente.getCpf());
+                                SQLRunner.ExecuteSQLScript.SQLSet("FinishSell", notaFiscal, FarmApple.dataManager.getFarmManager().getFarmaceutico().getCrf(), cliente.getCpf());
+                                FarmApple.dataManager.getSellManager().addVenda(venda);
+
+                                for (ProductCart productCart : FarmApple.dataManager.getCartManager().getSellList()) {
+                                    SQLRunner.ExecuteSQLScript.SQLSet("RegisterProductSell", productCart.getProduto().getLote(), productCart.getQuantity(), notaFiscal);
+                                }
+
+                                FarmApple.dataManager.getCartManager().clearSellList();
+                                showDialog(pane, "Venda finalizada!", "A venda foi finalizada com sucesso!");
+                            }else{
+                                showDialog(pane, "Erro", "Nota fiscal j\u00e1 registrada!");
+                            }
+                            founded = true;
+
+                            break;
+                        }
+                    }
+                    if(!founded){
+                        showDialog(pane, "Cliente n\u00e3o encontrado!", "O CPF informado n\u00e3o foi encontrado na lista de clientes!\nRealize o cadastro e finalize tente novamente.");
+                    }
+
+                    listView.refresh();
+                    totalPrice.setText("R$ " + String.format("%.2f", FarmApple.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
+                }else{
+                    showDialog(pane, "Campos vazios!", "Existem campos obrigatorios que est\u00e3o vazios");
+                }
+            }catch (NumberFormatException e){
+                showDialog(pane, "Erro", "O campos de quantidade e nota fiscal s\u00f3 aceita n\u00fameros!");
+            }
+            dialog.close();
+        });
+        content.setActions(nfTextField,cpfTextField, updateButton, cancelButton);
         dialog.show();
     }
 }

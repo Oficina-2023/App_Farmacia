@@ -36,7 +36,7 @@ public class CustomerListScreenController implements Initializable {
 
         public ClientCell() {
             super();
-            box.getChildren().addAll(nome, cpf, pane, delButton, editButton);
+            box.getChildren().addAll(nome, cpf, pane,  editButton, delButton);
             HBox.setHgrow(pane, Priority.ALWAYS);
             delButton.setOnAction(event -> {
                 FarmDialogs.showDeleteCustomerConfirmDialog(FarmApple.dataManager.getMainPane(), getListView(), getItem());

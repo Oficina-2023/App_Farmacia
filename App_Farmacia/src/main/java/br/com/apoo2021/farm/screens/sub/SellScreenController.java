@@ -6,6 +6,7 @@ import br.com.apoo2021.farm.util.FarmDialogs;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -80,6 +81,8 @@ public class SellScreenController implements Initializable {
                 setPrefHeight(80);
             }
         }
+
+
     }
 
     @FXML
@@ -103,11 +106,12 @@ public class SellScreenController implements Initializable {
         FarmApple.dataManager.setEditableCustomer(null);
         updateList();
         totalPriceText.setText("R$ " + String.format("%.2f", FarmApple.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
+        finishSellButton.disableProperty().bind(Bindings.isEmpty(productList.getItems()));
     }
 
     @FXML
     void FinishSellPressed(ActionEvent event) {
-
+        FarmDialogs.showFinishSellDialog(FarmApple.dataManager.getMainPane(), productList, totalPriceText);
     }
 
     @FXML

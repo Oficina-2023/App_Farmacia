@@ -1,0 +1,1 @@
+select fk_crf from vendas where nf = ?

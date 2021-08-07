@@ -1,0 +1,1 @@
+select data from vendas where nf = ?

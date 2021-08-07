@@ -41,7 +41,7 @@ public class ProductListScreenController implements Initializable {
 
         public ProductCell(){
             super();
-            box.getChildren().addAll(nome, price, laboratorio, validade, pane, delButton,editButton, addCartButton);
+            box.getChildren().addAll(nome, price, laboratorio, validade, pane,  addCartButton, editButton, delButton);
             HBox.setHgrow(pane, Priority.ALWAYS);
             delButton.setOnAction(event -> {
                 FarmDialogs.showDeleteProductConfirmDialog(FarmApple.dataManager.getMainPane(), getListView(), getItem());

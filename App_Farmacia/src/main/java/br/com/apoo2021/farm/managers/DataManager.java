@@ -10,6 +10,7 @@ public class DataManager {
     private final ProductManager productManager = new ProductManager();
     private final CustomerManager customerManager = new CustomerManager();
     private final CartManager cartManager = new CartManager();
+    private final SellManager sellManager = new SellManager();
 
     private StackPane mainPane;
     private Produto editableProduct;
@@ -29,6 +30,10 @@ public class DataManager {
 
     public CartManager getCartManager() {
         return cartManager;
+    }
+
+    public SellManager getSellManager() {
+        return sellManager;
     }
 
     public StackPane getMainPane() {

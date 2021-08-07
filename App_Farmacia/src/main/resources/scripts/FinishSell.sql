@@ -1,0 +1,1 @@
+INSERT INTO vendas (nf,fk_crf, fk_cpf) VALUES (?,?,?)
