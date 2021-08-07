@@ -20,6 +20,15 @@ public class ProductManager {
         produtosList.removeIf(produto -> produto.getLote().equals(lote));
     }
 
+    public Produto getProdutoByLote(String lote){
+        for(Produto produto : produtosList){
+            if(produto.getLote().equals(lote)){
+                return produto;
+            }
+        }
+        return null;
+    }
+
     public void updateProductList(){
         if(produtosList.isEmpty()){
             generateProducts();

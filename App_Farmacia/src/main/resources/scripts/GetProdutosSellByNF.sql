@@ -1,0 +1,1 @@
+select fk_produto_lote from produto_vendas where fk_nf = ?

@@ -104,6 +104,7 @@ public class SellScreenController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         FarmApple.dataManager.setEditableProduct(null);
         FarmApple.dataManager.setEditableCustomer(null);
+        FarmApple.dataManager.setViewVenda(null);
         updateList();
         totalPriceText.setText("R$ " + String.format("%.2f", FarmApple.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
         finishSellButton.disableProperty().bind(Bindings.isEmpty(productList.getItems()));

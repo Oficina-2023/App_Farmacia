@@ -90,6 +90,7 @@ public class CustomerListScreenController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         FarmApple.dataManager.setEditableProduct(null);
         FarmApple.dataManager.setEditableCustomer(null);
+        FarmApple.dataManager.setViewVenda(null);
         updateList();
     }
 

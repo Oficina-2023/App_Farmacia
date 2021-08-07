@@ -1,0 +1,1 @@
+select quantidade from produto_vendas where fk_nf = ? and fk_produto_lote = ?
