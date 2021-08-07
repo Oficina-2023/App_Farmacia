@@ -3,10 +3,12 @@ package br.com.apoo2021.farm.util;
 import br.com.apoo2021.farm.FarmApple;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Cliente;
+import br.com.apoo2021.farm.objects.ProductCart;
 import br.com.apoo2021.farm.objects.Produto;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -135,7 +137,7 @@ public class FarmDialogs {
             clienteCpf = clienteCpf.substring(0,20) + "...";
         }
         Text head = new Text("Confirma\u00e7\u00e3o de exclus\u00e3o");
-        Text body = new Text("Deseja realmente deletar o Cliente de CPF : "+ clienteCpf +"?");
+        Text body = new Text("Deseja realmente deletar o Cliente de CPF "+ clienteCpf +"?");
         content.setHeading(head);
         content.setBody(body);
         JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM);
@@ -156,5 +158,92 @@ public class FarmDialogs {
         dialog.show();
     }
 
+    public static void showCartAddDialog(StackPane pane, Produto produto){
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Adi\u00e7\u00e3o de Produtos"));
+        content.setBody(new Text("Digite a quantidade de produtos a adicionar no carrinho."));
+        JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM );
+        JFXTextField quantityTextField = new JFXTextField();
+        JFXButton cancelButton = new JFXButton("Cancelar");
+        JFXButton addButton = new JFXButton("Adicionar");
+        quantityTextField.setPromptText("Quantidade de produtos");
+        cancelButton.setOnAction(event -> dialog.close());
+        addButton.setOnAction(event -> {
+            try{
+                int quantity = Integer.parseInt(quantityTextField.getText());
+                boolean founded = false;
+                for(ProductCart productCart : FarmApple.dataManager.getCartManager().getSellList()){
+                    if(productCart.getProduto().getLote().equals(produto.getLote())){
+                        FarmApple.dataManager.getCartManager().editProductQuantity(produto, quantity);
+                        showDialog(pane, "Quantidade Alterada!", "O produto j\u00e1 estava no carrinho!\nA quantidade foi alterada para o valor inserido.");
+                        founded = true;
+                        break;
+                    }
+                }
+                if(!founded){
+                    FarmApple.dataManager.getCartManager().addProductToCart(produto, quantity);
+                    showDialog(pane, "Adicionado!", "Produto adicionado com sucesso!");
+                }
+            }catch (NumberFormatException e){
+                showDialog(pane, "Erro", "O campos de quantidade s\u00f3 aceita n\u00fameros!");
+            }
+            dialog.close();
+        });
+        content.setActions(quantityTextField, addButton, cancelButton);
+        dialog.show();
+    }
 
+    public static void showCartRemoveDialog(StackPane pane, ListView<ProductCart> listView, ProductCart productCart, Text totalPrice){
+        JFXDialogLayout content = new JFXDialogLayout();
+        String produtoNome = productCart.getProduto().getNome();
+        if(produtoNome.length() > 20){
+            produtoNome = produtoNome.substring(0,20) + "...";
+        }
+        Text head = new Text("Confirma\u00e7\u00e3o de exclus\u00e3o");
+        Text body = new Text("Deseja realmente deletar o produto de nome "+ produtoNome +"?");
+        content.setHeading(head);
+        content.setBody(body);
+        JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM);
+        JFXButton noButton = new JFXButton("N\u00e3o");
+        JFXButton yesButton = new JFXButton("Sim");
+        noButton.setOnAction(event -> dialog.close());
+        yesButton.setOnAction(event -> {
+            try{
+                listView.getItems().remove(productCart);
+                FarmApple.dataManager.getCartManager().removeProductOfCart(productCart.getProduto());
+                totalPrice.setText("R$ " + String.format("%.2f", FarmApple.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
+            }catch (Exception e){
+                FarmApple.logger.error("Error ao remover o produto do carrinho!", e);
+            }
+            dialog.close();
+        });
+        content.setActions(yesButton, noButton);
+        dialog.show();
+    }
+
+    public static void showCartEditDialog(StackPane pane, ListView<ProductCart> listView,ProductCart productCart, Text totalPrice){
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Edi\u00e7\u00e3o de Quantidade"));
+        content.setBody(new Text("Digite a quantidade desejada."));
+        JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM );
+        JFXTextField quantityTextField = new JFXTextField();
+        JFXButton cancelButton = new JFXButton("Cancelar");
+        JFXButton updateButton = new JFXButton("Atualizar");
+        quantityTextField.setPromptText("Quantidade de produtos");
+        cancelButton.setOnAction(event -> dialog.close());
+        updateButton.setOnAction(event -> {
+            try{
+                int quantity = Integer.parseInt(quantityTextField.getText());
+                FarmApple.dataManager.getCartManager().editProductQuantity(productCart.getProduto(), quantity);
+                listView.refresh();
+                totalPrice.setText("R$ " + String.format("%.2f", FarmApple.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
+                showDialog(pane, "Quantidade alterada!", "A quantidade foi alterada com sucesso!");
+            }catch (NumberFormatException e){
+                showDialog(pane, "Erro", "O campos de quantidade s\u00f3 aceita n\u00fameros!");
+            }
+            dialog.close();
+        });
+        content.setActions(quantityTextField, updateButton, cancelButton);
+        dialog.show();
+    }
 }

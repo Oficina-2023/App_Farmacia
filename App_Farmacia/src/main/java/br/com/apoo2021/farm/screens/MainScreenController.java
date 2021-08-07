@@ -76,6 +76,11 @@ public class MainScreenController implements Initializable {
         openSubScreen("SellListScreen");
     }
 
+    @FXML
+    void cartPressed(ActionEvent event) {
+        openSubScreen("SellScreen");
+    }
+
 
     @FXML
     void closePressed(ActionEvent event) {

@@ -17,6 +17,8 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -24,7 +26,7 @@ import javafx.scene.layout.Priority;
 
 public class CustomerListScreenController implements Initializable {
 
-    static class ClientCell extends ListCell<Cliente> {
+    private static class ClientCell extends ListCell<Cliente> {
         HBox box = new HBox();
         Label nome = new Label();
         Label cpf = new Label();
@@ -99,6 +101,11 @@ public class CustomerListScreenController implements Initializable {
         }catch (IOException e){
             FarmApple.logger.error("Erro ao abrir a janela CustomerAddScreen!", e);
         }
+    }
+
+    @FXML
+    void searchChanged(KeyEvent event) {
+        updateList();
     }
 
     public void updateList(){

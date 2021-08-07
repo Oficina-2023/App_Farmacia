@@ -6,7 +6,7 @@ import br.com.apoo2021.farm.objects.Produto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SellManager {
+public class CartManager {
 
     private final List<ProductCart> sellList = new ArrayList<>();
 
@@ -26,18 +26,14 @@ public class SellManager {
         for(ProductCart productCart : sellList){
             if(productCart.getProduto().getLote().equals(produto.getLote())){
                 productCart.setQuantity(quantity);
-                updateProductPrice();
             }
         }
+        updateProductPrice();
     }
 
     public void removeProductOfCart(Produto produto){
-        for(ProductCart productCart : sellList){
-            if(productCart.getProduto().getLote().equals(produto.getLote())){
-                sellList.remove(productCart);
-                updateProductPrice();
-            }
-        }
+        sellList.removeIf(productCart -> productCart.getProduto().getLote().equals(produto.getLote()));
+        updateProductPrice();
     }
 
     private void updateProductPrice(){

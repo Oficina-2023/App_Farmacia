@@ -24,7 +24,7 @@
                      </font>
                   </Text>
                   <JFXTextField fx:id="usernameTextField" layoutX="119.0" layoutY="168.0" />
-                  <JFXPasswordField fx:id="passwordTextField" layoutX="119.0" layoutY="227.0" />
+                  <JFXPasswordField fx:id="passwordTextField" layoutX="119.0" layoutY="227.0" onAction="#onEnter" />
                   <JFXButton fx:id="loginButton" layoutX="118.0" layoutY="335.0" onAction="#loginPressed" prefHeight="25.0" prefWidth="63.0" text="Entrar" />
                   <JFXButton fx:id="signUpButton" layoutX="189.0" layoutY="335.0" onAction="#signUpPressed" text="Registrar" />
                   <JFXButton fx:id="closeButton" layoutX="345.0" layoutY="2.0" onAction="#closePressed" opacity="0.6" prefHeight="41.0" prefWidth="41.0" ripplerFill="BLACK" text="X">

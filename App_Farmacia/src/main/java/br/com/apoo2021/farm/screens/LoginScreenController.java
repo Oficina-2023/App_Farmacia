@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -100,6 +101,11 @@ public class LoginScreenController implements Initializable {
         }catch(IOException e){
             FarmApple.logger.error("Erro ao clicar em registrar usuário, tela LoginScreen",e);
         }
+    }
+
+    @FXML
+    void onEnter(ActionEvent event) {
+        loginPressed(event);
     }
 
     private void setLockedData(boolean isProcessing){

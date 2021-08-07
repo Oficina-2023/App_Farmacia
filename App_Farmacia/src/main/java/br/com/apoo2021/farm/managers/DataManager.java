@@ -9,7 +9,7 @@ public class DataManager {
     private final FarmManager farmManager = new FarmManager();
     private final ProductManager productManager = new ProductManager();
     private final CustomerManager customerManager = new CustomerManager();
-    private final SellManager sellManager = new SellManager();
+    private final CartManager cartManager = new CartManager();
 
     private StackPane mainPane;
     private Produto editableProduct;
@@ -27,8 +27,8 @@ public class DataManager {
         return customerManager;
     }
 
-    public SellManager getSellManager() {
-        return sellManager;
+    public CartManager getCartManager() {
+        return cartManager;
     }
 
     public StackPane getMainPane() {

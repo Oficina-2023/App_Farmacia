@@ -13,6 +13,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -26,7 +28,7 @@ import java.util.ResourceBundle;
 
 public class ProductListScreenController implements Initializable {
 
-    static class ProductCell extends ListCell<Produto>{
+    private static class ProductCell extends ListCell<Produto>{
         HBox box = new HBox();
         Label nome = new Label();
         Label price = new Label();
@@ -57,7 +59,7 @@ public class ProductListScreenController implements Initializable {
             });
 
             addCartButton.setOnAction(event -> {
-
+                FarmDialogs.showCartAddDialog(FarmApple.dataManager.getMainPane(), getItem());
             });
         }
 
@@ -110,6 +112,10 @@ public class ProductListScreenController implements Initializable {
         }
     }
 
+    @FXML
+    void searchChanged(KeyEvent event) {
+        updateList();
+    }
 
     private void updateList(){
         if(searchTextField.getText().isEmpty()){
