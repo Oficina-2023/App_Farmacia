@@ -18,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.text.Font;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,6 +42,8 @@ public class ProductListScreenController implements Initializable {
 
         public ProductCell(){
             super();
+            setColors();
+            setSizes();
             box.getChildren().addAll(nome, price, laboratorio, validade, pane,  addCartButton, editButton, delButton);
             HBox.setHgrow(pane, Priority.ALWAYS);
             delButton.setOnAction(event -> {
@@ -70,18 +73,61 @@ public class ProductListScreenController implements Initializable {
             setGraphic(null);
 
             if(item != null && !empty){
-                if(item.getNome().length() > 50){
-                    nome.setText(item.getNome().substring(0,50)+"...");
+                if(item.getNome().length() > 15){
+                    nome.setText(item.getNome().substring(0,15)+"...");
                 }else{
                     nome.setText(item.getNome());
                 }
+
                 price.setText("R$ " + item.getPreco());
-                laboratorio.setText(item.getLaboratorio());
+
+                if(item.getLaboratorio().length() > 15){
+                    laboratorio.setText(item.getLaboratorio().substring(0,15)+"...");
+                }else{
+                    laboratorio.setText(item.getLaboratorio());
+                }
                 validade.setText(item.getValidade().toString());
 
                 setGraphic(box);
                 setPrefHeight(80);
             }
+        }
+
+        private void setColors(){
+            nome.setStyle("-fx-text-fill: white");
+            validade.setStyle("-fx-text-fill: white");
+            price.setStyle("-fx-text-fill: white");
+            laboratorio.setStyle("-fx-text-fill: white");
+            delButton.setStyle("-fx-text-fill: white;-fx-background-color: #069e5c;-fx-background-radius: 100");
+            editButton.setStyle("-fx-text-fill: white;-fx-background-color: #069e5c;-fx-background-radius: 100");
+            addCartButton.setStyle("-fx-text-fill: white;-fx-background-color: #069e5c;-fx-background-radius: 100");
+        }
+
+        private void setSizes(){
+            delButton.setMinWidth(120);
+            delButton.setMinHeight(50);
+            delButton.setTranslateX(5);
+            delButton.setFont(new Font(16));
+            editButton.setMinWidth(120);
+            editButton.setMinHeight(50);
+            editButton.setTranslateX(0);
+            editButton.setFont(new Font(16));
+            addCartButton.setMinWidth(120);
+            addCartButton.setMinHeight(50);
+            addCartButton.setTranslateX(-5);
+            addCartButton.setFont(new Font(16));
+            nome.setPrefHeight(50);
+            nome.setFont(new Font(16));
+            nome.setTranslateX(0);
+            validade.setPrefHeight(50);
+            validade.setFont(new Font(16));
+            validade.setTranslateX(30);
+            price.setPrefHeight(50);
+            price.setFont(new Font(16));
+            price.setTranslateX(10);
+            laboratorio.setPrefHeight(50);
+            laboratorio.setFont(new Font(16));
+            laboratorio.setTranslateX(20);
         }
     }
 

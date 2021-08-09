@@ -18,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.text.Font;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -35,6 +36,8 @@ public class ProductSellListScreenController implements Initializable {
 
         public ProductSellCell() {
             super();
+            setColors();
+            setSizes();
             box.getChildren().addAll(lote,nome,quantity,pane);
             HBox.setHgrow(pane, Priority.ALWAYS);
         }
@@ -63,6 +66,24 @@ public class ProductSellListScreenController implements Initializable {
                 setGraphic(box);
                 setPrefHeight(80);
             }
+        }
+
+        private void setColors(){
+            nome.setStyle("-fx-text-fill: white");
+            lote.setStyle("-fx-text-fill: white");
+            quantity.setStyle("-fx-text-fill: white");
+        }
+
+        private void setSizes(){
+            nome.setPrefHeight(50);
+            nome.setFont(new Font(16));
+            nome.setTranslateX(50);
+            lote.setPrefHeight(50);
+            lote.setFont(new Font(16));
+            lote.setTranslateX(0);
+            quantity.setPrefHeight(50);
+            quantity.setFont(new Font(16));
+            quantity.setTranslateX(100);
         }
     }
 

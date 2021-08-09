@@ -18,7 +18,27 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXButton>
-      <JFXListView fx:id="productList" layoutX="7.0" layoutY="188.0" prefHeight="527.0" prefWidth="986.0" style="-fx-background-color: transparent;" stylesheets="@../../css/ListView.css" />
+      <JFXListView fx:id="productList" layoutX="7.0" layoutY="212.0" prefHeight="503.0" prefWidth="986.0" style="-fx-background-color: transparent;" stylesheets="@../../css/ListView.css" />
       <JFXTextField fx:id="searchTextField" alignment="CENTER" focusColor="#069e5c" layoutX="708.0" layoutY="105.0" onKeyTyped="#searchChanged" prefHeight="40.0" prefWidth="278.0" promptText="Buscar Produto" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
+      <Text fill="WHITE" layoutX="31.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="105.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="172.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Laboratório">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="288.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Validade">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

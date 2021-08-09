@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -29,13 +30,20 @@ public class FarmDialogs {
 
     public static void showSoftwareCloseDialog(StackPane pane, Node... nodes){
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("Confirma\u00e7\u00e3o de Sa\u00edda"));
-        content.setBody(new Text("Deseja realmente sair?"));
+        Text head = new Text("Confirma\u00e7\u00e3o de Sa\u00edda");
+        Text body = new Text("Deseja realmente sair?");
+        head.setFill(Color.color(1,1,1));
+        body.setFill(Color.color(1,1,1));
+        content.setHeading(head);
+        content.setBody(body);
         JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM );
         JFXButton noButton = new JFXButton("N\u00e3o");
         JFXButton yesButton = new JFXButton("Sim");
         noButton.setOnAction(event -> dialog.close());
         yesButton.setOnAction(event -> System.exit(0));
+        content.setStyle("-fx-background-color: #2f3136;");
+        noButton.setStyle("-fx-text-fill: white;");
+        yesButton.setStyle("-fx-text-fill: white;");
         content.setActions(yesButton, noButton);
         dialog.show();
 
@@ -46,19 +54,29 @@ public class FarmDialogs {
 
     public static void showDialog(StackPane pane,String title, String message){
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text(title));
-        content.setBody(new Text(message));
+        Text head = new Text(title);
+        Text body = new Text(message);
+        head.setFill(Color.color(1,1,1));
+        body.setFill(Color.color(1,1,1));
+        content.setHeading(head);
+        content.setBody(body);
         JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM );
         JFXButton closeButton = new JFXButton("Fechar");
         closeButton.setOnAction(event -> dialog.close());
+        content.setStyle("-fx-background-color: #2f3136;");
+        closeButton.setStyle("-fx-text-fill: white;");
         content.setActions(closeButton);
         dialog.show();
     }
 
     public static void showSoftwareLogoutDialog(StackPane pane, JFXButton closeButton, Node... nodes){
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("Confirma\u00e7\u00e3o de Sa\u00edda"));
-        content.setBody(new Text("Deseja realmente realizar logout?"));
+        Text head = new Text("Confirma\u00e7\u00e3o de Sa\u00edda");
+        Text body = new Text("Deseja realmente realizar logout?");
+        head.setFill(Color.color(1,1,1));
+        body.setFill(Color.color(1,1,1));
+        content.setHeading(head);
+        content.setBody(body);
         JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM );
         JFXButton noButton = new JFXButton("N\u00e3o");
         JFXButton yesButton = new JFXButton("Sim");
@@ -75,6 +93,9 @@ public class FarmDialogs {
                 FarmApple.logger.error("Error ao tentar retornar a tela de login!",e);
             }
         });
+        content.setStyle("-fx-background-color: #2f3136;");
+        noButton.setStyle("-fx-text-fill: white;");
+        yesButton.setStyle("-fx-text-fill: white;");
         content.setActions(yesButton, noButton);
         dialog.show();
 
@@ -85,8 +106,12 @@ public class FarmDialogs {
 
     public static void showLoginError(StackPane pane, Node node){
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("Error"));
-        content.setBody(new Text("Error ao carregar os dados.\nTente novamente mais tarde!"));
+        Text head = new Text("Error");
+        Text body = new Text("Error ao carregar os dados.\nTente novamente mais tarde!");
+        head.setFill(Color.color(1,1,1));
+        body.setFill(Color.color(1,1,1));
+        content.setHeading(head);
+        content.setBody(body);
         JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM );
         JFXButton closeButton = new JFXButton("Fechar");
         closeButton.setOnAction(event -> {
@@ -102,6 +127,8 @@ public class FarmDialogs {
                 FarmApple.logger.error("Error ao tentar abrir a tela de login após um error de carregamento!",e);
             }
         });
+        content.setStyle("-fx-background-color: #2f3136;");
+        closeButton.setStyle("-fx-text-fill: white;");
         content.setActions(closeButton);
         dialog.show();
     }
@@ -114,6 +141,8 @@ public class FarmDialogs {
         }
         Text head = new Text("Confirma\u00e7\u00e3o de exclus\u00e3o");
         Text body = new Text("Deseja realmente deletar o produto "+ produtoName +"?");
+        head.setFill(Color.color(1,1,1));
+        body.setFill(Color.color(1,1,1));
         content.setHeading(head);
         content.setBody(body);
         JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM);
@@ -130,6 +159,9 @@ public class FarmDialogs {
             }
             dialog.close();
         });
+        content.setStyle("-fx-background-color: #2f3136;");
+        noButton.setStyle("-fx-text-fill: white;");
+        yesButton.setStyle("-fx-text-fill: white;");
         content.setActions(yesButton, noButton);
         dialog.show();
     }
@@ -142,6 +174,8 @@ public class FarmDialogs {
         }
         Text head = new Text("Confirma\u00e7\u00e3o de exclus\u00e3o");
         Text body = new Text("Deseja realmente deletar o Cliente de CPF "+ clienteCpf +"?");
+        head.setFill(Color.color(1,1,1));
+        body.setFill(Color.color(1,1,1));
         content.setHeading(head);
         content.setBody(body);
         JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM);
@@ -158,14 +192,21 @@ public class FarmDialogs {
             }
             dialog.close();
         });
+        content.setStyle("-fx-background-color: #2f3136;");
+        noButton.setStyle("-fx-text-fill: white;");
+        yesButton.setStyle("-fx-text-fill: white;");
         content.setActions(yesButton, noButton);
         dialog.show();
     }
 
     public static void showCartAddDialog(StackPane pane, Produto produto){
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("Adi\u00e7\u00e3o de Produtos"));
-        content.setBody(new Text("Digite a quantidade de produtos a adicionar no carrinho."));
+        Text head = new Text("Adi\u00e7\u00e3o de Produtos");
+        Text body = new Text("Digite a quantidade de produtos a adicionar no carrinho.");
+        head.setFill(Color.color(1,1,1));
+        body.setFill(Color.color(1,1,1));
+        content.setHeading(head);
+        content.setBody(body);
         JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM );
         JFXTextField quantityTextField = new JFXTextField();
         JFXButton cancelButton = new JFXButton("Cancelar");
@@ -197,6 +238,10 @@ public class FarmDialogs {
             }
             dialog.close();
         });
+        content.setStyle("-fx-background-color: #2f3136;");
+        addButton.setStyle("-fx-text-fill: white;");
+        cancelButton.setStyle("-fx-text-fill: white;");
+        quantityTextField.setStyle("-fx-text-fill: white;-fx-prompt-text-fill: white;-fx-background-color: transparent");
         content.setActions(quantityTextField, addButton, cancelButton);
         dialog.show();
     }
@@ -209,6 +254,8 @@ public class FarmDialogs {
         }
         Text head = new Text("Confirma\u00e7\u00e3o de exclus\u00e3o");
         Text body = new Text("Deseja realmente deletar o produto de nome "+ produtoNome +"?");
+        head.setFill(Color.color(1,1,1));
+        body.setFill(Color.color(1,1,1));
         content.setHeading(head);
         content.setBody(body);
         JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM);
@@ -225,14 +272,21 @@ public class FarmDialogs {
             }
             dialog.close();
         });
+        content.setStyle("-fx-background-color: #2f3136;");
+        noButton.setStyle("-fx-text-fill: white;");
+        yesButton.setStyle("-fx-text-fill: white;");
         content.setActions(yesButton, noButton);
         dialog.show();
     }
 
     public static void showCartEditDialog(StackPane pane, ListView<ProductCart> listView,ProductCart productCart, Text totalPrice){
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("Edi\u00e7\u00e3o de Quantidade"));
-        content.setBody(new Text("Digite a quantidade desejada."));
+        Text head = new Text("Edi\u00e7\u00e3o de Quantidade");
+        Text body = new Text("Digite a quantidade desejada.");
+        head.setFill(Color.color(1,1,1));
+        body.setFill(Color.color(1,1,1));
+        content.setHeading(head);
+        content.setBody(body);
         JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM );
         JFXTextField quantityTextField = new JFXTextField();
         JFXButton cancelButton = new JFXButton("Cancelar");
@@ -255,14 +309,22 @@ public class FarmDialogs {
             }
             dialog.close();
         });
+        content.setStyle("-fx-background-color: #2f3136;");
+        cancelButton.setStyle("-fx-text-fill: white;");
+        updateButton.setStyle("-fx-text-fill: white;");
+        quantityTextField.setStyle("-fx-text-fill: white;-fx-prompt-text-fill: white;-fx-background-color: transparent");
         content.setActions(quantityTextField, updateButton, cancelButton);
         dialog.show();
     }
 
     public static void showFinishSellDialog(StackPane pane, ListView<ProductCart> listView, Text totalPrice){
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("Edi\u00e7\u00e3o de Quantidade"));
-        content.setBody(new Text("Digite a quantidade desejada."));
+        Text head = new Text("Edi\u00e7\u00e3o de Quantidade");
+        Text body = new Text("Digite a quantidade desejada.");
+        head.setFill(Color.color(1,1,1));
+        body.setFill(Color.color(1,1,1));
+        content.setHeading(head);
+        content.setBody(body);
         JFXDialog dialog = new JFXDialog(pane, content, JFXDialog.DialogTransition.BOTTOM );
         JFXTextField cpfTextField = new JFXTextField();
         JFXTextField nfTextField = new JFXTextField();
@@ -316,6 +378,11 @@ public class FarmDialogs {
             }
             dialog.close();
         });
+        content.setStyle("-fx-background-color: #2f3136;");
+        cancelButton.setStyle("-fx-text-fill: white;");
+        updateButton.setStyle("-fx-text-fill: white;");
+        nfTextField.setStyle("-fx-text-fill: white;-fx-prompt-text-fill: white;-fx-background-color: transparent");
+        cpfTextField.setStyle("-fx-text-fill: white;-fx-prompt-text-fill: white;-fx-background-color: transparent");
         content.setActions(nfTextField,cpfTextField, updateButton, cancelButton);
         dialog.show();
     }

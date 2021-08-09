@@ -13,7 +13,27 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <JFXListView fx:id="vendasListView" layoutX="7.0" layoutY="174.0" prefHeight="538.0" prefWidth="986.0" style="-fx-background-color: transparent;" stylesheets="@../../css/ListView.css" />
+      <JFXListView fx:id="vendasListView" layoutX="7.0" layoutY="189.0" prefHeight="523.0" prefWidth="986.0" style="-fx-background-color: transparent;" stylesheets="@../../css/ListView.css" />
       <JFXTextField fx:id="nfeTextField" alignment="CENTER" focusColor="#069e5c" layoutX="718.0" layoutY="106.0" onKeyTyped="#searchChanged" prefHeight="40.0" prefWidth="278.0" promptText="NFE" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
+      <Text fill="WHITE" layoutX="22.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="87.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF (Cliente)">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="211.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CRF (Vendedor)">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="357.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota Fiscal">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

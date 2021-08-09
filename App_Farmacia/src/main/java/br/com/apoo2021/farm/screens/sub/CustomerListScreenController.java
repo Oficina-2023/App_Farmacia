@@ -22,6 +22,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.text.Font;
 
 
 public class CustomerListScreenController implements Initializable {
@@ -36,6 +37,8 @@ public class CustomerListScreenController implements Initializable {
 
         public ClientCell() {
             super();
+            setColors();
+            setSizes();
             box.getChildren().addAll(nome, cpf, pane,  editButton, delButton);
             HBox.setHgrow(pane, Priority.ALWAYS);
             delButton.setOnAction(event -> {
@@ -62,15 +65,38 @@ public class CustomerListScreenController implements Initializable {
             setText(null);
             setGraphic(null);
             if (item != null && !empty) {
-                if (item.getNome().length() > 50) {
-                    nome.setText(item.getNome().substring(0, 50) + "...");
+                if (item.getNome().length() > 25) {
+                    nome.setText(item.getNome().substring(0, 25) + "...");
                 } else {
                     nome.setText(item.getNome());
                 }
-                cpf.setText(item.getCpf());
+                cpf.setText(item.getCpf().replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d+)", "$1.$2.$3-$4"));
                 setGraphic(box);
                 setPrefHeight(80);
             }
+        }
+
+        private void setColors(){
+            nome.setStyle("-fx-text-fill: white");
+            cpf.setStyle("-fx-text-fill: white");
+            delButton.setStyle("-fx-text-fill: white;-fx-background-color: #069e5c;-fx-background-radius: 100");
+            editButton.setStyle("-fx-text-fill: white;-fx-background-color: #069e5c;-fx-background-radius: 100");
+        }
+
+        private void setSizes(){
+            delButton.setMinWidth(120);
+            delButton.setMinHeight(50);
+            delButton.setTranslateX(5);
+            editButton.setMinWidth(120);
+            editButton.setMinHeight(50);
+            editButton.setFont(new Font(16));
+            delButton.setFont(new Font(16));
+            nome.setPrefHeight(50);
+            nome.setFont(new Font(16));
+            nome.setTranslateX(10);
+            cpf.setPrefHeight(50);
+            cpf.setFont(new Font(16));
+            cpf.setTranslateX(50);
         }
     }
 

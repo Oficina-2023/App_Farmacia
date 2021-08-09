@@ -18,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.text.Font;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,6 +37,8 @@ public class SellListScreenController implements Initializable {
 
         public VendaCell() {
             super();
+            setColors();
+            setSizes();
             box.getChildren().addAll(data,crf,cpf,nf,pane,showAllButton);
             HBox.setHgrow(pane,Priority.ALWAYS);
             showAllButton.setOnAction(event -> {
@@ -57,13 +60,39 @@ public class SellListScreenController implements Initializable {
 
             if(item != null && !empty){
                 data.setText(item.getData().toString());
-                crf.setText(item.getCrf());
-                cpf.setText(item.getCpf());
+                crf.setText(item.getCrf().replaceFirst("(\\d{4})(\\d+)", "$1-$2"));
+                cpf.setText(item.getCpf().replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d+)", "$1.$2.$3-$4"));
                 nf.setText(String.valueOf(item.getNf()));
 
                 setGraphic(box);
                 setPrefHeight(80);
             }
+        }
+
+        private void setColors(){
+            nf.setStyle("-fx-text-fill: white");
+            data.setStyle("-fx-text-fill: white");
+            crf.setStyle("-fx-text-fill: white");
+            cpf.setStyle("-fx-text-fill: white");
+            showAllButton.setStyle("-fx-text-fill: white;-fx-background-color: #069e5c;-fx-background-radius: 100");
+        }
+
+        private void setSizes(){
+            showAllButton.setMinWidth(120);
+            showAllButton.setMinHeight(50);
+            showAllButton.setFont(new Font(16));
+            nf.setPrefHeight(50);
+            nf.setFont(new Font(16));
+            nf.setTranslateX(150);
+            data.setPrefHeight(50);
+            data.setFont(new Font(16));
+            data.setTranslateX(0);
+            crf.setPrefHeight(50);
+            crf.setFont(new Font(16));
+            crf.setTranslateX(200);
+            cpf.setPrefHeight(50);
+            cpf.setFont(new Font(16));
+            cpf.setTranslateX(0);
         }
     }
 

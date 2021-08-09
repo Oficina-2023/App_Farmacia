@@ -15,7 +15,7 @@
             <Font name="System Bold" size="41.0" />
          </font>
       </Text>
-      <JFXDatePicker fx:id="validadeDatePicker" editable="false" layoutX="264.0" layoutY="460.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="530.0" promptText="Validade" stylesheets="@../../css/DatePicker.css" />
+      <JFXDatePicker fx:id="validadeDatePicker" defaultColor="#069e5c" editable="false" layoutX="264.0" layoutY="460.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="530.0" promptText="Validade" stylesheets="@../../css/DatePicker.css" />
       <JFXTextField fx:id="labTextField" alignment="CENTER" focusColor="#069e5c" layoutX="264.0" layoutY="295.0" prefHeight="42.0" prefWidth="492.0" promptText="Laboratório" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
       <JFXTextField fx:id="priceTextField" alignment="CENTER" focusColor="#069e5c" layoutX="264.0" layoutY="372.0" prefHeight="42.0" prefWidth="492.0" promptText="Preço" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
       <JFXTextField fx:id="nameTextField" alignment="CENTER" focusColor="#069e5c" layoutX="264.0" layoutY="208.0" prefHeight="42.0" prefWidth="492.0" promptText="Nome" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />

@@ -14,7 +14,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <JFXListView fx:id="productList" layoutX="7.0" layoutY="174.0" prefHeight="435.0" prefWidth="986.0" style="-fx-background-color: transparent;" stylesheets="@../../css/ListView.css" />
+      <JFXListView fx:id="productList" layoutX="7.0" layoutY="204.0" prefHeight="405.0" prefWidth="986.0" style="-fx-background-color: transparent;" stylesheets="@../../css/ListView.css" />
       <JFXTextField fx:id="searchTextField" alignment="CENTER" focusColor="#069e5c" layoutX="708.0" layoutY="112.0" onKeyTyped="#searchChanged" prefHeight="40.0" prefWidth="278.0" promptText="Buscar Produto" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
       <JFXButton fx:id="finishSellButton" layoutX="788.0" layoutY="631.0" onAction="#FinishSellPressed" prefHeight="81.0" prefWidth="198.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text="Finalizar Venda" textFill="WHITE">
          <font>
@@ -34,6 +34,26 @@
       <Text fx:id="totalPriceText" fill="WHITE" layoutX="638.0" layoutY="693.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R$ 0,00" textAlignment="CENTER" wrappingWidth="139.13671875">
          <font>
             <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="14.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lote">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="70.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="144.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="258.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço">
+         <font>
+            <Font name="System Bold" size="16.0" />
          </font>
       </Text>
    </children>

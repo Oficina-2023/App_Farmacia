@@ -18,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -42,6 +43,8 @@ public class SellScreenController implements Initializable {
 
         public SellCell(Text totalPrice) {
             super();
+            setColors();
+            setSizes();
             this.totalPrice = totalPrice;
             box.getChildren().addAll(lote, nome,quantity,price,pane,editQuantityButton,removeCartButton);
             HBox.setHgrow(pane, Priority.ALWAYS);
@@ -62,27 +65,58 @@ public class SellScreenController implements Initializable {
             setGraphic(null);
 
             if(item != null && !empty){
-                if(item.getProduto().getLote().length() > 30){
-                    lote.setText(item.getProduto().getLote().substring(0,30) + "...");
+                if(item.getProduto().getLote().length() > 15){
+                    lote.setText(item.getProduto().getLote().substring(0,15) + "...");
                 }else{
                     lote.setText(item.getProduto().getLote());
                 }
 
-                if(item.getProduto().getNome().length() > 50){
-                    nome.setText(item.getProduto().getNome().substring(0,50)+"...");
+                if(item.getProduto().getNome().length() > 25){
+                    nome.setText(item.getProduto().getNome().substring(0,25)+"...");
                 }else{
                     nome.setText(item.getProduto().getNome());
                 }
 
                 quantity.setText(String.valueOf(item.getQuantity()));
-                price.setText("R$ " + String.valueOf((item.getProduto().getPreco() * item.getQuantity())).replace(".", ","));
+                price.setText("R$ " + String.format("%.2f", item.getProduto().getPreco() * item.getQuantity()).replace(".", ","));
+                //price.setText("R$ " + String.valueOf((item.getProduto().getPreco() * item.getQuantity())).replace(".", ","));
 
                 setGraphic(box);
                 setPrefHeight(80);
             }
         }
 
+        private void setColors(){
+            nome.setStyle("-fx-text-fill: white");
+            lote.setStyle("-fx-text-fill: white");
+            price.setStyle("-fx-text-fill: white");
+            quantity.setStyle("-fx-text-fill: white");
+            editQuantityButton.setStyle("-fx-text-fill: white;-fx-background-color: #069e5c;-fx-background-radius: 100");
+            removeCartButton.setStyle("-fx-text-fill: white;-fx-background-color: #069e5c;-fx-background-radius: 100");
+        }
 
+        private void setSizes(){
+            editQuantityButton.setMinWidth(120);
+            editQuantityButton.setMinHeight(50);
+            editQuantityButton.setTranslateX(-5);
+            editQuantityButton.setFont(new Font(16));
+            removeCartButton.setMinWidth(120);
+            removeCartButton.setMinHeight(50);
+            removeCartButton.setTranslateX(5);
+            removeCartButton.setFont(new Font(16));
+            nome.setPrefHeight(50);
+            nome.setFont(new Font(16));
+            nome.setTranslateX(30);
+            lote.setPrefHeight(50);
+            lote.setFont(new Font(16));
+            lote.setTranslateX(0);
+            price.setPrefHeight(50);
+            price.setFont(new Font(16));
+            price.setTranslateX(80);
+            quantity.setPrefHeight(50);
+            quantity.setFont(new Font(16));
+            quantity.setTranslateX(50);
+        }
     }
 
     @FXML

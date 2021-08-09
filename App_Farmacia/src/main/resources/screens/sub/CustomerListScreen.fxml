@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" style="-fx-background-color: #36393f;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.sub.CustomerListScreenController">
    <children>
-      <JFXListView fx:id="cliList" layoutX="7.0" layoutY="176.0" prefHeight="538.0" prefWidth="986.0" style="-fx-background-color: transparent;" stylesheets="@../../css/ListView.css" />
+      <JFXListView fx:id="cliList" layoutX="7.0" layoutY="184.0" prefHeight="530.0" prefWidth="986.0" style="-fx-background-color: transparent;" stylesheets="@../../css/ListView.css" />
       <Text fill="WHITE" layoutX="444.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clientes">
          <font>
             <Font name="System Bold" size="30.0" />
@@ -20,5 +20,15 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXButton>
+      <Text fill="WHITE" layoutX="22.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="96.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
