@@ -1,0 +1,8 @@
+.jfx-date-picker .jfx-text-field{
+    -jfx-unfocus-color: white;
+    -jfx-focus-color: #069e5c;
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+    -fx-text-position: center;
+    -fx-alignment: center;
+}

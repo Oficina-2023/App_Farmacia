@@ -10,29 +10,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="402.0" prefWidth="367.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.LoginScreenController">
+<AnchorPane prefHeight="401.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.LoginScreenController">
    <children>
-      <StackPane fx:id="loginPane" prefHeight="402.0" prefWidth="388.0">
+      <StackPane fx:id="loginPane" prefHeight="411.0" prefWidth="388.0">
          <children>
-            <Pane prefHeight="402.0" prefWidth="349.0">
+            <Pane prefHeight="445.0" prefWidth="388.0" style="-fx-background-color: #36393f;">
                <children>
-                  <Text layoutX="117.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="33.13671875" />
-                  <Text layoutX="117.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha" />
-                  <Text layoutX="127.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FarmApp" textAlignment="CENTER" wrappingWidth="134.5078103542328">
+                  <Text fill="WHITE" layoutX="60.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FarmApp" textAlignment="CENTER" wrappingWidth="271.9999930858612">
                      <font>
-                        <Font size="31.0" />
+                        <Font size="59.0" />
                      </font>
                   </Text>
-                  <JFXTextField fx:id="usernameTextField" layoutX="119.0" layoutY="168.0" />
-                  <JFXPasswordField fx:id="passwordTextField" layoutX="119.0" layoutY="227.0" onAction="#onEnter" />
-                  <JFXButton fx:id="loginButton" layoutX="118.0" layoutY="335.0" onAction="#loginPressed" prefHeight="25.0" prefWidth="63.0" text="Entrar" />
-                  <JFXButton fx:id="signUpButton" layoutX="189.0" layoutY="335.0" onAction="#signUpPressed" text="Registrar" />
-                  <JFXButton fx:id="closeButton" layoutX="345.0" layoutY="2.0" onAction="#closePressed" opacity="0.6" prefHeight="41.0" prefWidth="41.0" ripplerFill="BLACK" text="X">
+                  <JFXTextField fx:id="usernameTextField" alignment="CENTER" focusColor="#069e5c" layoutX="60.0" layoutY="153.0" prefHeight="33.0" prefWidth="272.0" promptText="Usuário" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="WHITE" />
+                  <JFXPasswordField fx:id="passwordTextField" alignment="CENTER" focusColor="#069e5c" layoutX="60.0" layoutY="225.0" onAction="#onEnter" prefHeight="33.0" prefWidth="272.0" promptText="Senha" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="WHITE" />
+                  <JFXButton fx:id="loginButton" layoutX="25.0" layoutY="294.0" onAction="#loginPressed" prefHeight="59.0" prefWidth="161.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text="Entrar" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font size="16.0" />
+                     </font></JFXButton>
+                  <JFXButton fx:id="signUpButton" layoutX="205.0" layoutY="294.0" onAction="#signUpPressed" prefHeight="59.0" prefWidth="161.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text="Registrar" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font></JFXButton>
+                  <JFXButton fx:id="closeButton" layoutX="345.0" layoutY="2.0" onAction="#closePressed" opacity="0.6" prefHeight="41.0" prefWidth="41.0" ripplerFill="BLACK" text="X" textFill="#ceded7">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
                      </font>
                   </JFXButton>
-                  <ProgressIndicator fx:id="progressBar" layoutX="160.0" layoutY="273.0" visible="false" />
+                  <ProgressIndicator fx:id="progressBar" layoutX="175.0" layoutY="356.0" prefHeight="41.0" prefWidth="41.0" visible="false" />
                </children>
             </Pane>
          </children>

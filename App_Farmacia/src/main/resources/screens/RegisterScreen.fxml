@@ -13,84 +13,54 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="477.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.RegisterScreenController">
+<AnchorPane prefHeight="495.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.RegisterScreenController">
    <children>
-      <StackPane fx:id="registerfaPane" prefHeight="477.0" prefWidth="703.0">
+      <StackPane fx:id="registerfaPane" prefHeight="495.0" prefWidth="703.0">
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="498.0" prefWidth="703.0" style="-fx-background-color: #36393f;">
                <children>
-                  <JFXButton fx:id="closeButton" layoutX="662.0" layoutY="1.0" onAction="#closePressed" opacity="0.6" prefHeight="45.0" prefWidth="41.0" ripplerFill="BLACK" text="X">
+                  <JFXButton fx:id="closeButton" layoutX="662.0" layoutY="1.0" onAction="#closePressed" opacity="0.6" prefHeight="45.0" prefWidth="41.0" ripplerFill="BLACK" text="X" textFill="#ceded7">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="16.0" />
                      </font>
                   </JFXButton>
-                  <Label alignment="CENTER" layoutY="73.0" prefHeight="17.0" prefWidth="703.0" text="Registro de Farmacêutico">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="239.0" layoutY="19.0" prefHeight="35.0" prefWidth="205.0" text="FarmApp">
+                  <Label alignment="CENTER" layoutX="248.0" layoutY="24.0" prefHeight="35.0" prefWidth="205.0" text="FarmApple" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="nameTextfield" layoutX="171.0" layoutY="146.0">
+                  <JFXTextField fx:id="nameTextfield" alignment="CENTER" focusColor="#069e5c" layoutX="46.0" layoutY="147.0" prefHeight="35.0" prefWidth="305.0" promptText="Nome" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </JFXTextField>
-                  <JFXTextField fx:id="cpfTextfield" layoutX="173.0" layoutY="191.0" />
-                  <JFXTextField fx:id="crfTextfield" layoutX="173.0" layoutY="226.0" />
-                  <JFXTextField fx:id="telTextfield" layoutX="173.0" layoutY="259.0" />
-                  <JFXTextField fx:id="usuarioTextfield" layoutX="447.0" layoutY="148.0" />
-                  <Text layoutX="131.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:">
+                  <JFXTextField fx:id="cpfTextfield" alignment="CENTER" focusColor="#069e5c" layoutX="46.0" layoutY="208.0" prefHeight="35.0" prefWidth="305.0" promptText="CPF" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
+                  <JFXTextField fx:id="crfTextfield" alignment="CENTER" focusColor="#069e5c" layoutX="46.0" layoutY="271.0" prefHeight="35.0" prefWidth="305.0" promptText="CRF" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
+                  <JFXTextField fx:id="telTextfield" alignment="CENTER" focusColor="#069e5c" layoutX="46.0" layoutY="332.0" prefHeight="35.0" prefWidth="305.0" promptText="Telefone" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
+                  <JFXTextField fx:id="usuarioTextfield" alignment="CENTER" focusColor="#069e5c" layoutX="429.0" layoutY="151.0" prefHeight="35.0" prefWidth="233.0" promptText="Usuário" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
+                  <JFXPasswordField fx:id="senhaTextfield" alignment="CENTER" focusColor="#069e5c" layoutX="429.0" layoutY="212.0" prefHeight="35.0" prefWidth="233.0" promptText="Senha" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
+                  <JFXPasswordField fx:id="cosenhaTextfield" alignment="CENTER" focusColor="#069e5c" layoutX="429.0" layoutY="275.0" prefHeight="35.0" prefWidth="233.0" promptText="Confirmar Senha" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
+                  <JFXButton fx:id="registerButton" alignment="CENTER" layoutX="235.0" layoutY="420.0" onAction="#registerPressed" prefHeight="61.0" prefWidth="233.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text="Registrar" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="144.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF:">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="144.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CRF:">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="116.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone:">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="394.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuário:">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="341.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmar Senha:">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="394.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Senha:" wrappingWidth="50.10058410465717">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <JFXPasswordField fx:id="senhaTextfield" layoutX="447.0" layoutY="179.0" />
-                  <JFXPasswordField fx:id="cosenhaTextfield" layoutX="447.0" layoutY="219.0" />
-                  <JFXButton fx:id="registerButton" alignment="CENTER" layoutX="235.0" layoutY="382.0" onAction="#registerPressed" prefHeight="30.0" prefWidth="233.0" text="Registrar">
-                     <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </JFXButton>
-                  <ImageView fx:id="returnButton" fitHeight="35.0" fitWidth="41.0" layoutX="1.0" layoutY="1.0" onMouseClicked="#returnPressed" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="returnButton" fitHeight="45.0" fitWidth="41.0" layoutX="14.0" layoutY="3.0" onMouseClicked="#returnPressed" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/returnButton.png" />
                      </image>
                   </ImageView>
-                  <ProgressIndicator fx:id="progressIndicator" layoutX="325.0" layoutY="324.0" visible="false" />
+                  <ProgressIndicator fx:id="progressIndicator" layoutX="331.0" layoutY="378.0" prefHeight="35.0" prefWidth="41.0" visible="false" />
+                  <Text fill="WHITE" layoutX="134.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados Pessoais">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="480.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados do Sistema">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
                </children>
             </Pane>
          </children>

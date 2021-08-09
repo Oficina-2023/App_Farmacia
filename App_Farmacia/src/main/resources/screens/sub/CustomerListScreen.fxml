@@ -7,15 +7,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.sub.CustomerListScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" style="-fx-background-color: #36393f;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.sub.CustomerListScreenController">
    <children>
-      <JFXListView fx:id="cliList" layoutX="7.0" layoutY="176.0" prefHeight="538.0" prefWidth="986.0" />
-      <Text layoutX="444.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clientes">
+      <JFXListView fx:id="cliList" layoutX="7.0" layoutY="176.0" prefHeight="538.0" prefWidth="986.0" style="-fx-background-color: transparent;" stylesheets="@../../css/ListView.css" />
+      <Text fill="WHITE" layoutX="444.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clientes">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="searchCliTextField" alignment="CENTER" layoutX="708.0" layoutY="96.0" onKeyTyped="#searchChanged" prefHeight="40.0" prefWidth="278.0" promptText="Buscar CPF" />
-      <JFXButton fx:id="newClientButton" layoutX="14.0" layoutY="87.0" onAction="#novoClientePressed" prefHeight="59.0" prefWidth="144.0" text=" Novo cliente" />
+      <JFXTextField fx:id="searchCliTextField" alignment="CENTER" focusColor="#069e5c" layoutX="708.0" layoutY="96.0" onKeyTyped="#searchChanged" prefHeight="40.0" prefWidth="278.0" promptText="Buscar CPF" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="WHITE" />
+      <JFXButton fx:id="newClientButton" layoutX="14.0" layoutY="87.0" onAction="#novoClientePressed" prefHeight="59.0" prefWidth="144.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text=" Novo cliente" textFill="WHITE" />
    </children>
 </AnchorPane>

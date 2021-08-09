@@ -8,23 +8,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.sub.ProductAddScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" style="-fx-background-color: #36393f;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.sub.ProductAddScreenController">
    <children>
-      <Text layoutX="317.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adição de Produto" textAlignment="CENTER" wrappingWidth="366.13671875">
+      <Text fill="WHITE" layoutX="325.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adição de Produto" textAlignment="CENTER" wrappingWidth="366.13671875">
          <font>
             <Font size="41.0" />
          </font>
       </Text>
-      <JFXDatePicker fx:id="datePicker" editable="false" layoutX="254.0" layoutY="450.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="492.0" promptText="Validade" />
-      <JFXTextField fx:id="labTextField" alignment="CENTER" layoutX="254.0" layoutY="285.0" prefHeight="42.0" prefWidth="492.0" promptText="Laboratório" />
-      <JFXTextField fx:id="priceTextField" alignment="CENTER" layoutX="254.0" layoutY="363.0" prefHeight="42.0" prefWidth="492.0" promptText="Preço" />
-      <JFXTextField fx:id="nameTextField" alignment="CENTER" layoutX="254.0" layoutY="199.0" prefHeight="42.0" prefWidth="492.0" promptText="Nome" />
-      <JFXButton fx:id="addProductButton" layoutX="338.0" layoutY="573.0" onAction="#addProductPressed" prefHeight="102.0" prefWidth="325.0" text="Adicionar Produto">
+      <JFXDatePicker fx:id="datePicker" defaultColor="#069e5c" editable="false" layoutX="262.0" layoutY="461.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="531.0" promptText="Validade" stylesheets="@../../css/DatePicker.css" />
+      <JFXTextField fx:id="labTextField" alignment="CENTER" focusColor="#069e5c" layoutX="262.0" layoutY="296.0" prefHeight="42.0" prefWidth="492.0" promptText="Laboratório" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
+      <JFXTextField fx:id="priceTextField" alignment="CENTER" focusColor="#069e5c" layoutX="262.0" layoutY="374.0" prefHeight="42.0" prefWidth="492.0" promptText="Preço" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
+      <JFXTextField fx:id="nameTextField" alignment="CENTER" focusColor="#069e5c" layoutX="262.0" layoutY="210.0" prefHeight="42.0" prefWidth="492.0" promptText="Nome" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
+      <JFXButton fx:id="addProductButton" layoutX="346.0" layoutY="596.0" onAction="#addProductPressed" prefHeight="102.0" prefWidth="325.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text="Adicionar Produto" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <ProgressIndicator fx:id="progressIndicator" layoutX="474.0" layoutY="520.0" visible="false" />
-      <JFXTextField fx:id="loteTextField" alignment="CENTER" layoutX="254.0" layoutY="120.0" prefHeight="42.0" prefWidth="492.0" promptText="Lote" />
+      <ProgressIndicator fx:id="progressIndicator" layoutX="482.0" layoutY="527.0" visible="false" />
+      <JFXTextField fx:id="loteTextField" alignment="CENTER" focusColor="#069e5c" layoutX="262.0" layoutY="131.0" prefHeight="42.0" prefWidth="492.0" promptText="Lote" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
    </children>
 </AnchorPane>
