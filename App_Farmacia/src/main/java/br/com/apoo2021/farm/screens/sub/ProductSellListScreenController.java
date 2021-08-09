@@ -88,7 +88,7 @@ public class ProductSellListScreenController implements Initializable {
                     for(Object lote : productsLotes){
                         Produto produto = FarmApple.dataManager.getProductManager().getProdutoByLote((String) lote);
                         if(produto != null){
-                            List<Object> quantityProduct = SQLRunner.ExecuteSQLScript.SQLSelect("GetProdutosSellByNF", venda.getNf(), (String) lote);
+                            List<Object> quantityProduct = SQLRunner.ExecuteSQLScript.SQLSelect("GetQuantitySell", venda.getNf(), (String) lote);
 
                             if(quantityProduct != null && !quantityProduct.isEmpty()){
                                 ProductCart productCart = new ProductCart(produto, (int) quantityProduct.get(0));
@@ -112,11 +112,11 @@ public class ProductSellListScreenController implements Initializable {
 
     private void updateList(){
         if(nomeTextField.getText().isEmpty()){
-            productVendasListView.setItems(FXCollections.observableList(FarmApple.dataManager.getCartManager().getSellList()));
+            productVendasListView.setItems(FXCollections.observableList(produtoList));
         }else{
             List<ProductCart> filtredList = new ArrayList<>();
 
-            for(ProductCart productCart : FarmApple.dataManager.getCartManager().getSellList()){
+            for(ProductCart productCart : produtoList){
                 if(productCart.getProduto().getNome().toLowerCase().contains(nomeTextField.getText().toLowerCase())){
                     filtredList.add(productCart);
                 }

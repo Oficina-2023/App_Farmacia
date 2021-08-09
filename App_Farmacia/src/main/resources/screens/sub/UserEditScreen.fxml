@@ -12,9 +12,9 @@
       <JFXPasswordField fx:id="oldPass" alignment="CENTER" focusColor="#069e5c" layoutX="249.0" layoutY="409.0" prefHeight="33.0" prefWidth="503.0" promptText="Senha Antiga" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
       <JFXPasswordField fx:id="newPass" alignment="CENTER" focusColor="#069e5c" layoutX="249.0" layoutY="469.0" prefHeight="33.0" prefWidth="503.0" promptText="Nova Senha" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
       <JFXPasswordField fx:id="ConfirmNewPass" alignment="CENTER" focusColor="#069e5c" layoutX="250.0" layoutY="530.0" prefHeight="33.0" prefWidth="503.0" promptText="Confirmar Nova Senha" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
-      <JFXButton fx:id="updateButton" layoutX="356.0" layoutY="589.0" onAction="#updatePressed" prefHeight="72.0" prefWidth="287.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text="Atualizar" textFill="WHITE">
+      <JFXButton fx:id="updateButton" layoutX="359.0" layoutY="632.0" onAction="#updatePressed" prefHeight="72.0" prefWidth="287.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text="Atualizar" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font></JFXButton>
       <Text fx:id="usernameText" fill="WHITE" layoutX="134.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="366.13671481609344">
          <font>
@@ -23,7 +23,7 @@
       </Text>
       <Text fill="WHITE" layoutX="316.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Atualização de Cadastro" textAlignment="CENTER" wrappingWidth="366.13671875">
          <font>
-            <Font size="41.0" />
+            <Font name="System Bold" size="41.0" />
          </font>
       </Text>
       <Text fx:id="crfText" fill="WHITE" layoutX="588.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00000-0" textAlignment="CENTER" wrappingWidth="189.13671875">
@@ -71,6 +71,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <ProgressIndicator fx:id="progressIndicator" layoutX="480.0" layoutY="673.0" prefHeight="46.0" prefWidth="46.0" visible="false" />
+      <ProgressIndicator fx:id="progressIndicator" layoutX="480.0" layoutY="578.0" prefHeight="46.0" prefWidth="46.0" visible="false" />
    </children>
 </AnchorPane>

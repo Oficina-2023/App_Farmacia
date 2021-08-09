@@ -42,10 +42,10 @@
                   <JFXPasswordField fx:id="cosenhaTextfield" alignment="CENTER" focusColor="#069e5c" layoutX="429.0" layoutY="275.0" prefHeight="35.0" prefWidth="233.0" promptText="Confirmar Senha" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
                   <JFXButton fx:id="registerButton" alignment="CENTER" layoutX="235.0" layoutY="420.0" onAction="#registerPressed" prefHeight="61.0" prefWidth="233.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text="Registrar" textFill="WHITE">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </JFXButton>
-                  <ImageView fx:id="returnButton" fitHeight="45.0" fitWidth="41.0" layoutX="14.0" layoutY="3.0" onMouseClicked="#returnPressed" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="returnButton" fitHeight="45.0" fitWidth="41.0" layoutY="3.0" onMouseClicked="#returnPressed" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/returnButton.png" />
                      </image>

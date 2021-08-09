@@ -7,20 +7,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.sub.CustomerAddScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" style="-fx-background-color: #2f3136;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.sub.CustomerAddScreenController">
    <children>
-      <JFXTextField fx:id="nomeTextfield" alignment="CENTER" layoutX="241.0" layoutY="273.0" prefHeight="42.0" prefWidth="492.0" promptText="Nome" />
-      <JFXTextField fx:id="cpfTextfield" alignment="CENTER" layoutX="242.0" layoutY="423.0" prefHeight="42.0" prefWidth="492.0" promptText="CPF" />
-      <JFXButton fx:id="addButton" layoutX="325.0" layoutY="538.0" onAction="#addPressed" prefHeight="102.0" prefWidth="325.0" text="Adicionar Cliente">
+      <JFXTextField fx:id="nomeTextfield" alignment="CENTER" focusColor="#069e5c" layoutX="243.0" layoutY="218.0" prefHeight="42.0" prefWidth="492.0" promptText="Nome" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
+      <JFXTextField fx:id="cpfTextfield" alignment="CENTER" focusColor="#069e5c" layoutX="241.0" layoutY="363.0" prefHeight="42.0" prefWidth="492.0" promptText="CPF" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
+      <JFXButton fx:id="addButton" layoutX="327.0" layoutY="533.0" onAction="#addPressed" prefHeight="102.0" prefWidth="325.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text="Adicionar Cliente" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <Text layoutX="304.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Cliente" textAlignment="CENTER" wrappingWidth="366.13671875">
+      <Text fill="WHITE" layoutX="303.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Cliente" textAlignment="CENTER" wrappingWidth="393.13671875">
          <font>
-            <Font size="41.0" />
+            <Font name="System Bold" size="42.0" />
          </font>
       </Text>
-      <ProgressIndicator fx:id="progressIndicator" layoutX="461.0" layoutY="640.0" visible="false" />
+      <ProgressIndicator fx:id="progressIndicator" layoutX="463.0" layoutY="452.0" visible="false" />
    </children>
 </AnchorPane>

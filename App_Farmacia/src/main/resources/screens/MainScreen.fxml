@@ -11,17 +11,29 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.apoo2021.farm.screens.MainScreenController">
    <children>
-      <StackPane prefHeight="720.0" prefWidth="280.0">
+      <StackPane prefHeight="723.0" prefWidth="280.0" style="-fx-background-color: #2f3136;">
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="729.0" prefWidth="280.0">
                <children>
-                  <JFXButton fx:id="productButton" layoutX="14.0" layoutY="155.0" onAction="#produtosPressed" prefHeight="78.0" prefWidth="252.0" text="Produtos" />
-                  <JFXButton fx:id="vendaButton" layoutX="14.0" layoutY="513.0" onAction="#vendaPressed" prefHeight="78.0" prefWidth="252.0" text="Vendas" />
-                  <JFXButton fx:id="clienteButton" layoutX="14.0" layoutY="282.0" onAction="#clientesPressed" prefHeight="78.0" prefWidth="252.0" text="Clientes" />
-                  <Text fx:id="usernameField" layoutX="14.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME" textAlignment="CENTER" wrappingWidth="174.13671875" />
-                  <Text layoutX="84.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FarmApp" textAlignment="CENTER" wrappingWidth="112.13671875">
+                  <JFXButton fx:id="productButton" layoutX="14.0" layoutY="155.0" onAction="#produtosPressed" prefHeight="78.0" prefWidth="252.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text="Produtos" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="25.0" />
+                        <Font name="System Bold" size="18.0" />
+                     </font></JFXButton>
+                  <JFXButton fx:id="vendaButton" layoutX="14.0" layoutY="513.0" onAction="#vendaPressed" prefHeight="78.0" prefWidth="252.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text="Vendas" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></JFXButton>
+                  <JFXButton fx:id="clienteButton" layoutX="14.0" layoutY="282.0" onAction="#clientesPressed" prefHeight="78.0" prefWidth="252.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text="Clientes" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></JFXButton>
+                  <Text fx:id="usernameField" fill="#ceded7" layoutX="14.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME" textAlignment="CENTER" wrappingWidth="174.13671875">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Text>
+                  <Text fill="WHITE" layoutX="36.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FarmApp" textAlignment="CENTER" wrappingWidth="207.13671875">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
                      </font></Text>
                   <ImageView fx:id="settingsButton" fitHeight="24.0" fitWidth="22.0" layoutX="197.0" layoutY="687.0" onMousePressed="#settingsPressed" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -33,14 +45,17 @@
                         <Image url="@../images/logout.png" />
                      </image>
                   </ImageView>
-                  <JFXButton fx:id="cartButton" layoutX="14.0" layoutY="398.0" onAction="#cartPressed" prefHeight="78.0" prefWidth="252.0" text="Carrinho" />
+                  <JFXButton fx:id="cartButton" layoutX="14.0" layoutY="398.0" onAction="#cartPressed" prefHeight="78.0" prefWidth="252.0" style="-fx-background-color: #069e5c; -fx-background-radius: 100;" text="Carrinho" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></JFXButton>
                </children>
             </Pane>
          </children></StackPane>
-      <StackPane fx:id="mainPane" layoutX="273.0" prefHeight="723.0" prefWidth="1007.0" />
-      <JFXButton fx:id="closeButton" layoutX="1225.0" layoutY="14.0" onAction="#closePressed" opacity="0.6" prefHeight="41.0" prefWidth="41.0" ripplerFill="BLACK" text="X">
+      <StackPane fx:id="mainPane" layoutX="273.0" prefHeight="723.0" prefWidth="1007.0" style="-fx-background-color: #36393f;" />
+      <JFXButton fx:id="closeButton" layoutX="1225.0" layoutY="14.0" onAction="#closePressed" opacity="0.6" prefHeight="41.0" prefWidth="41.0" ripplerFill="BLACK" text="X" textFill="#ceded7">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
    </children>

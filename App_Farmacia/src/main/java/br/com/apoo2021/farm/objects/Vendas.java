@@ -34,7 +34,7 @@ public class Vendas {
         this.cpf = cpf;
     }
 
-    public String getCrf(String s) {
+    public String getCrf() {
         return crf;
     }
 
