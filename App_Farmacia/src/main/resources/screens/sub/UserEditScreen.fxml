@@ -21,7 +21,7 @@
             <Font size="17.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="316.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Atualização de Cadastro" textAlignment="CENTER" wrappingWidth="366.13671875">
+      <Text fill="WHITE" layoutX="310.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Atualização Cadastral" textAlignment="CENTER" wrappingWidth="386.13671875">
          <font>
             <Font name="System Bold" size="41.0" />
          </font>

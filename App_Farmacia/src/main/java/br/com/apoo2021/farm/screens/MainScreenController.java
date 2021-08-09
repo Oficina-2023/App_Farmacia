@@ -98,8 +98,8 @@ public class MainScreenController implements Initializable {
 
     private void updateUsername(){
         Farmaceutico farmaceutico = FarmApple.dataManager.getFarmManager().getFarmaceutico();
-        if(farmaceutico.getNome().length() > 30){
-            usernameField.setText(farmaceutico.getNome().substring(0,30) + "...");
+        if(farmaceutico.getNome().length() > 25){
+            usernameField.setText(farmaceutico.getNome().substring(0,25) + "...");
         }else{
             usernameField.setText(farmaceutico.getNome());
         }
