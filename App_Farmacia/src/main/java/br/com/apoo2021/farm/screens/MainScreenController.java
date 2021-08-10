@@ -45,6 +45,9 @@ public class MainScreenController implements Initializable {
     @FXML
     private StackPane mainPane;
 
+    @FXML
+    private JFXButton cartButton;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateUsername();
@@ -58,7 +61,7 @@ public class MainScreenController implements Initializable {
 
     @FXML
     void logoutPressed(MouseEvent event) {
-        FarmDialogs.showSoftwareLogoutDialog(mainPane, closeButton, closeButton, productButton, vendaButton, clienteButton, settingsButton, logoutButton);
+        FarmDialogs.showSoftwareLogoutDialog(mainPane, closeButton, closeButton, productButton, vendaButton, clienteButton, cartButton, settingsButton, logoutButton);
     }
 
     @FXML
@@ -84,7 +87,7 @@ public class MainScreenController implements Initializable {
 
     @FXML
     void closePressed(ActionEvent event) {
-        FarmDialogs.showSoftwareCloseDialog(mainPane,closeButton, productButton, vendaButton, clienteButton, settingsButton, logoutButton);
+        FarmDialogs.showSoftwareCloseDialog(mainPane,closeButton, productButton, vendaButton, clienteButton, cartButton, settingsButton, logoutButton);
     }
 
     private void openSubScreen(@NotNull String screenName){
