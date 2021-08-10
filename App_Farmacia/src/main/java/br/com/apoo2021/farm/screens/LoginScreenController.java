@@ -65,7 +65,7 @@ public class LoginScreenController implements Initializable {
         setLockedData(true);
         new Thread(() -> {
             boolean logged = false;
-            List<Object> crfList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmCRF",MD5Cripto.MD5Converter(usernameTextField.getText()),MD5Cripto.MD5Converter(passwordTextField.getText()));
+            List<Object> crfList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmCRF",MD5Cripto.MD5Converter(usernameTextField.getText().toLowerCase()),MD5Cripto.MD5Converter(passwordTextField.getText()));
             if(crfList != null && !crfList.isEmpty()){
                 FarmApple.dataManager.getFarmManager().getFarmaceutico().setCrf((String)crfList.get(0));
                 logged = true;
