@@ -22,10 +22,8 @@ public class SQLRunner {
 
         //Executa Scripts SQL que não nescessitam de retorno
         public static void SQLSet(@NotNull String scriptName,Object... args){
-            try{
-                Connection connection = SQLConnection.SQLConnect();
-                String sqlScript = readScriptContent(scriptName);
-                PreparedStatement statement = connection.prepareStatement(sqlScript);
+            try(Connection connection = SQLConnection.SQLConnect();
+                PreparedStatement statement = connection.prepareStatement(readScriptContent(scriptName))){
                 if(args != null){
                     if(args.length > 0){
                         int dataPos = 0;
@@ -58,10 +56,8 @@ public class SQLRunner {
 
         //Executa Scripts SQL que nescessitam de um retorno entregando eles em um array de object
         public static List<Object> SQLSelect(@NotNull String scriptName,Object... args){
-            try{
-                Connection connection = SQLConnection.SQLConnect();
-                String sqlScript = readScriptContent(scriptName);
-                PreparedStatement statement = connection.prepareStatement(sqlScript);
+            try(Connection connection = SQLConnection.SQLConnect();
+                PreparedStatement statement = connection.prepareStatement(readScriptContent(scriptName))){
                 List<Object> resultList = new ArrayList<>();
                 if(args != null){
                     if(args.length > 0){
@@ -88,7 +84,7 @@ public class SQLRunner {
                 }
                 ResultSet resultSet = statement.executeQuery();
                 while(resultSet.next()){
-                    resultList.add(resultSet.getObject(sqlScript.split(" ", 3)[1]));
+                    resultList.add(resultSet.getObject(readScriptContent(scriptName).split(" ", 3)[1]));
                 }
                 statement.close();
                 return resultList;
@@ -108,7 +104,7 @@ public class SQLRunner {
                 dataSource.setUsername(username);
                 dataSource.setPassword(password);
                 dataSource.setMinIdle(5);
-                dataSource.setMaxIdle(100);
+                dataSource.setMaxIdle(1000);
                 dataSource.setMaxTotal(1000);
             }catch (Exception e){
                 FarmApple.logger.error("Erro ao se conectar no banco de dados!", e);
