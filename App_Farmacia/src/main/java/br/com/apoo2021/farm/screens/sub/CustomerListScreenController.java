@@ -109,9 +109,6 @@ public class CustomerListScreenController implements Initializable {
     @FXML
     private JFXButton newClientButton;
 
-    @FXML
-    private JFXButton novoClienteButton;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         FarmApple.dataManager.setEditableProduct(null);
