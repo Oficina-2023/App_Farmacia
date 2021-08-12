@@ -1,10 +1,11 @@
 package br.com.apoo2021.farm.screens.sub;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Cliente;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -28,7 +29,7 @@ public class CustomerAddScreenController implements Initializable {
     private JFXButton addButton;
 
     @FXML
-    private ProgressIndicator progressIndicator;
+    private JFXSpinner progressIndicator;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,7 +56,7 @@ public class CustomerAddScreenController implements Initializable {
                         cliente.setNome(nomeTextfield.getText());
                         cliente.setCpf(cpfTextfield.getText());
                         SQLRunner.ExecuteSQLScript.SQLSet("SetFarmCliente", nomeTextfield.getText(), Long.parseLong(cpfTextfield.getText()));
-                        FarmApple.dataManager.getCostumerManager().getClienteList().add(cliente);
+                        EasyFarma.dataManager.getCostumerManager().getClienteList().add(cliente);
                     }
                 }else{
                     lengthError = true;
@@ -70,13 +71,13 @@ public class CustomerAddScreenController implements Initializable {
             List<Object> finalCpf = cpf;
             Platform.runLater(() -> {
                 if(finalParseError){
-                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(),"Erro","O campo CPF s\u00f3 aceita n\u00fameros!");
+                    FarmDialogs.showDialog(EasyFarma.dataManager.getMainPane(),"Erro","O campo CPF s\u00f3 aceita n\u00fameros!");
                 }else if(finalLengthError){
-                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(),"Erro","Insira um CPF valido!");
+                    FarmDialogs.showDialog(EasyFarma.dataManager.getMainPane(),"Erro","Insira um CPF valido!");
                 }else if(finalCpf != null && !finalCpf.isEmpty()){
-                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(),"Erro","CPF de cliente j\u00e1 registrado!");
+                    FarmDialogs.showDialog(EasyFarma.dataManager.getMainPane(),"Erro","CPF de cliente j\u00e1 registrado!");
                 }else{
-                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(),"Registrado","Registrado com sucesso!");
+                    FarmDialogs.showDialog(EasyFarma.dataManager.getMainPane(),"Registrado","Registrado com sucesso!");
                 }
                 progressIndicator.setVisible(false);
                 setLockedData(false);

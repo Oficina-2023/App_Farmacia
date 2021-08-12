@@ -1,11 +1,12 @@
 package br.com.apoo2021.farm.screens.sub;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.ProductCart;
 import br.com.apoo2021.farm.objects.Produto;
 import br.com.apoo2021.farm.objects.Vendas;
 import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -94,7 +95,7 @@ public class ProductSellListScreenController implements Initializable {
     private JFXTextField nomeTextField;
 
     @FXML
-    private ProgressIndicator progressIndicator;
+    private JFXSpinner progressIndicator;
 
     private final List<ProductCart> produtoList = new ArrayList<>();
 
@@ -102,12 +103,12 @@ public class ProductSellListScreenController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         progressIndicator.setVisible(true);
         new Thread(() -> {
-            Vendas venda = FarmApple.dataManager.getViewVenda();
+            Vendas venda = EasyFarma.dataManager.getViewVenda();
             if(venda != null){
                 List<Object> productsLotes = SQLRunner.ExecuteSQLScript.SQLSelect("GetProdutosSellByNF", venda.getNf());
                 if(productsLotes != null && !productsLotes.isEmpty()){
                     for(Object lote : productsLotes){
-                        Produto produto = FarmApple.dataManager.getProductManager().getProdutoByLote((String) lote);
+                        Produto produto = EasyFarma.dataManager.getProductManager().getProdutoByLote((String) lote);
                         if(produto != null){
                             List<Object> quantityProduct = SQLRunner.ExecuteSQLScript.SQLSelect("GetQuantitySell", venda.getNf(), (String) lote);
 

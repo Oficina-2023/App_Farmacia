@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.screens;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import br.com.apoo2021.farm.util.ScreenAdjusts;
 import javafx.application.Platform;
@@ -32,16 +32,16 @@ public class LoadScreenController implements Initializable {
         new Thread(() -> {
             boolean loaded = false;
             Thread updateFarm = new Thread(() -> {
-                FarmApple.dataManager.getFarmManager().updateFarmData();
+                EasyFarma.dataManager.getFarmManager().updateFarmData();
             });
             Thread updateProduct = new Thread(() -> {
-                FarmApple.dataManager.getProductManager().updateProductList();
+                EasyFarma.dataManager.getProductManager().updateProductList();
             });
             Thread updateCostumer = new Thread(() -> {
-                FarmApple.dataManager.getCostumerManager().updateCostumerList();
+                EasyFarma.dataManager.getCostumerManager().updateCostumerList();
             });
             Thread updateSells = new Thread(() -> {
-                FarmApple.dataManager.getSellManager().updateSellList();
+                EasyFarma.dataManager.getSellManager().updateSellList();
             });
             updateFarm.start();
             updateProduct.start();
@@ -59,7 +59,7 @@ public class LoadScreenController implements Initializable {
                 loaded = true;
                 loadMessageTextField.setText("Finalizando carregamento...");
             }catch(InterruptedException e){
-                FarmApple.logger.error("Erro nos Threads no carregamento de dados no login",e);
+                EasyFarma.logger.error("Erro nos Threads no carregamento de dados no login",e);
             }
             boolean finalLoaded = loaded;
             Platform.runLater(() -> {
@@ -71,7 +71,7 @@ public class LoadScreenController implements Initializable {
                         ScreenAdjusts.centerScreen(stage);
                         ScreenAdjusts.setDraggable(root,stage);
                     }catch(IOException e){
-                        FarmApple.logger.error("Error ao tentar abrir a tela principal!",e);
+                        EasyFarma.logger.error("Error ao tentar abrir a tela principal!",e);
                     }
                 }else{
                     FarmDialogs.showLoginError(stackPane, loadMessageTextField);

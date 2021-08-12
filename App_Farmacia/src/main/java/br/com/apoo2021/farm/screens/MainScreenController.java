@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.screens;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.objects.Farmaceutico;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import com.jfoenix.controls.JFXButton;
@@ -51,7 +51,7 @@ public class MainScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateUsername();
-        FarmApple.dataManager.setMainPane(mainPane);
+        EasyFarma.dataManager.setMainPane(mainPane);
     }
 
     @FXML
@@ -95,12 +95,12 @@ public class MainScreenController implements Initializable {
             mainPane.getChildren().clear();
             mainPane.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/" + screenName + ".fxml"))));
         }catch (IOException e){
-            FarmApple.logger.error("Erro ao abrir a janela " + screenName +"!", e);
+            EasyFarma.logger.error("Erro ao abrir a janela " + screenName +"!", e);
         }
     }
 
     private void updateUsername(){
-        Farmaceutico farmaceutico = FarmApple.dataManager.getFarmManager().getFarmaceutico();
+        Farmaceutico farmaceutico = EasyFarma.dataManager.getFarmManager().getFarmaceutico();
         if(farmaceutico.getNome().length() > 25){
             usernameField.setText(farmaceutico.getNome().substring(0,25) + "...");
         }else{

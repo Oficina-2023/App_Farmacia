@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.util;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Cliente;
 import br.com.apoo2021.farm.objects.ProductCart;
@@ -88,9 +88,9 @@ public class FarmDialogs {
                 stage.setScene(new Scene(root));
                 ScreenAdjusts.centerScreen(stage);
                 ScreenAdjusts.setDraggable(root,stage);
-                FarmApple.dataManager.getFarmManager().clearFarmData();
+                EasyFarma.dataManager.getFarmManager().clearFarmData();
             }catch(IOException e){
-                FarmApple.logger.error("Error ao tentar retornar a tela de login!",e);
+                EasyFarma.logger.error("Error ao tentar retornar a tela de login!",e);
             }
         });
         content.setStyle("-fx-background-color: #2f3136;");
@@ -117,14 +117,14 @@ public class FarmDialogs {
         closeButton.setOnAction(event -> {
             try{
                 dialog.close();
-                FarmApple.dataManager.getFarmManager().clearFarmData();
+                EasyFarma.dataManager.getFarmManager().clearFarmData();
                 Parent root = FXMLLoader.load(Objects.requireNonNull(FarmDialogs.class.getClassLoader().getResource("screens/LoginScreen.fxml")));
                 Stage stage = (Stage) node.getScene().getWindow();
                 stage.setScene(new Scene(root));
                 ScreenAdjusts.centerScreen(stage);
                 ScreenAdjusts.setDraggable(root,stage);
             }catch(IOException e){
-                FarmApple.logger.error("Error ao tentar abrir a tela de login após um error de carregamento!",e);
+                EasyFarma.logger.error("Error ao tentar abrir a tela de login após um error de carregamento!",e);
             }
         });
         content.setStyle("-fx-background-color: #2f3136;");
@@ -153,9 +153,9 @@ public class FarmDialogs {
             try{
                 SQLRunner.ExecuteSQLScript.SQLSet("ProductRemove", produto.getLote());
                 listView.getItems().remove(produto);
-                FarmApple.dataManager.getProductManager().removeProduto(produto.getLote());
+                EasyFarma.dataManager.getProductManager().removeProduto(produto.getLote());
             }catch (Exception e){
-                FarmApple.logger.error("Error ao remover o produto!", e);
+                EasyFarma.logger.error("Error ao remover o produto!", e);
             }
             dialog.close();
         });
@@ -186,9 +186,9 @@ public class FarmDialogs {
             try{
                 SQLRunner.ExecuteSQLScript.SQLSet("ClienteRemove", cliente.getCpf());
                 listView.getItems().remove(cliente);
-                FarmApple.dataManager.getCostumerManager().removeCliente(cliente.getCpf());
+                EasyFarma.dataManager.getCostumerManager().removeCliente(cliente.getCpf());
             }catch (Exception e){
-                FarmApple.logger.error("Error ao remover o cliente!", e);
+                EasyFarma.logger.error("Error ao remover o cliente!", e);
             }
             dialog.close();
         });
@@ -218,15 +218,15 @@ public class FarmDialogs {
                 if(!quantityTextField.getText().isEmpty()) {
                     int quantity = Integer.parseInt(quantityTextField.getText());
                     boolean founded = false;
-                    for (ProductCart productCart : FarmApple.dataManager.getCartManager().getSellList()) {
+                    for (ProductCart productCart : EasyFarma.dataManager.getCartManager().getSellList()) {
                         if (productCart.getProduto().getLote().equals(produto.getLote())) {
                             if(Integer.parseInt(quantityTextField.getText()) > 0){
                                 if(Integer.parseInt(quantityTextField.getText()) <= 50){
-                                    FarmApple.dataManager.getCartManager().editProductQuantity(produto, quantity);
+                                    EasyFarma.dataManager.getCartManager().editProductQuantity(produto, quantity);
                                     showDialog(pane, "Quantidade Alterada!", "O produto j\u00e1 estava no carrinho!\nA quantidade foi alterada para o valor inserido.");
                                     founded = true;
                                 }else{
-                                    FarmDialogs.showDialog(pane, "Erro", "N\u00e3o possuimos estoque!");
+                                    FarmDialogs.showDialog(pane, "Erro", "Fora de estoque!");
                                 }
                             }else{
                                 FarmDialogs.showDialog(pane, "Erro", "N\u00e3o \u00e9 possivel adicionar uma quantidade inferior a 1!");
@@ -237,10 +237,10 @@ public class FarmDialogs {
                     if (!founded) {
                         if(Integer.parseInt(quantityTextField.getText()) > 0) {
                             if(Integer.parseInt(quantityTextField.getText()) <= 50){
-                                FarmApple.dataManager.getCartManager().addProductToCart(produto, quantity);
+                                EasyFarma.dataManager.getCartManager().addProductToCart(produto, quantity);
                                 showDialog(pane, "Adicionado ao carrinho!", "Produto adicionado com sucesso!");
                             }else{
-                                FarmDialogs.showDialog(pane, "Erro", "N\u00e3o possuimos estoque!");
+                                FarmDialogs.showDialog(pane, "Erro", "Fora de estoque!");
                             }
                         }else{
                             FarmDialogs.showDialog(pane, "Erro", "N\u00e3o \u00e9 possivel adicionar uma quantidade inferior a 1!");
@@ -281,10 +281,10 @@ public class FarmDialogs {
         yesButton.setOnAction(event -> {
             try{
                 listView.getItems().remove(productCart);
-                FarmApple.dataManager.getCartManager().removeProductOfCart(productCart.getProduto());
-                totalPrice.setText("R$ " + String.format("%.2f", FarmApple.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
+                EasyFarma.dataManager.getCartManager().removeProductOfCart(productCart.getProduto());
+                totalPrice.setText("R$ " + String.format("%.2f", EasyFarma.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
             }catch (Exception e){
-                FarmApple.logger.error("Error ao remover o produto do carrinho!", e);
+                EasyFarma.logger.error("Error ao remover o produto do carrinho!", e);
             }
             dialog.close();
         });
@@ -315,9 +315,9 @@ public class FarmDialogs {
                     int quantity = Integer.parseInt(quantityTextField.getText());
                     if(quantity > 0){
                         if(quantity <= 50){
-                            FarmApple.dataManager.getCartManager().editProductQuantity(productCart.getProduto(), quantity);
+                            EasyFarma.dataManager.getCartManager().editProductQuantity(productCart.getProduto(), quantity);
                             listView.refresh();
-                            totalPrice.setText("R$ " + String.format("%.2f", FarmApple.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
+                            totalPrice.setText("R$ " + String.format("%.2f", EasyFarma.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
                             showDialog(pane, "Quantidade alterada!", "A quantidade foi alterada com sucesso!");
                         }else{
                             FarmDialogs.showDialog(pane, "Erro", "N\u00e3o possuimos estoque!");
@@ -361,7 +361,7 @@ public class FarmDialogs {
             try{
                 if(!cpfTextField.getText().isEmpty() && !nfTextField.getText().isEmpty()){
                     boolean founded = false;
-                    for(Cliente cliente : FarmApple.dataManager.getCostumerManager().getClienteList()){
+                    for(Cliente cliente : EasyFarma.dataManager.getCostumerManager().getClienteList()){
                         if(cliente.getCpf().equals(cpfTextField.getText())){
                             int notaFiscal = Integer.parseInt(nfTextField.getText());
                             List<Object> nfList = SQLRunner.ExecuteSQLScript.SQLSelect("VerifyNF", notaFiscal);
@@ -369,16 +369,16 @@ public class FarmDialogs {
                                 Vendas venda = new Vendas();
                                 venda.setNf(notaFiscal);
                                 venda.setData(Timestamp.from(Instant.now()));
-                                venda.setCrf(FarmApple.dataManager.getFarmManager().getFarmaceutico().getCrf());
+                                venda.setCrf(EasyFarma.dataManager.getFarmManager().getFarmaceutico().getCrf());
                                 venda.setCpf(cliente.getCpf());
-                                SQLRunner.ExecuteSQLScript.SQLSet("FinishSell", notaFiscal, FarmApple.dataManager.getFarmManager().getFarmaceutico().getCrf(), cliente.getCpf());
-                                FarmApple.dataManager.getSellManager().addVenda(venda);
+                                SQLRunner.ExecuteSQLScript.SQLSet("FinishSell", notaFiscal, EasyFarma.dataManager.getFarmManager().getFarmaceutico().getCrf(), cliente.getCpf());
+                                EasyFarma.dataManager.getSellManager().addVenda(venda);
 
-                                for (ProductCart productCart : FarmApple.dataManager.getCartManager().getSellList()) {
+                                for (ProductCart productCart : EasyFarma.dataManager.getCartManager().getSellList()) {
                                     SQLRunner.ExecuteSQLScript.SQLSet("RegisterProductSell", productCart.getProduto().getLote(), productCart.getQuantity(), notaFiscal);
                                 }
 
-                                FarmApple.dataManager.getCartManager().clearSellList();
+                                EasyFarma.dataManager.getCartManager().clearSellList();
                                 showDialog(pane, "Venda finalizada!", "A venda foi finalizada com sucesso!");
                             }else{
                                 showDialog(pane, "Erro", "Nota fiscal j\u00e1 registrada!");
@@ -393,7 +393,7 @@ public class FarmDialogs {
                     }
 
                     listView.refresh();
-                    totalPrice.setText("R$ " + String.format("%.2f", FarmApple.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
+                    totalPrice.setText("R$ " + String.format("%.2f", EasyFarma.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
                 }else{
                     showDialog(pane, "Campos vazios!", "Existem campos obrigatorios que est\u00e3o vazios");
                 }

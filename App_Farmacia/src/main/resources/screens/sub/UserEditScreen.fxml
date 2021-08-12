@@ -2,7 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
-<?import javafx.scene.control.ProgressIndicator?>
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -71,6 +71,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <ProgressIndicator fx:id="progressIndicator" layoutX="480.0" layoutY="578.0" prefHeight="46.0" prefWidth="46.0" visible="false" />
+      <JFXSpinner fx:id="progressIndicator" layoutX="478.0" layoutY="576.0" stylesheets="@../../css/Spinner.css" visible="false" />
    </children>
 </AnchorPane>

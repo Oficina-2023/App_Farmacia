@@ -1,12 +1,13 @@
 package br.com.apoo2021.farm.screens;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import br.com.apoo2021.farm.util.MD5Cripto;
 import br.com.apoo2021.farm.util.ScreenAdjusts;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -64,7 +65,7 @@ public class RegisterScreenController implements Initializable {
     private ImageView returnButton;
 
     @FXML
-    private ProgressIndicator progressIndicator;
+    private JFXSpinner progressIndicator;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -120,10 +121,15 @@ public class RegisterScreenController implements Initializable {
                 }
                 progressIndicator.setVisible(false);
                 setLockedData(false);
+                nameTextfield.clear();
+                crfTextfield.clear();
+                cpfTextfield.clear();
+                telTextfield.clear();
+                usuarioTextfield.clear();
+                senhaTextfield.clear();
+                cosenhaTextfield.clear();
             });
         }).start();
-
-
     }
 
     @FXML
@@ -133,8 +139,9 @@ public class RegisterScreenController implements Initializable {
             Stage stage = (Stage) closeButton.getScene().getWindow();
             stage.setScene(new Scene(root));
             ScreenAdjusts.setDraggable(root, stage);
+            ScreenAdjusts.centerScreen(stage);
         }catch(IOException e){
-            FarmApple.logger.error("Erro ao clicar em voltar, tela RegisterScreen",e);
+            EasyFarma.logger.error("Erro ao clicar em voltar, tela RegisterScreen",e);
         }
 
     }

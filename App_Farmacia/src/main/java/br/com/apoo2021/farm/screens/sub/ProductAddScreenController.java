@@ -1,11 +1,12 @@
 package br.com.apoo2021.farm.screens.sub;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Produto;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -41,7 +42,7 @@ public class ProductAddScreenController implements Initializable {
     private JFXButton addProductButton;
 
     @FXML
-    private ProgressIndicator progressIndicator;
+    private JFXSpinner progressIndicator;
 
     @FXML
     private JFXTextField loteTextField;
@@ -72,10 +73,10 @@ public class ProductAddScreenController implements Initializable {
                         novoProduto.setNome(nameTextField.getText());
                         novoProduto.setLaboratorio(labTextField.getText());
                         novoProduto.setValidade(Date.valueOf(data));
-                        SQLRunner.ExecuteSQLScript.SQLSet("ProductInsert", loteTextField.getText(), FarmApple.dataManager.getFarmManager().getFarmaceutico().getCrf(),
+                        SQLRunner.ExecuteSQLScript.SQLSet("ProductInsert", loteTextField.getText(), EasyFarma.dataManager.getFarmManager().getFarmaceutico().getCrf(),
                                 nameTextField.getText(), Float.parseFloat(priceTextField.getText().replace(",", ".")),labTextField.getText(),
                                 Date.valueOf(data));
-                        FarmApple.dataManager.getProductManager().getProdutosList().add(novoProduto);
+                        EasyFarma.dataManager.getProductManager().getProdutosList().add(novoProduto);
                     }
                 }
             }catch(NumberFormatException e){
@@ -85,14 +86,14 @@ public class ProductAddScreenController implements Initializable {
             List<Object> finalLoteLista = loteLista;
             Platform.runLater(() -> {
                 if(finalParseError){
-                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(),"Erro","O campos pre\u00e7o s\u00f3 aceita n\u00fameros!");
+                    FarmDialogs.showDialog(EasyFarma.dataManager.getMainPane(),"Erro","O campos pre\u00e7o s\u00f3 aceita n\u00fameros!");
                 }else if(loteTextField.getText().contains(" ")){
-                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(),"Erro","Lote Inv\u00e1lido !");
+                    FarmDialogs.showDialog(EasyFarma.dataManager.getMainPane(),"Erro","Lote Inv\u00e1lido !");
                 }else if(finalLoteLista != null && !finalLoteLista.isEmpty()){
-                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(),"Erro","Lote j\u00e1 registrado !");
+                    FarmDialogs.showDialog(EasyFarma.dataManager.getMainPane(),"Erro","Lote j\u00e1 registrado !");
                 }else
                 {
-                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(),"Registrado","Registrado com sucesso!");
+                    FarmDialogs.showDialog(EasyFarma.dataManager.getMainPane(),"Registrado","Registrado com sucesso!");
                 }
                 progressIndicator.setVisible(false);
                 setLockedData(false);

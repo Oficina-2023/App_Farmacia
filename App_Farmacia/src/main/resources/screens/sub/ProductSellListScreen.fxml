@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -16,7 +16,6 @@
       </Text>
       <JFXListView fx:id="productVendasListView" layoutX="7.0" layoutY="188.0" prefHeight="524.0" prefWidth="986.0" style="-fx-background-color: transparent;" stylesheets="@../../css/ListView.css" />
       <JFXTextField fx:id="nomeTextField" alignment="CENTER" focusColor="#069e5c" layoutX="718.0" layoutY="106.0" onKeyTyped="#searchChanged" prefHeight="40.0" prefWidth="278.0" promptText="Nome" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" />
-      <ProgressIndicator fx:id="progressIndicator" layoutX="474.0" layoutY="417.0" visible="false" />
       <Text fill="WHITE" layoutX="20.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lote">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -32,5 +31,6 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
+      <JFXSpinner fx:id="progressIndicator" layoutX="475.0" layoutY="400.0" stylesheets="@../../css/Spinner.css" visible="false" />
    </children>
 </AnchorPane>

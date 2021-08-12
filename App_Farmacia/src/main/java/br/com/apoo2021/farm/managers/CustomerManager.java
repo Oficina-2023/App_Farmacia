@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.managers;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Cliente;
 
@@ -54,7 +54,7 @@ public class CustomerManager {
                     customerName.join();
 
                 }catch (InterruptedException e){
-                    FarmApple.logger.error("Error ao aguardar a finalização dos threads de carregamento de clientes!", e);
+                    EasyFarma.logger.error("Error ao aguardar a finalização dos threads de carregamento de clientes!", e);
                 }
             }
         }

@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.database;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.util.IDBConnection;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.jetbrains.annotations.NotNull;
@@ -42,7 +42,7 @@ public class SQLRunner {
                             }else if(obj instanceof Date){
                                 statement.setDate(dataPos, (java.sql.Date) obj);
                             }else{
-                                FarmApple.logger.error("Tipo de dado não declarado na execução do script sql!");
+                                EasyFarma.logger.error("Tipo de dado não declarado na execução do script sql!");
                             }
                         }
                     }
@@ -50,7 +50,7 @@ public class SQLRunner {
                 statement.executeUpdate();
                 statement.close();
             }catch (SQLException e){
-                FarmApple.logger.error("Erro ao executar um script sql 'set'! - Script: " + scriptName, e);
+                EasyFarma.logger.error("Erro ao executar um script sql 'set'! - Script: " + scriptName, e);
             }
         }
 
@@ -77,7 +77,7 @@ public class SQLRunner {
                             }else if(obj instanceof Date){
                                 statement.setDate(dataPos, (java.sql.Date) obj);
                             }else{
-                                FarmApple.logger.error("Tipo de dado não declarado na execução do script sql!");
+                                EasyFarma.logger.error("Tipo de dado não declarado na execução do script sql!");
                             }
                         }
                     }
@@ -89,7 +89,7 @@ public class SQLRunner {
                 statement.close();
                 return resultList;
             }catch (SQLException e){
-                FarmApple.logger.error("Erro ao executar um script sql 'get'! - Script: " + scriptName, e);
+                EasyFarma.logger.error("Erro ao executar um script sql 'get'! - Script: " + scriptName, e);
             }
             return null;
         }
@@ -107,7 +107,7 @@ public class SQLRunner {
                 dataSource.setMaxIdle(1000);
                 dataSource.setMaxTotal(1000);
             }catch (Exception e){
-                FarmApple.logger.error("Erro ao se conectar no banco de dados!", e);
+                EasyFarma.logger.error("Erro ao se conectar no banco de dados!", e);
             }
         }
 
@@ -130,7 +130,7 @@ public class SQLRunner {
                 bufferedReader.close();
             }
         }catch (Exception e){
-            FarmApple.logger.error("Erro ao ler o arquivo sql! - Script: " + scriptName, e);
+            EasyFarma.logger.error("Erro ao ler o arquivo sql! - Script: " + scriptName, e);
             throw new SQLException();
         }
         return sqlScriptBuilder.toString();

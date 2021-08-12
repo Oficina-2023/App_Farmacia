@@ -1,10 +1,11 @@
 package br.com.apoo2021.farm.screens.sub;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Cliente;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -26,7 +27,7 @@ public class CustomerEditScreenController implements Initializable {
     private JFXTextField clienteCpf;
 
     @FXML
-    private ProgressIndicator progressIndicator;
+    private JFXSpinner progressIndicator;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -41,19 +42,19 @@ public class CustomerEditScreenController implements Initializable {
         new Thread(()-> {
             boolean parseError = false;
             try {
-                Cliente editableCliente = FarmApple.dataManager.getEditableCustomer();
+                Cliente editableCliente = EasyFarma.dataManager.getEditableCustomer();
                 editableCliente.setNome(clienteNome.getText());
                 SQLRunner.ExecuteSQLScript.SQLSet("ClienteUpdate", editableCliente.getNome(), editableCliente.getCpf());
             }catch (Exception e) {
-                FarmApple.logger.error("Erro ao editar o cliente!", e);
+                EasyFarma.logger.error("Erro ao editar o cliente!", e);
                 parseError = true;
             }
             boolean finalParseError = parseError;
             Platform.runLater(() -> {
                 if (finalParseError) {
-                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(), "Erro", "Erro ao editar o cliente.\nTente novamente mais tarde!");
+                    FarmDialogs.showDialog(EasyFarma.dataManager.getMainPane(), "Erro", "Erro ao editar o cliente.\nTente novamente mais tarde!");
                 } else {
-                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(), "Sucesso", "O cliente foi editado com sucesso!");
+                    FarmDialogs.showDialog(EasyFarma.dataManager.getMainPane(), "Sucesso", "O cliente foi editado com sucesso!");
                     updateClienteData();
                 }
                 progressIndicator.setVisible(false);
@@ -64,7 +65,7 @@ public class CustomerEditScreenController implements Initializable {
     }
 
     private void updateClienteData(){
-        Cliente editableCLiente = FarmApple.dataManager.getEditableCustomer();
+        Cliente editableCLiente = EasyFarma.dataManager.getEditableCustomer();
         clienteNome.setText(editableCLiente.getNome());
         clienteCpf.setText(editableCLiente.getCpf());
     }

@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.screens.sub;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.objects.Produto;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import com.jfoenix.controls.JFXButton;
@@ -13,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -47,22 +46,22 @@ public class ProductListScreenController implements Initializable {
             box.getChildren().addAll(nome, price, laboratorio, validade, pane,  addCartButton, editButton, delButton);
             HBox.setHgrow(pane, Priority.ALWAYS);
             delButton.setOnAction(event -> {
-                FarmDialogs.showDeleteProductConfirmDialog(FarmApple.dataManager.getMainPane(), getListView(), getItem());
+                FarmDialogs.showDeleteProductConfirmDialog(EasyFarma.dataManager.getMainPane(), getListView(), getItem());
             });
 
             editButton.setOnAction(event -> {
-                FarmApple.dataManager.setEditableProduct(getItem());
+                EasyFarma.dataManager.setEditableProduct(getItem());
                 try{
-                    FarmApple.dataManager.getMainPane().getChildren().clear();
-                    FarmApple.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/ProductEditScreen.fxml"))));
+                    EasyFarma.dataManager.getMainPane().getChildren().clear();
+                    EasyFarma.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/ProductEditScreen.fxml"))));
                 }catch (IOException e){
-                    FarmApple.logger.error("Erro ao abrir a janela ProductEditScreen!", e);
-                    FarmApple.dataManager.setEditableProduct(null);
+                    EasyFarma.logger.error("Erro ao abrir a janela ProductEditScreen!", e);
+                    EasyFarma.dataManager.setEditableProduct(null);
                 }
             });
 
             addCartButton.setOnAction(event -> {
-                FarmDialogs.showCartAddDialog(FarmApple.dataManager.getMainPane(), getItem());
+                FarmDialogs.showCartAddDialog(EasyFarma.dataManager.getMainPane(), getItem());
             });
         }
 
@@ -143,19 +142,19 @@ public class ProductListScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FarmApple.dataManager.setEditableProduct(null);
-        FarmApple.dataManager.setEditableCustomer(null);
-        FarmApple.dataManager.setViewVenda(null);
+        EasyFarma.dataManager.setEditableProduct(null);
+        EasyFarma.dataManager.setEditableCustomer(null);
+        EasyFarma.dataManager.setViewVenda(null);
         updateList();
     }
 
     @FXML
     void addPressed(ActionEvent event) {
         try{
-            FarmApple.dataManager.getMainPane().getChildren().clear();
-            FarmApple.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/ProductAddScreen.fxml"))));
+            EasyFarma.dataManager.getMainPane().getChildren().clear();
+            EasyFarma.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/ProductAddScreen.fxml"))));
         }catch (IOException e){
-            FarmApple.logger.error("Erro ao abrir a janela ProductAddScreen!", e);
+            EasyFarma.logger.error("Erro ao abrir a janela ProductAddScreen!", e);
         }
     }
 
@@ -166,11 +165,11 @@ public class ProductListScreenController implements Initializable {
 
     private void updateList(){
         if(searchTextField.getText().isEmpty()){
-            productList.setItems(FXCollections.observableList(FarmApple.dataManager.getProductManager().getProdutosList()));
+            productList.setItems(FXCollections.observableList(EasyFarma.dataManager.getProductManager().getProdutosList()));
         }else{
             List<Produto> filtredList = new ArrayList<>();
 
-            for(Produto produto : FarmApple.dataManager.getProductManager().getProdutosList()){
+            for(Produto produto : EasyFarma.dataManager.getProductManager().getProdutosList()){
                 if(produto.getNome().toLowerCase().contains(searchTextField.getText().toLowerCase())){
                     filtredList.add(produto);
                 }

@@ -36,22 +36,22 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="14.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lote">
+      <Text fill="WHITE" layoutX="31.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lote">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="70.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
+      <Text fill="WHITE" layoutX="136.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="144.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade">
+      <Text fill="WHITE" layoutX="233.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qtd">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="258.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço">
+      <Text fill="WHITE" layoutX="289.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preço">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

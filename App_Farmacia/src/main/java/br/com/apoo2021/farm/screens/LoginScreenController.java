@@ -1,12 +1,13 @@
 package br.com.apoo2021.farm.screens;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import br.com.apoo2021.farm.util.MD5Cripto;
 import br.com.apoo2021.farm.util.ScreenAdjusts;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -16,7 +17,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressIndicator;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -47,7 +47,7 @@ public class LoginScreenController implements Initializable {
     private JFXButton signUpButton;
 
     @FXML
-    private ProgressIndicator progressBar;
+    private JFXSpinner progressBar;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -67,7 +67,7 @@ public class LoginScreenController implements Initializable {
             boolean logged = false;
             List<Object> crfList = SQLRunner.ExecuteSQLScript.SQLSelect("GetFarmCRF",MD5Cripto.MD5Converter(usernameTextField.getText().toLowerCase()),MD5Cripto.MD5Converter(passwordTextField.getText()));
             if(crfList != null && !crfList.isEmpty()){
-                FarmApple.dataManager.getFarmManager().getFarmaceutico().setCrf((String)crfList.get(0));
+                EasyFarma.dataManager.getFarmManager().getFarmaceutico().setCrf((String)crfList.get(0));
                 logged = true;
             }
             boolean finalLogged = logged;
@@ -81,7 +81,7 @@ public class LoginScreenController implements Initializable {
                         stage.setScene(new Scene(root));
                         ScreenAdjusts.centerScreen(stage);
                     }catch(IOException e){
-                        FarmApple.logger.error("Error ao tentar abrir a de carregamento!",e);
+                        EasyFarma.logger.error("Error ao tentar abrir a de carregamento!",e);
                     }
                 }else {
                     passwordTextField.clear();
@@ -98,8 +98,9 @@ public class LoginScreenController implements Initializable {
             Stage stage = (Stage) closeButton.getScene().getWindow();
             stage.setScene(new Scene(root));
             ScreenAdjusts.setDraggable(root,stage);
+            ScreenAdjusts.centerScreen(stage);
         }catch(IOException e){
-            FarmApple.logger.error("Erro ao clicar em registrar usuário, tela LoginScreen",e);
+            EasyFarma.logger.error("Erro ao clicar em registrar usuário, tela LoginScreen",e);
         }
     }
 

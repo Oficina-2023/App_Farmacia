@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ProgressIndicator?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
@@ -13,17 +15,17 @@
          <children>
             <Pane style="-fx-background-color: #2f3136;">
                <children>
-                  <ProgressIndicator layoutX="274.0" layoutY="286.0" />
                   <Text fx:id="loadMessageTextField" fill="WHITE" layoutX="106.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message" textAlignment="CENTER" wrappingWidth="388.13671875">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="191.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FarmApp">
-                     <font>
-                        <Font size="54.0" />
-                     </font>
-                  </Text>
+                  <ImageView fitHeight="235.0" fitWidth="260.0" layoutX="183.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <JFXSpinner layoutX="275.0" layoutY="287.0" stylesheets="@../css/Spinner.css" />
                </children>
             </Pane>
          </children></StackPane>

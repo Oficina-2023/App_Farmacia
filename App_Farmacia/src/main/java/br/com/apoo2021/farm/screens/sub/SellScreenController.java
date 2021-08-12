@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.screens.sub;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.objects.ProductCart;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import com.jfoenix.controls.JFXButton;
@@ -50,11 +50,11 @@ public class SellScreenController implements Initializable {
             HBox.setHgrow(pane, Priority.ALWAYS);
 
             editQuantityButton.setOnAction(event -> {
-                FarmDialogs.showCartEditDialog(FarmApple.dataManager.getMainPane(), getListView(),getItem(), totalPrice);
+                FarmDialogs.showCartEditDialog(EasyFarma.dataManager.getMainPane(), getListView(),getItem(), totalPrice);
             });
 
             removeCartButton.setOnAction(event -> {
-                FarmDialogs.showCartRemoveDialog(FarmApple.dataManager.getMainPane(), getListView(), getItem(), totalPrice);
+                FarmDialogs.showCartRemoveDialog(EasyFarma.dataManager.getMainPane(), getListView(), getItem(), totalPrice);
             });
         }
 
@@ -136,26 +136,26 @@ public class SellScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        FarmApple.dataManager.setEditableProduct(null);
-        FarmApple.dataManager.setEditableCustomer(null);
-        FarmApple.dataManager.setViewVenda(null);
+        EasyFarma.dataManager.setEditableProduct(null);
+        EasyFarma.dataManager.setEditableCustomer(null);
+        EasyFarma.dataManager.setViewVenda(null);
         updateList();
-        totalPriceText.setText("R$ " + String.format("%.2f", FarmApple.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
+        totalPriceText.setText("R$ " + String.format("%.2f", EasyFarma.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
         finishSellButton.disableProperty().bind(Bindings.isEmpty(productList.getItems()));
     }
 
     @FXML
     void FinishSellPressed(ActionEvent event) {
-        FarmDialogs.showFinishSellDialog(FarmApple.dataManager.getMainPane(), productList, totalPriceText);
+        FarmDialogs.showFinishSellDialog(EasyFarma.dataManager.getMainPane(), productList, totalPriceText);
     }
 
     @FXML
     void addProductPressed(ActionEvent event) {
         try{
-            FarmApple.dataManager.getMainPane().getChildren().clear();
-            FarmApple.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/ProductListScreen.fxml"))));
+            EasyFarma.dataManager.getMainPane().getChildren().clear();
+            EasyFarma.dataManager.getMainPane().getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("screens/sub/ProductListScreen.fxml"))));
         }catch (IOException e){
-            FarmApple.logger.error("Erro ao abrir a janela ProductAddScreen!", e);
+            EasyFarma.logger.error("Erro ao abrir a janela ProductAddScreen!", e);
         }
     }
 
@@ -166,11 +166,11 @@ public class SellScreenController implements Initializable {
 
     private void updateList(){
         if(searchTextField.getText().isEmpty()){
-            productList.setItems(FXCollections.observableList(FarmApple.dataManager.getCartManager().getSellList()));
+            productList.setItems(FXCollections.observableList(EasyFarma.dataManager.getCartManager().getSellList()));
         }else{
             List<ProductCart> filtredList = new ArrayList<>();
 
-            for(ProductCart productCart : FarmApple.dataManager.getCartManager().getSellList()){
+            for(ProductCart productCart : EasyFarma.dataManager.getCartManager().getSellList()){
                 if(productCart.getProduto().getNome().toLowerCase().contains(searchTextField.getText().toLowerCase())){
                     filtredList.add(productCart);
                 }

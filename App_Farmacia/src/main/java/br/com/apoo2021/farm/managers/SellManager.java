@@ -1,6 +1,6 @@
 package br.com.apoo2021.farm.managers;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Vendas;
 
@@ -56,7 +56,7 @@ public class SellManager {
                     if(dataList != null && !dataList.isEmpty()){
                         vendas.setData((Timestamp) dataList.get(0));
                     }else{
-                        FarmApple.logger.error("Erro ao carregar a data da venda!");
+                        EasyFarma.logger.error("Erro ao carregar a data da venda!");
                     }
                 });
 
@@ -65,7 +65,7 @@ public class SellManager {
                     if(crfList != null && !crfList.isEmpty()){
                         vendas.setCrf((String) crfList.get(0));
                     }else{
-                        FarmApple.logger.error("Erro ao carregar o crf da venda!");
+                        EasyFarma.logger.error("Erro ao carregar o crf da venda!");
                     }
                 });
 
@@ -74,7 +74,7 @@ public class SellManager {
                     if(cpfList != null && !cpfList.isEmpty()){
                         vendas.setCpf((String) cpfList.get(0));
                     }else{
-                        FarmApple.logger.error("Erro ao carregar o cpf da venda!");
+                        EasyFarma.logger.error("Erro ao carregar o cpf da venda!");
                     }
                 });
 
@@ -87,7 +87,7 @@ public class SellManager {
                     cpf.join();
                     crf.join();
                 } catch (InterruptedException e) {
-                    FarmApple.logger.error("Error ao aguardar a finalização dos threads de carregamento de vendas!", e);
+                    EasyFarma.logger.error("Error ao aguardar a finalização dos threads de carregamento de vendas!", e);
                 }
             }
         }

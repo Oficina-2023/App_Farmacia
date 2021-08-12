@@ -1,11 +1,12 @@
 package br.com.apoo2021.farm.screens.sub;
 
-import br.com.apoo2021.farm.FarmApple;
+import br.com.apoo2021.farm.EasyFarma;
 import br.com.apoo2021.farm.database.SQLRunner;
 import br.com.apoo2021.farm.objects.Produto;
 import br.com.apoo2021.farm.util.FarmDialogs;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -39,7 +40,7 @@ public class ProductEditScreenController implements Initializable {
     private JFXTextField loteTextField;
 
     @FXML
-    private ProgressIndicator progressIndicator;
+    private JFXSpinner progressIndicator;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,7 +56,7 @@ public class ProductEditScreenController implements Initializable {
         new Thread(() -> {
             boolean parseError = false;
             try{
-                Produto editableProduct = FarmApple.dataManager.getEditableProduct();
+                Produto editableProduct = EasyFarma.dataManager.getEditableProduct();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 String data = validadeDatePicker.getValue().format(formatter);
                 editableProduct.setNome(nameTextField.getText());
@@ -65,16 +66,16 @@ public class ProductEditScreenController implements Initializable {
 
                 SQLRunner.ExecuteSQLScript.SQLSet("ProductUpdate", editableProduct.getNome(), editableProduct.getValidade(), editableProduct.getLaboratorio(), editableProduct.getPreco(), editableProduct.getLote());
             }catch (NumberFormatException e){
-                FarmApple.logger.error("Erro ao editar o produto!", e);
+                EasyFarma.logger.error("Erro ao editar o produto!", e);
                 parseError = true;
             }
 
             boolean finalParseError = parseError;
             Platform.runLater(() -> {
                 if(finalParseError){
-                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(), "Erro", "O campos pre\u00e7o s\u00f3 aceita n\u00fameros!");
+                    FarmDialogs.showDialog(EasyFarma.dataManager.getMainPane(), "Erro", "O campos pre\u00e7o s\u00f3 aceita n\u00fameros!");
                 }else{
-                    FarmDialogs.showDialog(FarmApple.dataManager.getMainPane(), "Sucesso", "O produto foi editado com sucesso!");
+                    FarmDialogs.showDialog(EasyFarma.dataManager.getMainPane(), "Sucesso", "O produto foi editado com sucesso!");
                     updateProductData();
                 }
                 progressIndicator.setVisible(false);
@@ -84,7 +85,7 @@ public class ProductEditScreenController implements Initializable {
     }
 
     private void updateProductData(){
-        Produto editableProduct = FarmApple.dataManager.getEditableProduct();
+        Produto editableProduct = EasyFarma.dataManager.getEditableProduct();
 
         loteTextField.setText(editableProduct.getLote());
         labTextField.setText(editableProduct.getLaboratorio());
