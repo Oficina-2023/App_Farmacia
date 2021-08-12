@@ -220,15 +220,31 @@ public class FarmDialogs {
                     boolean founded = false;
                     for (ProductCart productCart : FarmApple.dataManager.getCartManager().getSellList()) {
                         if (productCart.getProduto().getLote().equals(produto.getLote())) {
-                            FarmApple.dataManager.getCartManager().editProductQuantity(produto, quantity);
-                            showDialog(pane, "Quantidade Alterada!", "O produto j\u00e1 estava no carrinho!\nA quantidade foi alterada para o valor inserido.");
-                            founded = true;
+                            if(Integer.parseInt(quantityTextField.getText()) > 0){
+                                if(Integer.parseInt(quantityTextField.getText()) <= 50){
+                                    FarmApple.dataManager.getCartManager().editProductQuantity(produto, quantity);
+                                    showDialog(pane, "Quantidade Alterada!", "O produto j\u00e1 estava no carrinho!\nA quantidade foi alterada para o valor inserido.");
+                                    founded = true;
+                                }else{
+                                    FarmDialogs.showDialog(pane, "Erro", "N\u00e3o possuimos estoque!");
+                                }
+                            }else{
+                                FarmDialogs.showDialog(pane, "Erro", "N\u00e3o \u00e9 possivel adicionar uma quantidade inferior a 1!");
+                            }
                             break;
                         }
                     }
                     if (!founded) {
-                        FarmApple.dataManager.getCartManager().addProductToCart(produto, quantity);
-                        showDialog(pane, "Adicionado ao carrinho!", "Produto adicionado com sucesso!");
+                        if(Integer.parseInt(quantityTextField.getText()) > 0) {
+                            if(Integer.parseInt(quantityTextField.getText()) <= 50){
+                                FarmApple.dataManager.getCartManager().addProductToCart(produto, quantity);
+                                showDialog(pane, "Adicionado ao carrinho!", "Produto adicionado com sucesso!");
+                            }else{
+                                FarmDialogs.showDialog(pane, "Erro", "N\u00e3o possuimos estoque!");
+                            }
+                        }else{
+                            FarmDialogs.showDialog(pane, "Erro", "N\u00e3o \u00e9 possivel adicionar uma quantidade inferior a 1!");
+                        }
                     }
                 }else{
                     showDialog(pane, "Campos vazios!", "Existem campos obrigatorios que est\u00e3o vazios");
@@ -297,10 +313,18 @@ public class FarmDialogs {
             try{
                 if(!quantityTextField.getText().isEmpty()) {
                     int quantity = Integer.parseInt(quantityTextField.getText());
-                    FarmApple.dataManager.getCartManager().editProductQuantity(productCart.getProduto(), quantity);
-                    listView.refresh();
-                    totalPrice.setText("R$ " + String.format("%.2f", FarmApple.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
-                    showDialog(pane, "Quantidade alterada!", "A quantidade foi alterada com sucesso!");
+                    if(quantity > 0){
+                        if(quantity <= 50){
+                            FarmApple.dataManager.getCartManager().editProductQuantity(productCart.getProduto(), quantity);
+                            listView.refresh();
+                            totalPrice.setText("R$ " + String.format("%.2f", FarmApple.dataManager.getCartManager().getTotalPrice()).replace(".", ","));
+                            showDialog(pane, "Quantidade alterada!", "A quantidade foi alterada com sucesso!");
+                        }else{
+                            FarmDialogs.showDialog(pane, "Erro", "N\u00e3o possuimos estoque!");
+                        }
+                    }else{
+                        FarmDialogs.showDialog(pane, "Erro", "N\u00e3o \u00e9 possivel adicionar uma quantidade inferior a 1!");
+                    }
                 }else{
                     showDialog(pane, "Campos vazios!", "Existem campos obrigatorios que est\u00e3o vazios");
                 }
