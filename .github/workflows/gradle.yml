@@ -30,7 +30,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Open Folder
-      run: cd /home/runner/work/OI-2023-1-Farmacia/ | ls
+      run: cd /home/runner/work/OI-2023-1-Farmacia/App_Farmacia/
            
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
