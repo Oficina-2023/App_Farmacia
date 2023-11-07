@@ -28,7 +28,10 @@ jobs:
       with:
         java-version: '8'
         distribution: 'temurin'
-        
+
+    - name: Open Folder
+      run: cd /home/runner/work/OI-2023-1-Farmacia/ | ls
+           
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
    #   with:
@@ -36,3 +39,4 @@ jobs:
 
     - name: Build
       run: gradle build
+ 
