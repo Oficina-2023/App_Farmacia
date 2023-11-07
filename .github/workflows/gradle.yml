@@ -39,3 +39,13 @@ jobs:
     - name: Build
       working-directory: /home/runner/work/OI-2023-1-Farmacia/OI-2023-1-Farmacia/App_Farmacia
       run: gradle build 
+
+    - name: Print artifact
+      working-directory: /home/runner/work/OI-2023-1-Farmacia/OI-2023-1-Farmacia/App_Farmacia/build/libs
+      run: ls
+
+    # - name: Archive artifacts
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: EasyFarma
+    #     path: /home/runner/work/OI-2023-1-Farmacia/OI-2023-1-Farmacia/App_Farmacia
