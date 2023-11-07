@@ -23,9 +23,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
-    - name: Setup Project
-      working-directory: /home/runner/work/OI-2023-1-Farmacia/App_Farmacia/
    # - run: |
     #        cd /home/runner/work/OI-2023-1-Farmacia/App_Farmacia/
     
@@ -41,5 +38,5 @@ jobs:
      #   gradle-version: 8.0
 
     - name: Build
-      run: gradle build
- 
+      working-directory: /home/runner/work/OI-2023-1-Farmacia/App_Farmacia/
+      run: gradle build 
