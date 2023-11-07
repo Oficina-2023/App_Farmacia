@@ -44,4 +44,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: App_Farmacia-1.0.0
-        path: /home/runner/work/OI-2023-1-Farmacia/OI-2023-1-Farmacia/App_Farmacia
+        path: /home/runner/work/OI-2023-1-Farmacia/OI-2023-1-Farmacia/App_Farmacia/build/libs/App_Farmacia-1.0.0.jar
