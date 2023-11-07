@@ -23,8 +23,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-   # - run: |
-    #        cd /home/runner/work/OI-2023-1-Farmacia/App_Farmacia/
     
     - name: Set up JDK 8
       uses: actions/setup-java@v3
@@ -38,5 +36,5 @@ jobs:
      #   gradle-version: 8.0
 
     - name: Build
-      working-directory: /home/runner/work/OI-2023-1-Farmacia/App_Farmacia/
+      working-directory: /home/runner/work/OI-2023-1-Farmacia/OI-2023-1-Farmacia/App_Farmacia
       run: gradle build 
